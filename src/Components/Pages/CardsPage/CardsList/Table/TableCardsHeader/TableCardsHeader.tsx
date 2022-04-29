@@ -1,76 +1,75 @@
-import React, {useState} from "react";
-import style from "../TableHeader/TableHeader.module.css";
-import {useDispatch} from "react-redux";
+import React, { useState } from 'react';
+import style from '../TableHeader/TableHeader.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { cardsActions } from '../../../../../../Redux/Actions/cardsActions/cardsActions';
+import { TableHeaderCardType } from './types';
+import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors';
+import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
 
-import {useFridaySelector} from "../../../../../../Redux/Store/store";
-import {cardsActions} from "../../../../../../Redux/Actions/cardsActions/cardsActions";
+const TableCardsHeader = ( { user_id }: TableHeaderCardType ) => {
 
-type TCHType = { user_id: string }
+  const dispatch = useDispatch();
 
-const TableCardsHeader = ({user_id}: TCHType) => {
+  const ownId = useSelector( getOwnId );
+  const isLoad = useSelector( getIsLoad );
 
-    const dispatch = useDispatch()
+  const [ lastUpd, setLastUpd ] = useState<boolean>( false );
+  const [ gradeUpd, setGradeUpd ] = useState<boolean>( false );
 
-    const myId = useFridaySelector<string>(state => state.profile.profile._id)
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
+  const getNewCard = () => {
+    dispatch( cardsActions.updateFilterCardAC( '1created' ) );
+    setLastUpd( true );
+  };
 
-    const [lastUpd, setLastUpd] = useState<boolean>(false)
-    const [gradeUpd, setGradeUpd] = useState<boolean>(false)
+  const getOldCard = () => {
+    dispatch( cardsActions.updateFilterCardAC( '0created' ) );
+    setLastUpd( false );
+  };
 
-    const getNewCard = () => {
-        dispatch(cardsActions.updateFilterCardAC('1created'))
-        setLastUpd(true)
-    }
+  const getGradeUpdMoreCard = () => {
+    dispatch( cardsActions.updateFilterCardAC( '1grade' ) );
+    setGradeUpd( true );
+  };
 
-    const getOldCard = () => {
-        dispatch(cardsActions.updateFilterCardAC('0created'))
-        setLastUpd(false)
-    }
+  const getGradeUpdLessCard = () => {
+    dispatch( cardsActions.updateFilterCardAC( '0grade' ) );
+    setGradeUpd( false );
+  };
 
-    const getGradeUpdMoreCard = () => {
-        dispatch(cardsActions.updateFilterCardAC('1grade'))
-        setGradeUpd(true)
-    }
+  const tableHeader = ownId === user_id ? style.tableHeader : style.tableHeaderWithId;
 
-    const getGradeUpdLessCard = () => {
-        dispatch(cardsActions.updateFilterCardAC('0grade'))
-        setGradeUpd(false)
-    }
+  return (
+    <div className={ tableHeader }>
+      <div>
+        <span className={ style.tableHeader__item }>
+          Question
+        </span>
+      </div>
+      <div>
+        <span className={ style.tableHeader__item }>
+          Answer
+        </span>
+      </div>
+      <div onClick={ lastUpd ? getOldCard : getNewCard } aria-disabled={ isLoad }>
+        <span className={ style.tableHeader__item }>
+          Last Updated
+        </span>
+      </div>
+      <div onClick={ gradeUpd ? getGradeUpdLessCard : getGradeUpdMoreCard } aria-disabled={ isLoad }>
+        <span className={ style.tableHeader__item }>
+          Grade
+        </span>
+      </div>
+      {
+        ownId === user_id &&
+          <div>
+              <span className={ style.tableHeader__item }>
+                  Actions
+              </span>
+          </div>
+      }
+    </div>
+  );
+};
 
-    const tableHeader = myId === user_id ? style.tableHeader : style.tableHeaderWithId
-
-    return (
-        <div className={tableHeader}>
-            <div>
-                <span className={style.tableHeader__item}>
-                    Question
-                </span>
-            </div>
-            <div>
-                <span className={style.tableHeader__item}>
-                    Answer
-                </span>
-            </div>
-            <div onClick={lastUpd ? getOldCard : getNewCard} aria-disabled={isLoad}>
-                <span className={style.tableHeader__item}>
-                    Last Updated
-                </span>
-            </div>
-            <div onClick={gradeUpd ? getGradeUpdLessCard : getGradeUpdMoreCard} aria-disabled={isLoad}>
-                <span className={style.tableHeader__item}>
-                    Grade
-                </span>
-            </div>
-            {
-                myId === user_id &&
-                <div>
-                    <span className={style.tableHeader__item}>
-                        Actions
-                    </span>
-                </div>
-            }
-        </div>
-    )
-}
-
-export default TableCardsHeader
+export default TableCardsHeader;

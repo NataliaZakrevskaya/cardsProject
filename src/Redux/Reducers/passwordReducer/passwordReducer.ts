@@ -23,7 +23,7 @@ const registerAndRecoveryPassReducerState: RegisterAndRecoveryPassReducerType = 
     e: null
 }
 
-export const passwordReducer = ( state = registerAndRecoveryPassReducerState, action: RegisterAndRecoveryPassReducerActionType): RegisterAndRecoveryPassReducerType => {
+export const passwordReducer = ( state = registerAndRecoveryPassReducerState, action: PasswordActionsType): RegisterAndRecoveryPassReducerType => {
     switch (action.type) {
         case RegisterAndRecoveryPassReducer.REGISTER_USER: {
             return {...state, register: {...state.register, addedUser: action.payload.addedUser}}
@@ -53,7 +53,7 @@ export const passwordReducer = ( state = registerAndRecoveryPassReducerState, ac
 
 
 //types
-export type RegisterAndRecoveryPassReducerActionType = ReturnType<RegisterAndRecoveryPassReducerActionsTypes<typeof registerAndRecoveryPassActions>>
+export type PasswordActionsType = ReturnType<RegisterAndRecoveryPassReducerActionsTypes<typeof registerAndRecoveryPassActions>>
 
 export type userType = {
     error: string,

@@ -1,25 +1,11 @@
-import {AxiosResponse} from "axios";
-import { instance } from "../configAPI/configAPI";
+import { AxiosResponse } from 'axios';
+import { instance } from '../configAPI/configAPI';
+import { ME_URL } from '../loginFormAPI/constants';
+import { meRespType } from './types';
 
 export const meAPI = {
-    async me() {
-        return await instance.post<meRespType,
-            AxiosResponse<meRespType>, {}>(`auth/me`, {})
-    }
-}
-
-export type meRespType = {
-    _id: string
-    email: string
-    name: string
-    avatar?: string
-    publicCardPacksCount: number
-    created: number
-    updated: number
-    isAdmin: boolean
-    verified?: boolean
-    rememberMe: boolean
-    error?: string
-    token: string
-}
-
+  async me() {
+    return await instance.post<meRespType,
+      AxiosResponse<meRespType>, {}>( ME_URL, {} );
+  },
+};

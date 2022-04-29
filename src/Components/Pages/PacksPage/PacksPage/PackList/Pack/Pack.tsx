@@ -4,7 +4,7 @@ import style from '../modulsComponents/AddPackComponent/AddPackComponent.module.
 import {IconButton} from "@mui/material";
 import {Delete} from "@material-ui/icons";
 import {PackType} from "../../../../../../Redux/Reducers/packsReducer/packsReducer";
-import {useFridaySelector} from "../../../../../../Redux/Store/store";
+import {useAppSelector} from "../../../../../../Redux/Store/store";
 import Modal from "../../../../../Common/modal/modal";
 import EditPackComponent from "../modulsComponents/EditPackComponent/EditPackComponent";
 import DeletePackComponent from "../modulsComponents/DeletePackComponent/DeletePackComponent";
@@ -23,8 +23,8 @@ const Pack = ( {item, runToCards}: OnlyOnePackComponentType) => {
 
     const [mode, setMode] = useState<'edit' | 'delete' | null | 'v'>(null)
 
-    const myId = useFridaySelector<string>(state => state.profile.profile._id)
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
+    const myId = useAppSelector<string>( state => state.profile.profile._id)
+    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
 
     return (
         <div className={s.TableContainer}>
@@ -96,7 +96,7 @@ type SrazyIliType = {
 const SrazyIli = ({runToCards, packId, setMode}: SrazyIliType) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const cardId = useFridaySelector<string>(state => state.cards.cards.filter(f => f.cardsPack_id === packId)[0]?._id)
+    const cardId = useAppSelector<string>( state => state.cards.cards.filter( f => f.cardsPack_id === packId)[0]?._id)
 
     useEffect(() => {
         dispatch(cardsTC(packId))

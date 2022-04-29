@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 import DoubleRange from "../../../../Common/doubleRange/doubleRange";
 import TablesPagination from "../../../../Common/tablePaginator/tablePaginator";
 import {packsActions} from "../../../../../Redux/Actions/packsActions/packsActions";
-import {useFridaySelector} from "../../../../../Redux/Store/store";
+import {useAppSelector} from "../../../../../Redux/Store/store";
 import {InitialCardPacksType, ModeTypes, PackType} from "../../../../../Redux/Reducers/packsReducer/packsReducer";
 import {packsTC} from "../../../../../Redux/Thunk/packsThunk/packsThunk";
 import {RoutesXPaths} from "../../../../../Routes/routes";
@@ -25,12 +25,12 @@ const PacksList = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
-    const myId = useFridaySelector<string>(state => state.profile.profile._id)
-    const packsState = useFridaySelector<InitialCardPacksType>(state => state.packs)
-    const packs = useFridaySelector<PackType[]>(state => state.packs.cardPacks)
-    const globalError = useFridaySelector<string>(state => state.app.globalError)
-    const packMode = useFridaySelector<ModeTypes>(state => state.packs.mode)
+    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
+    const myId = useAppSelector<string>( state => state.profile.profile._id)
+    const packsState = useAppSelector<InitialCardPacksType>( state => state.packs)
+    const packs = useAppSelector<PackType[]>( state => state.packs.cardPacks)
+    const globalError = useAppSelector<string>( state => state.app.globalError)
+    const packMode = useAppSelector<ModeTypes>( state => state.packs.mode)
 
     const debouncedSearch = useDebounce<string>(packsState.packName, 1000)
     const debouncedMIN = useDebounce<number>(packsState.minCardsCount, 1000)

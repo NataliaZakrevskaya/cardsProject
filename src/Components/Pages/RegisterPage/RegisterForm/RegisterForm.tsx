@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {useFridaySelector} from "../../../../Redux/Store/store";
+import {useAppSelector} from "../../../../Redux/Store/store";
 import regS from './RegisterForm.module.css'
 import {useFormik} from "formik";
 import {Navigate, useNavigate} from 'react-router-dom'
@@ -18,9 +18,9 @@ type FormikErrorType = {
 const RegisterForm = () => {
 
     const dispatch = useDispatch()
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
+    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
     const navigate = useNavigate()
-    const error = useFridaySelector<Undetectable<string>>(state => state.regForNewPass.register.error)
+    const error = useAppSelector<Undetectable<string>>( state => state.passwordRegister.register.error)
 
     const formik = useFormik({
         initialValues: {

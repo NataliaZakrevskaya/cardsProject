@@ -5,7 +5,7 @@ const meReducerState: meReducerStateType = {
     error: ''
 }
 
-export const meReducer = (state = meReducerState, action: meReducerActionType): meReducerStateType => {
+export const meReducer = (state = meReducerState, action: MeReducerActionsType): meReducerStateType => {
     switch (action.type) {
         case meActions.INITIALIZE_ME: {
             return {...state, isInitialized: action.payload.initialization}
@@ -20,7 +20,7 @@ export const meReducer = (state = meReducerState, action: meReducerActionType): 
 
 //Types
 
-export type meReducerActionType = initializeMeACType | setErrorMeACType
+export type MeReducerActionsType = initializeMeACType | setErrorMeACType
 
 export type meReducerStateType = {
     isInitialized: boolean,

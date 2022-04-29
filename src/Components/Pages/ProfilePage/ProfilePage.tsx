@@ -1,7 +1,7 @@
 import React, {KeyboardEvent, useState} from 'react';
 import s from './ProfilePage.module.css'
 import {useDispatch} from "react-redux";
-import {useFridaySelector} from "../../../Redux/Store/store";
+import {useAppSelector} from "../../../Redux/Store/store";
 import {updateUserNameTC} from "../../../Redux/Reducers/profileReducer/ProfileReducer";
 import {UserDataType} from "../../../Redux/Actions/loginFormActions/loginFormActions";
 import {meRespType} from "../../../API/meAPI/meAPI";
@@ -14,8 +14,8 @@ const ProfilePage = () => {
 
     const dispatch = useDispatch()
 
-    const userInfo = useFridaySelector<UserDataType | meRespType>(state => state.profile.profile)
-    const errorMessage = useFridaySelector<string>(state => state.profile.error)
+    const userInfo = useAppSelector<UserDataType | meRespType>( state => state.profile.profile)
+    const errorMessage = useAppSelector<string>( state => state.profile.error)
 
     const [name, setName] = useState<string>(userInfo.name)
     const [error, setError] = useState<string>("")

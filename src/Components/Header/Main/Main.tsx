@@ -1,12 +1,12 @@
 import React from 'react';
-import Links from "./Links/Links";
+import Links from './Links/Links';
 
 const Main = () => {
-    return (
-        <div>
-            <Links/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <Links/>
+    </div>
+  );
+};
 
-export default Main
+export default Main;

@@ -1,11 +1,11 @@
 import {setAppStatusAC, setGlobalErrorAC, setIsLoadAC} from "../../Reducers/appReducer/appReducer";
-import {fridayReducerType, FridayThunkType} from "../../Store/store";
+import {AppStateType, AppThunkType} from "../../Store/store";
 import {Dispatch} from "redux";
 import {cardsAPI} from "../../../API/cardsAPI/cardsAPI";
 import {cardsActions} from "../../Actions/cardsActions/cardsActions";
 
 export const cardsTC = (id: string) => {
-    return async (dispatch: Dispatch, getState: () => fridayReducerType) => {
+    return async (dispatch: Dispatch, getState: () => AppStateType) => {
         const {cardAnswer, cardQuestion, minGrade, maxGrade, sortCards, page, pageCount} = getState().cards
         dispatch(setAppStatusAC("loading"))
         dispatch(setIsLoadAC(true))
@@ -23,7 +23,7 @@ export const cardsTC = (id: string) => {
     }
 }
 
-export const addNewCardTC = (question: string, answer: string, packId: string): FridayThunkType => async (dispatch: any) => {
+export const addNewCardTC = (question: string, answer: string, packId: string): AppThunkType => async ( dispatch: any) => {
     const newCard = {
         cardsPack_id: packId,
         question: question,
@@ -51,7 +51,7 @@ export const addNewCardTC = (question: string, answer: string, packId: string): 
     }
 }
 
-export const deleteCardTC = (cardId: string): FridayThunkType => async (dispatch: any) => {
+export const deleteCardTC = (cardId: string): AppThunkType => async ( dispatch: any) => {
     dispatch(setAppStatusAC("loading"))
     try {
         let res = await cardsAPI.deleteCard(cardId)
@@ -67,7 +67,7 @@ export const deleteCardTC = (cardId: string): FridayThunkType => async (dispatch
     }
 }
 
-export const updateCardTC = (updatedCard: UpdatedCardType): FridayThunkType => async (dispatch: any) => {
+export const updateCardTC = (updatedCard: UpdatedCardType): AppThunkType => async ( dispatch: any) => {
     dispatch(setAppStatusAC("loading"))
     dispatch(setIsLoadAC(true))
     try {
@@ -83,7 +83,7 @@ export const updateCardTC = (updatedCard: UpdatedCardType): FridayThunkType => a
     }
 }
 
-export const gradeCardTC = (grade: number, card_id: string): FridayThunkType => async (dispatch: any) => {
+export const gradeCardTC = (grade: number, card_id: string): AppThunkType => async ( dispatch: any) => {
     dispatch(setAppStatusAC("loading"))
     dispatch(setIsLoadAC(true))
     try {

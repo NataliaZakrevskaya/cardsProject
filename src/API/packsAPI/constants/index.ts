@@ -1,0 +1,1 @@
+export const PACK_URL = `/cards/pack`;

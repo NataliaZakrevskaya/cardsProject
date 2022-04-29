@@ -8,7 +8,7 @@ import PasswordRecoveryPage from "../Components/Pages/PasswordRecoveryPage/Passw
 import LogoutPage from "../Components/Pages/LogoutPage/LogoutPage";
 import ProfilePage from "../Components/Pages/ProfilePage/ProfilePage";
 import Cards from "../Components/Pages/CardsPage/CardsPage";
-import {useFridaySelector} from "../Redux/Store/store";
+import {useAppSelector} from "../Redux/Store/store";
 import LearnedCardContainer from '../Components/Pages/LearnedCardContainer/LearnedCardContainer';
 import AuthRedirectPage from "../Components/HOC/authRedirect";
 
@@ -86,7 +86,7 @@ export const Redirect = () => {
 
     const {pathname} = useLocation()
 
-    const inLoggedIn = useFridaySelector<boolean>(state => state.login.isLoggedIn)
+    const inLoggedIn = useAppSelector<boolean>( state => state.login.isLoggedIn)
 
 
     if (!inLoggedIn && pathname !== RoutesXPaths.LOGIN) {

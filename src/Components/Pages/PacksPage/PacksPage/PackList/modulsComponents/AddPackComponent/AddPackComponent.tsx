@@ -4,13 +4,13 @@ import {useDispatch} from "react-redux";
 
 import {addNewPacksTC} from "../../../../../../../Redux/Thunk/packsThunk/packsThunk";
 import {packsActions} from "../../../../../../../Redux/Actions/packsActions/packsActions";
-import {useFridaySelector} from "../../../../../../../Redux/Store/store";
+import {useAppSelector} from "../../../../../../../Redux/Store/store";
 
 
 const AddPackComponent = () => {
 
     const dispatch = useDispatch()
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
+    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
     const [newPack, seNewPack] = useState<string>('')
     const [newPackPrivate, setNewPackPrivate] = useState<boolean>(false)
 

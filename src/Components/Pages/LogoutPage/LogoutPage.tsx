@@ -3,15 +3,15 @@ import style from './LogoutPage.module.css'
 import {Navigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
-import {logoutUserTC} from "../../../Redux/Reducers/loginFormReducer/loginFormReducer";
-import {useFridaySelector} from "../../../Redux/Store/store";
+import {logoutUserTC} from "../../../Redux/Reducers/loginFormReducer/loginReducer";
+import {useAppSelector} from "../../../Redux/Store/store";
 import {RoutesXPaths} from "../../../Routes/routes";
 
 const LogoutPage = () => {
 
     const dispatch = useDispatch()
 
-    const isLoggedIn = useFridaySelector<boolean>(state => state.login.isLoggedIn)
+    const isLoggedIn = useAppSelector<boolean>( state => state.login.isLoggedIn)
 
     const logoutHandler = () => {
         dispatch(logoutUserTC())

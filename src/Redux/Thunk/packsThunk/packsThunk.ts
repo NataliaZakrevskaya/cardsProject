@@ -1,10 +1,10 @@
 import {setAppStatusAC, setGlobalErrorAC, setIsLoadAC} from "../../Reducers/appReducer/appReducer";
 import {newPackType, packsAPI} from "../../../API/packsAPI/packsAPI";
-import {fridayReducerType, FridayThunkType} from "../../Store/store";
+import {AppStateType, AppThunkType} from "../../Store/store";
 import {Dispatch} from "redux";
 import {packsActions} from "../../Actions/packsActions/packsActions";
 
-export const packsTC = () => async (dispatch: Dispatch, getState: () => fridayReducerType) => {
+export const packsTC = () => async (dispatch: Dispatch, getState: () => AppStateType) => {
     const {packName, minCardsCount, maxCardsCount, updated, page, pageCount, user_id} = getState().packs
     dispatch(setAppStatusAC("loading"))
     dispatch(setIsLoadAC(true))
@@ -21,7 +21,7 @@ export const packsTC = () => async (dispatch: Dispatch, getState: () => fridayRe
     }
 }
 
-export const addNewPacksTC = (newPack: newPackType): FridayThunkType => async (dispatch: any) => {
+export const addNewPacksTC = (newPack: newPackType): AppThunkType => async ( dispatch: any) => {
     dispatch(setAppStatusAC("loading"))
     dispatch(setIsLoadAC(true))
     try {
@@ -36,7 +36,7 @@ export const addNewPacksTC = (newPack: newPackType): FridayThunkType => async (d
     }
 }
 
-export const deletePacksTC = (id: string): FridayThunkType => async (dispatch: any) => {
+export const deletePacksTC = (id: string): AppThunkType => async ( dispatch: any) => {
     dispatch(setAppStatusAC("loading"))
     dispatch(setIsLoadAC(true))
     try {
@@ -51,7 +51,7 @@ export const deletePacksTC = (id: string): FridayThunkType => async (dispatch: a
     }
 }
 
-export const changePacksTC = (newName: string, id: string): FridayThunkType => async (dispatch: any) => {
+export const changePacksTC = (newName: string, id: string): AppThunkType => async ( dispatch: any) => {
     dispatch(setAppStatusAC("loading"))
     dispatch(setIsLoadAC(true))
     try {

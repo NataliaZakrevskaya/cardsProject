@@ -2,7 +2,7 @@ import React from 'react';
 import s from "../AddPackComponent/AddPackComponent.module.css"
 import {useDispatch} from "react-redux";
 import {deletePacksTC} from "../../../../../../../Redux/Thunk/packsThunk/packsThunk";
-import {useFridaySelector} from "../../../../../../../Redux/Store/store";
+import {useAppSelector} from "../../../../../../../Redux/Store/store";
 
 type DeletePackComponentType = {
     id: string
@@ -11,7 +11,7 @@ type DeletePackComponentType = {
 const DeletePackComponent = ({id,setMode}: DeletePackComponentType) => {
 
     const dispatch = useDispatch()
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
+    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
 
     const deletePack = () => {
         dispatch(deletePacksTC(id))

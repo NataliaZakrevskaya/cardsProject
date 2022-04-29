@@ -1,55 +1,56 @@
-import React, {useState} from "react";
-import style from "./TableHeader.module.css"
-import {useDispatch} from "react-redux";
-import {packsActions} from "../../../../../../Redux/Actions/packsActions/packsActions";
-import {useFridaySelector} from "../../../../../../Redux/Store/store";
+import React, { useState } from 'react';
+import style from './TableHeader.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { packsActions } from '../../../../../../Redux/Actions/packsActions/packsActions';
+import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
 
 const TableHeader = () => {
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const [lastUpd, setLastUpd] = useState<boolean>(false)
-    const [cardsCountUpd, setCardsCountUpd] = useState<boolean>(false)
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
-    const getNew = () => {
-        dispatch(packsActions.updateFilterAC('1updated'))
-        setLastUpd(true)
-    }
+  const [ isLastUpdate, setIsLastUpdate ] = useState<boolean>( false );
+  const [ isCardsCountUpdated, setIsCardsCountUpdated ] = useState<boolean>( false );
+  const isLoad = useSelector( getIsLoad );
 
-    const getOld = () => {
-        dispatch(packsActions.updateFilterAC('0updated'))
-        setLastUpd(false)
-    }
+  const getNew = () => {
+    dispatch( packsActions.updateFilterAC( '1updated' ) );
+    setIsLastUpdate( true );
+  };
 
-    const getFew = () => {
-        dispatch(packsActions.updateFilterAC('1cardsCount'))
-        setCardsCountUpd(true)
-    }
+  const getOld = () => {
+    dispatch( packsActions.updateFilterAC( '0updated' ) );
+    setIsLastUpdate( false );
+  };
 
-    const getMore = () => {
-        dispatch(packsActions.updateFilterAC('0cardsCount'))
-        setCardsCountUpd(false)
-    }
+  const getFew = () => {
+    dispatch( packsActions.updateFilterAC( '1cardsCount' ) );
+    setIsCardsCountUpdated( true );
+  };
 
-    return (
-        <div className={style.tableHeader}>
-            <div>
-                <span className={style.tableHeader__item}>Name</span>
-            </div>
-            <div onClick={cardsCountUpd ? getMore : getFew} aria-disabled={isLoad}>
-                <span className={style.tableHeader__item}>Cards</span>
-            </div>
-            <div onClick={lastUpd ? getOld : getNew} aria-disabled={isLoad}>
-                <span className={style.tableHeader__item}>Last Updated</span>
-            </div>
-            <div>
-                <span className={style.tableHeader__item}>Created by</span>
-            </div>
-            <div>
-                <span className={style.tableHeader__item}>Actions</span>
-            </div>
-        </div>
-    )
-}
+  const getMore = () => {
+    dispatch( packsActions.updateFilterAC( '0cardsCount' ) );
+    setIsCardsCountUpdated( false );
+  };
 
-export default TableHeader
+  return (
+    <div className={ style.tableHeader }>
+      <div>
+        <span className={ style.tableHeader__item }>Name</span>
+      </div>
+      <div onClick={ isCardsCountUpdated ? getMore : getFew } aria-disabled={ isLoad }>
+        <span className={ style.tableHeader__item }>Cards</span>
+      </div>
+      <div onClick={ isLastUpdate ? getOld : getNew } aria-disabled={ isLoad }>
+        <span className={ style.tableHeader__item }>Last Updated</span>
+      </div>
+      <div>
+        <span className={ style.tableHeader__item }>Created by</span>
+      </div>
+      <div>
+        <span className={ style.tableHeader__item }>Actions</span>
+      </div>
+    </div>
+  );
+};
+
+export default TableHeader;

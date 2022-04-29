@@ -13,7 +13,7 @@ const initialProfileState = {
     error: '',
 }
 
-export const profileReducer = (state: ProfileInitialStateType = initialProfileState, action: profileReducerTypes): ProfileInitialStateType => {
+export const profileReducer = (state: ProfileInitialStateType = initialProfileState, action: ProfileActionsType): ProfileInitialStateType => {
     switch (action.type) {
         case PROFILE.SET_PROFILE: {
             let {profile} = action.payload;
@@ -74,5 +74,5 @@ export type ProfileInitialStateType = {
 }
 
 export type profileReducerActionsTypes<T> = T extends { [key: string]: infer A } ? A : never
-export type profileReducerTypes = ReturnType<profileReducerActionsTypes<typeof ProfileActions>>
+export type ProfileActionsType = ReturnType<profileReducerActionsTypes<typeof ProfileActions>>
 

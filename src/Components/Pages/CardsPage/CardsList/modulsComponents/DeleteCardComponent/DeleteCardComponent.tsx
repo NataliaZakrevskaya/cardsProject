@@ -1,43 +1,42 @@
 import React from 'react';
-import s from "../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css"
-import {useDispatch} from "react-redux";
-import {useFridaySelector} from "../../../../../../Redux/Store/store";
-import {deleteCardTC} from "../../../../../../Redux/Thunk/cardsThunk/cardsThunk";
+import style
+  from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteCardTC } from '../../../../../../Redux/Thunk/cardsThunk/cardsThunk';
+import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { DeleteCardComponentType } from './types';
 
-type DeleteCardComponentType = {
-    id: string
-    setMode:()=>void
-}
-const DeleteCardComponent = ({id,setMode}: DeleteCardComponentType) => {
+const DeleteCardComponent = ( { id, setMode }: DeleteCardComponentType ) => {
 
-    const dispatch = useDispatch()
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
+  const dispatch = useDispatch();
 
-    const deleteCard = () => {
-        dispatch(deleteCardTC(id))
-        setMode()
-    }
+  const isLoad = useSelector( getIsLoad );
 
-    const turnBach = () => {
-        setMode()
-    }
+  const onAcceptanceButtonClick = () => {
+    dispatch( deleteCardTC( id ) );
+    setMode();
+  };
 
-    return (
-        <div className={s.addItemContainer}>
-            <h2>
-                Do you want delete card ?
-            </h2>
-            <div className={s.centerInputContainer}>
+  const onDenialButtonClick = () => {
+    setMode();
+  };
+
+  return (
+    <div className={ style.addItemContainer }>
+      <h2>
+        Do you want delete card ?
+      </h2>
+      <div className={ style.centerInputContainer }>
                     <span>
                        Really ? <span>&nbsp; ✎</span>
                     </span>
-                <div>
-                    <button onClick={turnBach} disabled={isLoad}>NO</button>
-                    <button onClick={deleteCard} disabled={isLoad}>YES</button>
-                </div>
-            </div>
+        <div>
+          <button onClick={ onDenialButtonClick } disabled={ isLoad }>NO</button>
+          <button onClick={ onAcceptanceButtonClick } disabled={ isLoad }>YES</button>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default DeleteCardComponent
+export default DeleteCardComponent;

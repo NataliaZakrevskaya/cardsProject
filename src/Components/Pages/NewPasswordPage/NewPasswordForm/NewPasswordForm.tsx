@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
-import {useFridaySelector} from "../../../../Redux/Store/store";
+import {useAppSelector} from "../../../../Redux/Store/store";
 import {useParams} from "react-router-dom";
 import regS from "../../RegisterPage/RegisterForm/RegisterForm.module.css";
 import {newPasswordTC} from "../../../../Redux/Thunk/passwordThunk/passwordThunk";
@@ -10,9 +10,9 @@ const NewPasswordForm = () => {
 
     const dispatch = useDispatch()
 
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
-    const newPassInfo = useFridaySelector<Undetectable<string>>(state => state.regForNewPass.newPassword.info)
-    const isLoggedIn = useFridaySelector<boolean>(state => state.login.isLoggedIn)
+    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
+    const newPassInfo = useAppSelector<Undetectable<string>>( state => state.passwordRegister.newPassword.info)
+    const isLoggedIn = useAppSelector<boolean>( state => state.login.isLoggedIn)
 
     const [newPass, setNewPass] = useState<string>('')
 

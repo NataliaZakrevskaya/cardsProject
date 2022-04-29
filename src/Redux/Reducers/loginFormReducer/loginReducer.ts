@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {loginFormAPI, loginType} from "../../../API/loginFormAPI/loginFormAPI";
+import {loginFormAPI, LoginType} from "../../../API/loginFormAPI/loginFormAPI";
 import {setAppStatusAC, setGlobalErrorAC} from "../appReducer/appReducer";
 import {
     LoginFormActions,
@@ -10,9 +10,9 @@ import {
 } from "../../Actions/loginFormActions/loginFormActions";
 import {ProfileActions} from "../profileReducer/ProfileReducer";
 
-export type ActionLoginFormType = ReturnType<LoginFormReducerReducerActionsTypes<typeof LoginFormActions>>
+export type LoginFormActionsType = ReturnType<LoginFormReducerReducerActionsTypes<typeof LoginFormActions>>
 
-export const loginFormReducer = (state: LoginInitialStateType = LoginFormInitialState, action: ActionLoginFormType): LoginInitialStateType => {
+export const loginReducer = ( state: LoginInitialStateType = LoginFormInitialState, action: LoginFormActionsType): LoginInitialStateType => {
     switch (action.type) {
         case LoginFormReducer.LOGIN_USER:
             return {...state, isLoggedIn: action.payload.isLoggedIn}
@@ -26,7 +26,7 @@ export const loginFormReducer = (state: LoginInitialStateType = LoginFormInitial
     }
 }
 
-export const loginUserTC = (body: loginType) => async (dispatch: Dispatch) => {
+export const loginUserTC = (body: LoginType) => async ( dispatch: Dispatch) => {
     dispatch(setAppStatusAC("loading"))
     try {
         const res = await loginFormAPI.loginMe(body)

@@ -14,7 +14,7 @@ export type CardType = {
     _id: string
 }
 
-export type InitialCardsType = {
+export type CardsInitialStateType = {
     cards: CardType[]
     cardsTotalCount: number
     maxGrade: number
@@ -27,7 +27,7 @@ export type InitialCardsType = {
     mode:ModeTypes
 }
 
-const initialCards: InitialCardsType = {
+const initialCards: CardsInitialStateType = {
     cards: [
         {
             answer: '',
@@ -54,7 +54,7 @@ const initialCards: InitialCardsType = {
 
 export type cardsReducerActionType = ReturnType<cardsActionsTypes<typeof cardsActions>>
 
-export const cardsReducer = (state = initialCards, action: cardsReducerActionType): InitialCardsType => {
+export const cardsReducer = (state = initialCards, action: cardsReducerActionType): CardsInitialStateType => {
     switch (action.type) {
         case cardsActionsEnum.SET_CARDS: {
             return {...state, ...action.payload.state}

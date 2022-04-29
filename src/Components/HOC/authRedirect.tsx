@@ -1,17 +1,15 @@
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
-import { useFridaySelector } from '../../Redux/Store/store';
+import React, { DetailedHTMLProps, FC, HTMLAttributes, memo } from 'react';
 import { Navigate } from 'react-router-dom';
 import { RoutesXPaths } from '../../Routes/routes';
+import { getIsLoggedIn } from '../../Redux/Selectors/loginSelectors/loginSelectors';
+import { useSelector } from 'react-redux';
+import { AuthRedirectPagePropsType } from './types';
 
-type DivPropsType = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+const AuthRedirectPage: FC<AuthRedirectPagePropsType> = memo( ( { children, ...restProps } ) => {
 
-type AuthRedirectPagePropsType = DivPropsType & {}
+  const isLoggedIn = useSelector( getIsLoggedIn );
 
-const AuthRedirectPage: React.FC<AuthRedirectPagePropsType> = React.memo( ( { children, ...restProps } ) => {
-
-  const inLoggedIn = useFridaySelector<boolean>( state => state.login.isLoggedIn );
-
-  if ( !inLoggedIn ) {
+  if ( !isLoggedIn ) {
     return <Navigate to={ RoutesXPaths.LOGIN }/>;
   }
   return (

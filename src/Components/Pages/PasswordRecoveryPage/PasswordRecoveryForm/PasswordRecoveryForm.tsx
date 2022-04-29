@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import regS from "../../RegisterPage/RegisterForm/RegisterForm.module.css";
-import {useFridaySelector} from "../../../../Redux/Store/store";
+import {useAppSelector} from "../../../../Redux/Store/store";
 import {RoutesXPaths} from "../../../../Routes/routes";
 import {useNavigate} from 'react-router-dom'
 import {passwordRecoveryTC} from "../../../../Redux/Thunk/passwordThunk/passwordThunk";
@@ -11,8 +11,8 @@ const PasswordRecoveryForm = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const isLoad = useFridaySelector<boolean>(state => state.app.isLoad)
-    const error = useFridaySelector<Nullable<string>>(state => state.regForNewPass.e)
+    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
+    const error = useAppSelector<Nullable<string>>( state => state.passwordRegister.e)
 
     const [email, setEmail] = useState<string>('')
 
