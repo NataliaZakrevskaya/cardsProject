@@ -1,83 +1,79 @@
-import React, {KeyboardEvent, useState} from 'react';
-import s from './ProfilePage.module.css'
-import {useDispatch} from "react-redux";
-import {useAppSelector} from "../../../Redux/Store/store";
-import {updateUserNameTC} from "../../../Redux/Reducers/profileReducer/ProfileReducer";
-import {UserDataType} from "../../../Redux/Actions/loginFormActions/loginFormActions";
-import {meRespType} from "../../../API/meAPI/meAPI";
-import {ChangeNameInput} from "./changeNameInput/changeNameInput";
-import {ProfileNameSpan} from "./profileNameSpan/profileNameSpan";
-
-export const BASE_IMG_URL = "https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg"
+import React, { KeyboardEvent, useState } from 'react';
+import style from './ProfilePage.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUserNameTC } from '../../../Redux/Reducers/profileReducer/ProfileReducer';
+import { ChangeNameInput } from './changeNameInput/changeNameInput';
+import { ProfileNameSpan } from './profileNameSpan/profileNameSpan';
+import { BASE_IMG_URL } from './constants';
+import { getErrorMessage, getProfileInfo } from '../../../Redux/Selectors/profileSelectors/profileSelectors';
 
 const ProfilePage = () => {
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const userInfo = useAppSelector<UserDataType | meRespType>( state => state.profile.profile)
-    const errorMessage = useAppSelector<string>( state => state.profile.error)
+  const userInfo = useSelector( getProfileInfo );
+  const errorMessage = useSelector( getErrorMessage );
 
-    const [name, setName] = useState<string>(userInfo.name)
-    const [error, setError] = useState<string>("")
-    const [modification, setModification] = useState<boolean>(false)
+  const { name, avatar, publicCardPacksCount } = { ...userInfo };
 
-    const changeModification = () => {
-        setModification(true)
+  const [ userName, setUserName ] = useState<string>( name );
+  const [ error, setError ] = useState<string>( '' );
+  const [ modification, setModification ] = useState<boolean>( false );
+
+  const changeModification = () => {
+    setModification( true );
+  };
+  const onSaveButtonClick = () => {
+    if ( userName.trim() && userName.length <= 20 ) {
+      dispatch( updateUserNameTC( userName ) );
+      setModification( !modification );
+      setError( '' );
+    } else {
+      setError( 'Incorrect name' );
     }
 
-    const updateUser = () => {
-        if (name.trim() && name.length <= 20) {
-            dispatch(updateUserNameTC(name))
-            setModification(!modification)
-            setError("")
-        } else {
-            setError("Incorrect name")
-        }
-
+  };
+  const changeNameValue = ( newName: string ) => {
+    setUserName( newName );
+  };
+  const onNameInputKeyPress = ( e: KeyboardEvent<HTMLInputElement> ) => {
+    if ( e.key === 'Enter' ) {
+      dispatch( updateUserNameTC( userName ) );
+      setModification( !modification );
     }
+  };
 
-    const changeNameValue = (newName: string) => {
-        setName(newName)
-    }
-
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            dispatch(updateUserNameTC(name))
-            setModification(!modification)
-        }
-    }
-
-    return (
-        <div className={s.profilePage}>
-            <div className={s.profileContainer}>
-                <h2 className={s.title}>Personal information</h2>
-                <img src={userInfo.avatar ? userInfo.avatar : BASE_IMG_URL} alt={"user's image"} title={"your avatar"}/>
-                <span>{`Cards: ${userInfo.publicCardPacksCount}`}</span>
-                <div className={s.nameContainer}>
-                    {
-                        !!errorMessage && <div className={s.errorMessage}>{errorMessage}</div>
-                    }
-                    {
-                        modification
-                            ? (
-                                <ChangeNameInput
-                                    name={name}
-                                    error={error}
-                                    changeNameValue={changeNameValue}
-                                    onKeyPressHandler={onKeyPressHandler}
-                                    updateUser={updateUser}
-                                />
-                            ) : (
-                                <ProfileNameSpan
-                                    name={userInfo.name}
-                                    changeModification={changeModification}
-                                />
-                            )
-                    }
-                </div>
-            </div>
+  return (
+    <div className={ style.profilePage }>
+      <div className={ style.profileContainer }>
+        <h2 className={ style.title }>Personal information</h2>
+        <img src={ avatar ? avatar : BASE_IMG_URL } alt={ 'user\'s image' } title={ 'your avatar' }/>
+        <span>{ `Cards: ${ publicCardPacksCount }` }</span>
+        <div className={ style.nameContainer }>
+          {
+            !!errorMessage && <div className={ style.errorMessage }>{ errorMessage }</div>
+          }
+          {
+            modification
+              ? (
+                <ChangeNameInput
+                  name={ userName }
+                  error={ error }
+                  changeNameValue={ changeNameValue }
+                  onNameInputKeyPress={ onNameInputKeyPress }
+                  onSaveButtonClick={ onSaveButtonClick }
+                />
+              ) : (
+                <ProfileNameSpan
+                  name={ name }
+                  changeModification={ changeModification }
+                />
+              )
+          }
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;

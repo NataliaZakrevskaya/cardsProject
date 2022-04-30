@@ -1,66 +1,67 @@
-import React, {useState} from 'react';
-import s from "./AddPackComponent.module.css"
-import {useDispatch} from "react-redux";
-
-import {addNewPacksTC} from "../../../../../../../Redux/Thunk/packsThunk/packsThunk";
-import {packsActions} from "../../../../../../../Redux/Actions/packsActions/packsActions";
-import {useAppSelector} from "../../../../../../../Redux/Store/store";
-
+import React, { ChangeEvent, useState } from 'react';
+import style from './AddPackComponent.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewPacksTC } from '../../../../../../../Redux/Thunk/packsThunk/packsThunk';
+import { packsActions } from '../../../../../../../Redux/Actions/packsActions/packsActions';
+import { getIsLoad } from '../../../../../../../Redux/Selectors/appSelectors/appSelectors';
 
 const AddPackComponent = () => {
 
-    const dispatch = useDispatch()
-    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
-    const [newPack, seNewPack] = useState<string>('')
-    const [newPackPrivate, setNewPackPrivate] = useState<boolean>(false)
+  const dispatch = useDispatch();
 
-    const pack = {
-        name: newPack,
-        deckCover: '',
-        private: newPackPrivate,
-    }
+  const isLoad = useSelector( getIsLoad );
 
-    const addNewPack = () => {
-        dispatch(addNewPacksTC(pack))
-        dispatch(packsActions.packModeAC(null))
-    }
+  const [ newPack, seNewPack ] = useState<string>( '' );
+  const [ newPackPrivate, setNewPackPrivate ] = useState<boolean>( false );
 
-    const turnBach = () => {
-        dispatch(packsActions.packModeAC(null))
-    }
+  const pack = { name: newPack, deckCover: '', private: newPackPrivate };
 
-    return (
-        <div className={s.addItemContainer}>
-            <h2>
-                Add new pack
-            </h2>
-            <div className={s.centerInputContainer}>
-                    <span>
-                        Name pack <span>&nbsp; ✎</span>
-                    </span>
-                <input disabled={isLoad}
-                    type="text"
-                    value={newPack}
-                    onChange={(e) => seNewPack(e.currentTarget.value)}
-                />
-            </div>
+  const onAddPackButtonClick = () => {
+    dispatch( addNewPacksTC( pack ) );
+    dispatch( packsActions.packModeAC( null ) );
+  };
+  const onCancelButtonClick = () => {
+    dispatch( packsActions.packModeAC( null ) );
+  };
+  const onCheckboxInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
+    setNewPackPrivate( e.currentTarget.checked );
+  };
+  const onNewPackInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
+    seNewPack( e.currentTarget.value );
+  };
 
-            <div className={s.makePrivateContainer}>
+  return (
+    <div className={ style.addItemContainer }>
+      <h2>
+        Add new pack
+      </h2>
+      <div className={ style.centerInputContainer }>
+        <span>
+          Name pack <span>&nbsp; ✎</span>
+        </span>
+        <input disabled={ isLoad }
+               type="text"
+               value={ newPack }
+               onChange={ onNewPackInputChange }
+        />
+      </div>
+
+      <div className={ style.makePrivateContainer }>
                 <span>
                     Make private:
                 </span>
-                <input disabled={isLoad}
-                    type="checkbox"
-                    onChange={(e) => setNewPackPrivate(e.currentTarget.checked)}
-                />
-            </div>
-            <div>
-                <button onClick={turnBach} disabled={isLoad}>Cancel</button>
-                <button onClick={addNewPack} disabled={isLoad}>Add</button>
-            </div>
+        <input disabled={ isLoad }
+               type="checkbox"
+               onChange={ onCheckboxInputChange }
+        />
+      </div>
+      <div>
+        <button onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button onClick={ onAddPackButtonClick } disabled={ isLoad }>Add</button>
+      </div>
 
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default AddPackComponent
+export default AddPackComponent;

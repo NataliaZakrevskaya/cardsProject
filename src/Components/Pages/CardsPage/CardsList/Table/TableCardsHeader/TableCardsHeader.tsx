@@ -3,7 +3,7 @@ import style from '../TableHeader/TableHeader.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { cardsActions } from '../../../../../../Redux/Actions/cardsActions/cardsActions';
 import { TableHeaderCardType } from './types';
-import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors';
+import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
 
 const TableCardsHeader = ( { user_id }: TableHeaderCardType ) => {

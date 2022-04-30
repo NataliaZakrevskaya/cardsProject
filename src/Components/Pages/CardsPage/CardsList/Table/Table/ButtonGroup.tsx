@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors';
+import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { deletePacksTC } from '../../../../../../Redux/Thunk/packsThunk/packsThunk';
 import { RoutesXPaths } from '../../../../../../Routes/routes';
 import style from './Table.module.css';

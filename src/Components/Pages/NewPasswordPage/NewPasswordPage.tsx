@@ -1,14 +1,13 @@
 import React from 'react';
-import NewPasswordForm from "./NewPasswordForm/NewPasswordForm";
-
-const newPasswordStyles = {display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}
+import NewPasswordForm from './NewPasswordForm/NewPasswordForm';
+import style from './NewPasswordPage.module.css';
 
 const NewPasswordPage = () => {
-    return (
-        <div style={newPasswordStyles}>
-            <NewPasswordForm/>
-        </div>
-    )
-}
+  return (
+    <div className={ style.newPasswordContainer }>
+      <NewPasswordForm/>
+    </div>
+  );
+};
 
-export default NewPasswordPage
+export default NewPasswordPage;

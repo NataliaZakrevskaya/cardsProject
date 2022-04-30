@@ -32,9 +32,6 @@
     background-color: #899de5;
 }
 
-/*.selected:hover {*/
-/*    background-color: #607bef;*/
-/*}*/
 .hoverSelected:hover {
     background-color: hsla(360, 0%, 83%, 1);
 }
@@ -114,13 +111,12 @@
     color: #333
 }
 
-.rangeValue__item {
+.rangeValueItem {
     font-family: "Lobster";
     font-size: 24px;
 }
 
 @media (max-width: 870px) {
-
     .buttonSearch {
         margin-left: 20px;
         font-size: medium;

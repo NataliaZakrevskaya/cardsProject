@@ -1,117 +1,111 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
-import {useAppSelector} from "../../../../Redux/Store/store";
-import regS from './RegisterForm.module.css'
-import {useFormik} from "formik";
-import {Navigate, useNavigate} from 'react-router-dom'
-import {RoutesXPaths} from "../../../../Routes/routes";
-import {registerUserTC} from "../../../../Redux/Thunk/passwordThunk/passwordThunk";
-import {registerAndRecoveryPassActions} from "../../../../Redux/Actions/passwordActions/passwordActions";
-import { Undetectable } from '../../../../types';
-
-type FormikErrorType = {
-    email?: string
-    password?: string
-    confirm?: string
-}
+import { useDispatch, useSelector } from 'react-redux';
+import registerFormStyle from './RegisterForm.module.css';
+import { useFormik } from 'formik';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { RoutesXPaths } from '../../../../Routes/routes';
+import { registerUserTC } from '../../../../Redux/Thunk/passwordThunk/passwordThunk';
+import { registerAndRecoveryPassActions } from '../../../../Redux/Actions/passwordActions/passwordActions';
+import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
+import { getError } from '../../../../Redux/Selectors/pesswordRegisterSelectors/pesswordRegisterSelectors';
+import { FormikErrorType } from './types';
 
 const RegisterForm = () => {
 
-    const dispatch = useDispatch()
-    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
-    const navigate = useNavigate()
-    const error = useAppSelector<Undetectable<string>>( state => state.passwordRegister.register.error)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-            confirm: ''
-        },
-        validate: (values) => {
-            const errors: FormikErrorType = {}
-            if (!values.email) {
-                errors.email = 'Required'
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email address'
-            }
-            if (!values.password) {
-                errors.password = 'Required'
-            } else if (values.password.length < 8) {
-                errors.password = 'Invalid password,pass will be longer that 8 symbols'
-            }
-            if (!values.confirm) {
-                errors.confirm = 'Required'
-            } else if (values.confirm.length !== values.password.length && values.confirm !== values.password) {
-                errors.confirm = 'Invalid confirm password'
-            }
-            return errors
-        },
-        onSubmit: value => {
-            formik.resetForm()
-            dispatch(registerUserTC({email: value.email, password: value.password}))
-        }
-    })
+  const isLoad = useSelector( getIsLoad );
+  const error = useSelector( getError );
 
-    const cancelHandler = () => {
-        formik.resetForm()
-        formik.setTouched({})
-        formik.setErrors({email: undefined, password: undefined, confirm: undefined})
-        dispatch(registerAndRecoveryPassActions.setErrorRegisterAC(""))
-        navigate(RoutesXPaths.LOGIN)
-    }
+  const formik = useFormik( {
+    initialValues: {
+      email: '',
+      password: '',
+      confirm: '',
+    },
+    validate: ( values ) => {
 
-    if (error === "email already exists /ᐠ｡ꞈ｡ᐟ\\") {
-        return <Navigate to={RoutesXPaths.LOGIN}/>
-    }
+      const { email, password, confirm } = { ...values };
+      const errors: FormikErrorType = {};
+      if ( !email ) {
+        errors.email = 'Required';
+      } else if ( !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test( email ) ) {
+        errors.email = 'Invalid email address';
+      }
+      if ( !password ) {
+        errors.password = 'Required';
+      } else if ( password.length < 8 ) {
+        errors.password = 'Invalid password,pass will be longer that 8 symbols';
+      }
+      if ( !confirm ) {
+        errors.confirm = 'Required';
+      } else if ( confirm.length !== password.length && confirm !== password ) {
+        errors.confirm = 'Invalid confirm password';
+      }
+      return errors;
+    },
+    onSubmit: value => {
+      formik.resetForm();
+      dispatch( registerUserTC( { email: value.email, password: value.password } ) );
+    },
+  } );
 
-    // if (isLoggedIn) {
-    //     return <Navigate to={RoutesXPaths.PROFILE}/>
-    // }
+  const onCancelButtonClick = () => {
+    formik.resetForm();
+    formik.setTouched( {} );
+    formik.setErrors( { email: undefined, password: undefined, confirm: undefined } );
+    dispatch( registerAndRecoveryPassActions.setErrorRegisterAC( '' ) );
+    navigate( RoutesXPaths.LOGIN );
+  };
 
-    return (
-        <div className={regS.registerPage}>
-            <div className={regS.registerContainer}>
-                <div className={regS.titles}>
-                    <h1>Cards</h1>
-                    {!!error && <div>{error}</div>}
-                    <h4>Sing in</h4>
-                </div>
+  if ( error === 'email already exists /ᐠ｡ꞈ｡ᐟ\\' ) {
+    return <Navigate to={ RoutesXPaths.LOGIN }/>;
+  }
 
-                <div className={regS.registerForm}>
-                    <form onSubmit={formik.handleSubmit}>
-                        <div className={regS.second}>
-                            eMail
-                            <input disabled={isLoad} {...formik.getFieldProps('email')}/>
-                            {formik.touched.email && formik.errors.email ?
-                                <div className={regS.errorMessage}>{formik.errors.email}</div> : null}
-                        </div>
-                        <div className={regS.second}>
-                            Password
-                            <input type="password" disabled={isLoad}
-                                   {...formik.getFieldProps('password')}/>
-
-                            {formik.touched.password && formik.errors.password ?
-                                <div className={regS.errorMessage}>{formik.errors.password}</div> : null}
-                        </div>
-                        <div className={regS.second}>
-                            Confirm password
-                            <input type="password" disabled={isLoad}
-                                   {...formik.getFieldProps('confirm')}/>
-                            {formik.touched.confirm && formik.errors.confirm ?
-                                <div className={regS.errorMessage}>{formik.errors.confirm}</div> : null}
-                        </div>
-                        <div className={regS.buttonsDiv}>
-                            <button type="button" className={regS.cancelButton} onClick={cancelHandler}>
-                                Cancel
-                            </button>
-                            <button type="submit" className={regS.registerButton}>Register</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+  return (
+    <div className={ registerFormStyle.registerPage }>
+      <div className={ registerFormStyle.registerContainer }>
+        <div className={ registerFormStyle.titles }>
+          <h1>Cards</h1>
+          { !!error && <div>{ error }</div> }
+          <h4>Sing in</h4>
         </div>
-    )
-}
 
-export default RegisterForm
+        <div className={ registerFormStyle.registerForm }>
+          <form onSubmit={ formik.handleSubmit }>
+            <div className={ registerFormStyle.second }>
+              eMail
+              <input disabled={ isLoad } { ...formik.getFieldProps( 'email' ) }/>
+              { formik.touched.email && formik.errors.email ?
+                <div className={ registerFormStyle.errorMessage }>{ formik.errors.email }</div> : null }
+            </div>
+            <div className={ registerFormStyle.second }>
+              Password
+              <input type="password" disabled={ isLoad }
+                     { ...formik.getFieldProps( 'password' ) }/>
+
+              { formik.touched.password && formik.errors.password ?
+                <div className={ registerFormStyle.errorMessage }>{ formik.errors.password }</div> : null }
+            </div>
+            <div className={ registerFormStyle.second }>
+              Confirm password
+              <input type="password" disabled={ isLoad }
+                     { ...formik.getFieldProps( 'confirm' ) }/>
+              { formik.touched.confirm && formik.errors.confirm ?
+                <div className={ registerFormStyle.errorMessage }>{ formik.errors.confirm }</div> : null }
+            </div>
+            <div className={ registerFormStyle.buttonsDiv }>
+              <button type="button" className={ registerFormStyle.cancelButton } onClick={ onCancelButtonClick }>
+                Cancel
+              </button>
+              <button type="submit" className={ registerFormStyle.registerButton }>Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RegisterForm;

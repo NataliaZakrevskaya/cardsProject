@@ -9,7 +9,7 @@ import EditCardComponent from '../modulsComponents/EditCardComponent/EditCardCom
 import { cardsActions } from '../../../../../Redux/Actions/cardsActions/cardsActions';
 import DeleteCardComponent from '../modulsComponents/DeleteCardComponent/DeleteCardComponent';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
-import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors';
+import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { CardComponentType } from './types';
 import { Delete } from '@material-ui/icons';
 
@@ -31,7 +31,7 @@ const Card = ( { content }: CardComponentType ) => {
 
   return (
 
-    <div className={ style.TableContainer } onDoubleClick={ onTableDoubleClick }>
+    <div className={ style.tableContainer } onDoubleClick={ onTableDoubleClick }>
       <div className={ style.window }>
         <span>{ question }</span>
       </div>
@@ -51,9 +51,9 @@ const Card = ( { content }: CardComponentType ) => {
       </div>
       {
         ownId === user_id &&
-          <div className={ style.BtnGroup__Item__My }>
-              <button className={ style.Btn } onClick={ () => setMode( 'edit' ) } disabled={ isLoad }>edit</button>
-              <button className={ style.Btn } onClick={ onTableDoubleClick } disabled={ isLoad }>learn</button>
+          <div className={ style.btnGroupItemMy }>
+              <button className={ style.button } onClick={ () => setMode( 'edit' ) } disabled={ isLoad }>edit</button>
+              <button className={ style.button } onClick={ onTableDoubleClick } disabled={ isLoad }>learn</button>
               <IconButton onClick={ () => setMode( 'delete' ) } aria-label="delete" disabled={ isLoad }>
                   <Delete/>
               </IconButton>

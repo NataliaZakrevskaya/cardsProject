@@ -1,43 +1,40 @@
 import React from 'react';
-import s from "../AddPackComponent/AddPackComponent.module.css"
-import {useDispatch} from "react-redux";
-import {deletePacksTC} from "../../../../../../../Redux/Thunk/packsThunk/packsThunk";
-import {useAppSelector} from "../../../../../../../Redux/Store/store";
+import style from '../AddPackComponent/AddPackComponent.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { deletePacksTC } from '../../../../../../../Redux/Thunk/packsThunk/packsThunk';
+import { DeletePackComponentType } from './types';
+import { getIsLoad } from '../../../../../../../Redux/Selectors/appSelectors/appSelectors';
 
-type DeletePackComponentType = {
-    id: string
-    setMode:()=>void
-}
-const DeletePackComponent = ({id,setMode}: DeletePackComponentType) => {
+const DeletePackComponent = ( { id, setMode }: DeletePackComponentType ) => {
 
-    const dispatch = useDispatch()
-    const isLoad = useAppSelector<boolean>( state => state.app.isLoad)
+  const dispatch = useDispatch();
+  const isLoad = useSelector( getIsLoad );
 
-    const deletePack = () => {
-        dispatch(deletePacksTC(id))
-        setMode()
-    }
+  const onYesButtonClick = () => {
+    dispatch( deletePacksTC( id ) );
+    setMode();
+  };
+  const onNoButtonClick = () => {
+    setMode();
+  };
 
-    const turnBach = () => {
-        setMode()
-    }
-
-    return (
-        <div className={s.addItemContainer}>
-            <h2>
-                Do you want delete pack ?
-            </h2>
-            <div className={s.centerInputContainer}>
-                    <span>
-                       Really ? <span>&nbsp; ✎</span>
-                    </span>
-                <div>
-                    <button onClick={turnBach} disabled={isLoad}>NO</button>
-                    <button onClick={deletePack} disabled={isLoad}>YES</button>
-                </div>
-            </div>
+  return (
+    <div className={ style.addItemContainer }>
+      <h2>Do you want delete pack ?</h2>
+      <div className={ style.centerInputContainer }>
+        <span>
+          Really ?
+          <span>
+            &nbsp; ✎
+          </span>
+        </span>
+        <div>
+          <button onClick={ onNoButtonClick } disabled={ isLoad }>NO</button>
+          <button onClick={ onYesButtonClick } disabled={ isLoad }>YES</button>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default DeletePackComponent
+export default DeletePackComponent;

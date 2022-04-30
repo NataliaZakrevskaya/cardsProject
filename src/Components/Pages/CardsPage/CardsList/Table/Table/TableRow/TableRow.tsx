@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getOwnId } from '../../../../../../../Redux/Selectors/profileSelectors';
+import { getOwnId } from '../../../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import React, { useState } from 'react';
 import { changePacksTC } from '../../../../../../../Redux/Thunk/packsThunk/packsThunk';
 import style from '../Table.module.css';

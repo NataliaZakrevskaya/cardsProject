@@ -1,4 +1,4 @@
-.TableContainer {
+.tableContainer {
     font-size: 0.8em;
     display: flex;
     flex-direction: row;
@@ -13,36 +13,36 @@
     cursor: pointer;
 }
 
-.TableItem__name {
+.tableItemName {
     word-wrap: break-word;
     width: 22%;
 }
 
-.TableItem__cardsCount {
+.tableItemCardsCount {
     width: 9%;
 }
 
-.TableItem__data {
+.tableItemData {
     width: 22%;
 }
 
-.TableItem__userName {
+.tableItemUserName {
     width: 25%;
     word-wrap: break-word;
 }
 
-.TableItem__BtnGroup {
+.tableItemBtnGroup {
     width: 21%;
 }
 
-.BtnGroup__Item__My {
+.btnGroupItemMy {
     display: flex;
     justify-content: space-around;
     align-items: center;
     text-align: end;
 }
 
-.Btn {
+.button {
     text-transform: uppercase;
     font-family: 'Akaya Telivigala', cursive;
     background-color: #d6dcea;
@@ -56,7 +56,7 @@
     margin-right: 2px;
 }
 
-.Btn:hover {
+.button:hover {
     background-color: #ecf1f5;
     border: 2px solid #1c73ab;
     color: #2472b0;
@@ -93,7 +93,7 @@
 }
 
 @media (max-width: 950px) {
-    .TableContainer {
+    .tableContainer {
         font-size: 0.6em;
     }
 }

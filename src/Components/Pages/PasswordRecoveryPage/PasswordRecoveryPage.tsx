@@ -1,14 +1,13 @@
 import React from 'react';
-import PasswordRecoveryForm from "./PasswordRecoveryForm/PasswordRecoveryForm";
-
-const passwordRecoveryStyles = {display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}
+import PasswordRecoveryForm from './PasswordRecoveryForm/PasswordRecoveryForm';
+import style from './PasswordRecoveryPage.module.css';
 
 const PasswordRecoveryPage = () => {
-    return (
-        <div style={passwordRecoveryStyles}>
-            <PasswordRecoveryForm/>
-        </div>
-    )
-}
+  return (
+    <div className={ style.passwordRecoveryContainer }>
+      <PasswordRecoveryForm/>
+    </div>
+  );
+};
 
-export default PasswordRecoveryPage
+export default PasswordRecoveryPage;
