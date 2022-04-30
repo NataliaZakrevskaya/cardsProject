@@ -1,22 +1,16 @@
-export enum meActions{
-    INITIALIZE_ME = 'CARDS/ME/INITIALIZE_ME',
-    SET_ME_ERROR = 'CARDS/ME/SET_ME_ERROR',
-}
+import { meActionsEnum } from './enums';
 
-export const initializeMeAC = (initialization: boolean) => {
+export const meActions = {
+  initializeMeAC: ( initialization: boolean ) => {
     return {
-        type: meActions.INITIALIZE_ME,
-        payload: {initialization}
-    } as const
-}
-
-export const setErrorMeAC = (error: string) => {
+      type: meActionsEnum.INITIALIZE_ME,
+      payload: { initialization },
+    } as const;
+  },
+  setErrorMeAC: ( error: string ) => {
     return {
-        type: meActions.SET_ME_ERROR,
-        payload: {error}
-    } as const
-}
-
-//types
-export type initializeMeACType = ReturnType<typeof initializeMeAC>
-export type setErrorMeACType = ReturnType<typeof setErrorMeAC>
+      type: meActionsEnum.SET_ME_ERROR,
+      payload: { error },
+    } as const;
+  },
+};

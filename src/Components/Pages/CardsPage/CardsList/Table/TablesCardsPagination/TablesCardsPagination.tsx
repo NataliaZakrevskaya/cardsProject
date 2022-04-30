@@ -23,10 +23,10 @@ const TablesCardsPagination: FC = () => {
   ) => {
     if ( newPage === page ) {
       setPage( page + 1 );
-      dispatch( cardsActions.cardsPageAC( newPage + 1 ) );
+      dispatch( cardsActions.setCardsPageAC( newPage + 1 ) );
     } else if ( newPage < page ) {
       setPage( page - 1 );
-      dispatch( cardsActions.cardsPageAC( newPage + 1 ) );
+      dispatch( cardsActions.setCardsPageAC( newPage + 1 ) );
     }
   };
 
@@ -34,7 +34,7 @@ const TablesCardsPagination: FC = () => {
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setPage( 0 );
-    dispatch( cardsActions.cardsPageCountAC( parseInt( event.target.value ) ) );
+    dispatch( cardsActions.setCardsPageCountAC( parseInt( event.target.value ) ) );
   };
 
   return (

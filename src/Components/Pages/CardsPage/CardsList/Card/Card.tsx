@@ -60,7 +60,7 @@ const Card = ( { content }: CardComponentType ) => {
           </div>
       }
       <Modal
-        backgroundOnClick={ () => dispatch( cardsActions.cardModeAC( null ) ) }
+        backgroundOnClick={ () => dispatch( cardsActions.setCardModeAC( null ) ) }
         show={ mode !== null }
         height={ 0 }
         width={ 0 }

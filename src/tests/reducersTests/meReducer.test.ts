@@ -1,7 +1,7 @@
-import {meReducer, meReducerStateType} from "../../Redux/Reducers/meReducer/meReducer";
+import {meReducer, meInitialStateType} from "../../Redux/Reducers/meReducer/meReducer";
 import {initializeMeAC, setErrorMeAC} from "../../Redux/Actions/meActions/meActions";
 
-let startState: meReducerStateType
+let startState: meInitialStateType
 
 beforeEach(() => {
         startState = {

@@ -8,7 +8,7 @@ const PacksPage = () => {
   const dispatch = useDispatch();
 
   useEffect( () => {
-    dispatch( cardsActions.cardModeAC( null ) );
+    dispatch( cardsActions.setCardModeAC( null ) );
     dispatch( setGlobalErrorAC( '' ) );
   }, [] );
 

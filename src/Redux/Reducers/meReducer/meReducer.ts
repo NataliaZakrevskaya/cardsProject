@@ -1,29 +1,20 @@
-import {initializeMeACType, meActions, setErrorMeACType} from "../../Actions/meActions/meActions";
+import { meInitialStateType, MeReducerActionsType } from './types';
+import { meActionsEnum } from '../../Actions/meActions/enums';
 
-const meReducerState: meReducerStateType = {
-    isInitialized: false,
-    error: ''
-}
+export const meInitialState: meInitialStateType = {
+  isInitialized: false,
+  error: '',
+};
 
-export const meReducer = (state = meReducerState, action: MeReducerActionsType): meReducerStateType => {
-    switch (action.type) {
-        case meActions.INITIALIZE_ME: {
-            return {...state, isInitialized: action.payload.initialization}
-        }
-        case meActions.SET_ME_ERROR: {
-            return {...state, error: action.payload.error}
-        }
-        default:
-            return state
+export const meReducer = ( state = meInitialState, action: MeReducerActionsType ): meInitialStateType => {
+  switch ( action.type ) {
+    case meActionsEnum.INITIALIZE_ME: {
+      return { ...state, isInitialized: action.payload.initialization };
     }
-}
-
-//Types
-
-export type MeReducerActionsType = initializeMeACType | setErrorMeACType
-
-export type meReducerStateType = {
-    isInitialized: boolean,
-    error: string
-}
-
+    case meActionsEnum.SET_ME_ERROR: {
+      return { ...state, error: action.payload.error };
+    }
+    default:
+      return state;
+  }
+};

@@ -61,7 +61,7 @@ const CardsList = ( { name }: CardsListType ) => {
   );
 
   const onAddButtonClick = () => {
-    dispatch( cardsActions.cardModeAC( 'add' ) );
+    dispatch( cardsActions.setCardModeAC( 'add' ) );
   };
 
   return (
@@ -98,7 +98,7 @@ const CardsList = ( { name }: CardsListType ) => {
 
           <Modal
             backgroundOnClick={ () => {
-              dispatch( cardsActions.cardModeAC( null ) );
+              dispatch( cardsActions.setCardModeAC( null ) );
               dispatch( setGlobalErrorAC( '' ) );
 
             } }

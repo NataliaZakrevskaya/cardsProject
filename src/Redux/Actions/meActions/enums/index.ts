@@ -1,0 +1,4 @@
+export enum meActionsEnum {
+  INITIALIZE_ME = 'CARDS/ME/INITIALIZE_ME',
+  SET_ME_ERROR = 'CARDS/ME/SET_ME_ERROR',
+}

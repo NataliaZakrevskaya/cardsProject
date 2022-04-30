@@ -19,12 +19,12 @@ const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
   const onAddCardButtonClick = () => {
     if ( packId ) {
       dispatch( addNewCardTC( question, answer, packId ) );
-      dispatch( cardsActions.cardModeAC( null ) );
+      dispatch( cardsActions.setCardModeAC( null ) );
     }
   };
 
   const onCancelButtonClick = () => {
-    dispatch( cardsActions.cardModeAC( null ) );
+    dispatch( cardsActions.setCardModeAC( null ) );
   };
 
   const onQuestionInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {

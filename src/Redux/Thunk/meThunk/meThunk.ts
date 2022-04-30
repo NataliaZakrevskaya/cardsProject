@@ -1,24 +1,25 @@
-import {Dispatch} from "redux";
-import {setAppStatusAC, setGlobalErrorAC, setIsLoadAC} from "../../Reducers/appReducer/appReducer";
-import {meAPI} from "../../../API/meAPI/meAPI";
-import {ProfileActions} from "../../Reducers/profileReducer/ProfileReducer";
-import {initializeMeAC} from "../../Actions/meActions/meActions";
-import {LoginFormActions} from "../../Actions/loginFormActions/loginFormActions";
+import { Dispatch } from 'redux';
+import { meAPI } from '../../../API/meAPI/meAPI';
+import { ProfileActions } from '../../Reducers/profileReducer/ProfileReducer';
+import { LoginFormActions } from '../../Actions/loginFormActions/loginFormActions';
+import { meActions } from '../../Actions/meActions/meActions';
+import { appActions } from '../../Actions/appActions/appActions';
+import { AppRequestStatus } from '../../../enums';
 
-export const meTC = () => async (dispatch: Dispatch) => {
-    dispatch(setAppStatusAC("loading"))
-    dispatch(setIsLoadAC(true))
-    try {
-        let res = await meAPI.me()
-        dispatch(ProfileActions.setProfileAC(res.data))
-        dispatch(LoginFormActions.setIsLoggedInAC(true))
-        dispatch(setAppStatusAC("succeeded"))
-    } catch (e: any) {
-        dispatch(setGlobalErrorAC(e.response ? e.response.data.error : 'some error'))
-        dispatch(setAppStatusAC("failed"))
-    } finally {
-        dispatch(initializeMeAC(true))
-        dispatch(setAppStatusAC("idle"))
-        dispatch(setIsLoadAC(false))
-    }
-}
+export const meTC = () => async ( dispatch: Dispatch ) => {
+  dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
+  dispatch( appActions.setIsLoadAC( true ) );
+  try {
+    let res = await meAPI.me();
+    dispatch( ProfileActions.setProfileAC( res.data ) );
+    dispatch( LoginFormActions.setIsLoggedInAC( true ) );
+    dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
+  } catch ( error: any ) {
+    dispatch( appActions.setGlobalErrorAC( error.response ? error.response.data.error : 'some error' ) );
+    dispatch( appActions.setAppStatusAC( AppRequestStatus.FAILED ) );
+  } finally {
+    dispatch( meActions.initializeMeAC( true ) );
+    dispatch( appActions.setAppStatusAC( AppRequestStatus.IDLE ) );
+    dispatch( appActions.setIsLoadAC( false ) );
+  }
+};
