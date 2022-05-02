@@ -10,8 +10,8 @@ export const loginUserTC = ( body: LoginType ) => async ( dispatch: Dispatch ) =
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   try {
     const res = await loginFormAPI.loginMe( body );
-    dispatch( LoginFormActions.setUserDataAC( res.data ) );
-    dispatch( ProfileActions.setProfileAC( res.data ) );
+    dispatch( LoginFormActions.setUserDataAC( res.passwordRecoveryInfo ) );
+    dispatch( ProfileActions.setProfileAC( res.passwordRecoveryInfo ) );
     dispatch( LoginFormActions.setIsLoggedInAC( true ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
   } catch ( e: any ) {

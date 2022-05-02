@@ -21,17 +21,17 @@ const TablesPagination = () => {
   ) => {
     if ( newPage === page ) {
       setPage( page + 1 );
-      dispatch( packsActions.pageAC( newPage + 1 ) );
+      dispatch( packsActions.seCurrentPageAC( newPage + 1 ) );
     } else if ( newPage < page ) {
       setPage( page - 1 );
-      dispatch( packsActions.pageAC( newPage + 1 ) );
+      dispatch( packsActions.seCurrentPageAC( newPage + 1 ) );
     }
   };
 
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    dispatch( packsActions.pageCountAC( parseInt( event.target.value ) ) );
+    dispatch( packsActions.setPageCountAC( parseInt( event.target.value ) ) );
   };
 
   return (

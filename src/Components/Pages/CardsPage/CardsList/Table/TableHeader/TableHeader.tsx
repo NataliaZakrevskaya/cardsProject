@@ -13,22 +13,22 @@ const TableHeader = () => {
   const isLoad = useSelector( getIsLoad );
 
   const getNew = () => {
-    dispatch( packsActions.updateFilterAC( '1updated' ) );
+    dispatch( packsActions.setUpdatedFilterAC( '1updated' ) );
     setIsLastUpdate( true );
   };
 
   const getOld = () => {
-    dispatch( packsActions.updateFilterAC( '0updated' ) );
+    dispatch( packsActions.setUpdatedFilterAC( '0updated' ) );
     setIsLastUpdate( false );
   };
 
   const getFew = () => {
-    dispatch( packsActions.updateFilterAC( '1cardsCount' ) );
+    dispatch( packsActions.setUpdatedFilterAC( '1cardsCount' ) );
     setIsCardsCountUpdated( true );
   };
 
   const getMore = () => {
-    dispatch( packsActions.updateFilterAC( '0cardsCount' ) );
+    dispatch( packsActions.setUpdatedFilterAC( '0cardsCount' ) );
     setIsCardsCountUpdated( false );
   };
 

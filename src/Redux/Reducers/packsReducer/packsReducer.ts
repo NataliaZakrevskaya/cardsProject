@@ -1,87 +1,63 @@
-import {packsActions, packsActionsEnum, packsActionsTypes} from "../../Actions/packsActions/packsActions";
-import {UpdatedType} from "../../../API/packsAPI/packsAPI";
-import {Nullable} from "../../../types/Nullable";
+import { PacksInitialStateType, PacksReducerActionsType } from './types';
+import { UpdatedType } from '../../../API/packsAPI/types';
+import { packsActionsEnum } from '../../Actions/packsActions/enums';
 
-export type PackType = {
-    _id: string
-    user_id: string
-    name: string
-    cardsCount: number
-    created: string
-    updated: string
-    user_name: string
-    private:boolean
-}
-export type ModeTypes ='add'|'edit'|null
-export type InitialCardPacksType = {
-    cardPacks: PackType[]
-    cardPacksTotalCount: number
-    maxCardsCount: number
-    minCardsCount: number
-    page: number
-    pageCount: number
-    packName: string
-    updated: UpdatedType
-    user_id: Nullable<string>,
-    mode:ModeTypes,
-}
+export const PacksInitialState: PacksInitialStateType = {
+  cardPacks: [
+    {
+      _id: '',
+      user_id: '',
+      name: '',
+      cardsCount: 0,
+      created: '',
+      updated: '',
+      user_name: '',
+      private: false,
+    },
+  ],
+  cardPacksTotalCount: 0,
+  maxCardsCount: 0,
+  minCardsCount: 0,
+  page: 1,
+  pageCount: 10,
+  packName: '',
+  updated: '' as UpdatedType,
+  user_id: null,
+  mode: null,
+};
 
-const initialCardPacks: InitialCardPacksType = {
-    cardPacks: [
-        {
-            _id: "",
-            user_id: "",
-            name: "",
-            cardsCount: 0,
-            created: "",
-            updated: "",
-            user_name: "",
-            private:false
-        }
-    ],
-    cardPacksTotalCount: 0,
-    maxCardsCount: 0,
-    minCardsCount: 0,
-    page: 1,
-    pageCount: 10,
-    packName: '',
-    updated: '' as UpdatedType,
-    user_id: null,
-    mode:null,
-}
 
-export type packsActionsType = ReturnType<packsActionsTypes<typeof packsActions>>
 
-export const packsReducer = (state = initialCardPacks, action: packsActionsType): InitialCardPacksType => {
-    switch (action.type) {
-        case packsActionsEnum.SET_PACKS: {
-            return {...state, cardPacks: action.payload.state.cardPacks}
-        }
-        case packsActionsEnum.ALL_MY: {
-            return {...state, user_id: action.payload.value}
-        }
-        case packsActionsEnum.MIN: {
-            return {...state, minCardsCount: action.payload.min}
-        }
-        case packsActionsEnum.MAX : {
-            return {...state, maxCardsCount: action.payload.max}
-        }
-        case packsActionsEnum.SEARCH : {
-            return {...state, packName: action.payload.packName}
-        }
-        case packsActionsEnum.PAGE : {
-            return {...state, page: action.payload.page}
-        }
-        case packsActionsEnum.PAGE_PACKS_COUNT : {
-            return {...state, pageCount: action.payload.pageCount}
-        }
-        case packsActionsEnum.PACKS_UPDATED : {
-            return {...state, updated: action.payload.updated}
-        }
-        case packsActionsEnum.PACKS_MODE: {
-            return {...state, mode:action.payload.mode}
-        }
-        default:
-            return state
+export const packsReducer = ( state = PacksInitialState, action: PacksReducerActionsType ): PacksInitialStateType => {
+  switch ( action.type ) {
+    case packsActionsEnum.SET_PACKS: {
+      return { ...state, cardPacks: action.payload.state.cardPacks };
     }
-}
+    case packsActionsEnum.SET_ALL_USER_ID_CARDS: {
+      return { ...state, user_id: action.payload.user_id };
+    }
+    case packsActionsEnum.SET_MIN_CARDS_COUNT: {
+      return { ...state, minCardsCount: action.payload.minCardsCount };
+    }
+    case packsActionsEnum.SET_MAX_CARDS_COUNT : {
+      return { ...state, maxCardsCount: action.payload.maxCardsCount };
+    }
+    case packsActionsEnum.SEARCH_BY_PACK_NAME : {
+      return { ...state, packName: action.payload.packName };
+    }
+    case packsActionsEnum.SET_CURRENT_PAGE : {
+      return { ...state, page: action.payload.page };
+    }
+    case packsActionsEnum.SET_PAGE_COUNT : {
+      return { ...state, pageCount: action.payload.pageCount };
+    }
+    case packsActionsEnum.SET_UPDATED_FILTER : {
+      return { ...state, updated: action.payload.updated };
+    }
+    case packsActionsEnum.SET_PACKS_MODE: {
+      return { ...state, mode: action.payload.mode };
+    }
+    default:
+      return state;
+  }
+};

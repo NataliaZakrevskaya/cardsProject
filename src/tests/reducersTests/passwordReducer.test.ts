@@ -1,11 +1,11 @@
 import {
     passwordReducer,
-    RegisterAndRecoveryPassReducerType,
-    userType
+    PasswordInitialStateType,
+    UserType
 } from "../../Redux/Reducers/passwordReducer/passwordReducer";
-import {registerAndRecoveryPassActions} from "../../Redux/Actions/passwordActions/passwordActions";
+import {passwordActions} from "../../Redux/Actions/passwordActions/passwordActions";
 
-let startState: RegisterAndRecoveryPassReducerType
+let startState: PasswordInitialStateType
 
 beforeEach(() => {
         startState = {
@@ -29,28 +29,28 @@ beforeEach(() => {
 )
 
 test('correct user should be added', () => {
-    const endState = passwordReducer(startState, registerAndRecoveryPassActions.registerUserAC({
-        addedUser: {
+    const endState = passwordReducer(startState, passwordActions.registerNewUserAC({
+        addedUserInfo: {
             error: 'string',
             email: '',
             in: 'string'
         }
     }))
 
-    expect(endState.register.addedUser.in).toBe('string')
-    expect(endState.register.addedUser.email).toBe('')
+    expect(endState.register.addedUserInfo.in).toBe('string')
+    expect(endState.register.addedUserInfo.email).toBe('')
 })
 
 test('correct error in addedUser should be set', () => {
-    const endState = passwordReducer(startState, registerAndRecoveryPassActions.setErrorRegisterAC('some error'))
+    const endState = passwordReducer(startState, passwordActions.setRegisterErrorAC('some error'))
 
-    expect(endState.register.addedUser.in).toBe(undefined)
-    expect(endState.register.addedUser.email).toBe(undefined)
+    expect(endState.register.addedUserInfo.in).toBe(undefined)
+    expect(endState.register.addedUserInfo.email).toBe(undefined)
     expect(endState.register.error).toBe('some error')
 })
 
 test('correct SET_INFO_RECOVERY_PASS should be set', () => {
-    const endState = passwordReducer(startState, registerAndRecoveryPassActions.setInfoRecoveryAC({
+    const endState = passwordReducer(startState, passwordActions.setRecoveryPassInfoAC({
         info: 'string',
         success: false,
         answer: true,
@@ -64,7 +64,7 @@ test('correct SET_INFO_RECOVERY_PASS should be set', () => {
 })
 
 test('correct SET_INFO_NEW_PASS should be set', () => {
-    const endState = passwordReducer(startState, registerAndRecoveryPassActions.setInfoNewPassAC({
+    const endState = passwordReducer(startState, passwordActions.setInfoNewPassAC({
         info: 'string',
         error: 'string'
     }))

@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { RoutesXPaths } from '../../../../Routes/routes';
 import { registerUserTC } from '../../../../Redux/Thunk/passwordThunk/passwordThunk';
-import { registerAndRecoveryPassActions } from '../../../../Redux/Actions/passwordActions/passwordActions';
+import { passwordActions } from '../../../../Redux/Actions/passwordActions/passwordActions';
 import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getError } from '../../../../Redux/Selectors/pesswordRegisterSelectors/pesswordRegisterSelectors';
 import { FormikErrorType } from './types';
@@ -55,7 +55,7 @@ const RegisterForm = () => {
     formik.resetForm();
     formik.setTouched( {} );
     formik.setErrors( { email: undefined, password: undefined, confirm: undefined } );
-    dispatch( registerAndRecoveryPassActions.setErrorRegisterAC( '' ) );
+    dispatch( passwordActions.setRegisterErrorAC( '' ) );
     navigate( RoutesXPaths.LOGIN );
   };
 

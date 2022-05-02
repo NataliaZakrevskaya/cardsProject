@@ -46,30 +46,30 @@ const PacksList = () => {
     packsState.page, packsState.updated ] );
 
   const selectMyOrAll = ( value: Nullable<string> ) => {
-    dispatch( packsActions.allMyAC( value ) );
+    dispatch( packsActions.setAllUserIdCardsAC( value ) );
     value
       ? setSelected( MY )
       : setSelected( ALL );
   };
 
   const onPackNameInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
-    dispatch( packsActions.searchAC( e.currentTarget.value ) );
+    dispatch( packsActions.searchByPackNameAC( e.currentTarget.value ) );
   };
   const onAddButtonClick = () => {
-    dispatch( packsActions.packModeAC( 'add' ) );
+    dispatch( packsActions.setPacksModeAC( 'add' ) );
   };
 
   const runToCards = ( packId: string ) => {
-    dispatch( packsActions.allMyAC( '' ) );
-    dispatch( packsActions.searchAC( '' ) );
-    dispatch( packsActions.pageAC( 1 ) );
-    dispatch( packsActions.minAC( 0 ) );
-    dispatch( packsActions.maxAC( 100 ) );
+    dispatch( packsActions.setAllUserIdCardsAC( '' ) );
+    dispatch( packsActions.searchByPackNameAC( '' ) );
+    dispatch( packsActions.seCurrentPageAC( 1 ) );
+    dispatch( packsActions.setMinCardsCountAC( 0 ) );
+    dispatch( packsActions.setMaxCardsCountAC( 100 ) );
 
     navigate( `${ RoutesXPaths.CARDS }/${ packId }` );
   };
   const onModalClick = () => {
-    dispatch( packsActions.packModeAC( null ) );
+    dispatch( packsActions.setPacksModeAC( null ) );
     dispatch( setGlobalErrorAC( '' ) );
   };
 

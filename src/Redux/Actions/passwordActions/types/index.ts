@@ -1,0 +1,1 @@
+export type PasswordActionsTypes<T> = T extends { [ key: string ]: infer A } ? A : never

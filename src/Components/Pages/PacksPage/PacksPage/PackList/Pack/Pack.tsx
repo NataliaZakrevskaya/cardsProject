@@ -107,11 +107,11 @@ const SrazyIli = ( { runToCards, packId, setMode }: SrazyIliType ) => {
   }, [] );
 
   const onLearnButtonClick = () => {
-    dispatch( packsActions.allMyAC( '' ) );
-    dispatch( packsActions.searchAC( '' ) );
-    dispatch( packsActions.pageAC( 1 ) );
-    dispatch( packsActions.minAC( 0 ) );
-    dispatch( packsActions.maxAC( 100 ) );
+    dispatch( packsActions.setAllUserIdCardsAC( '' ) );
+    dispatch( packsActions.searchByPackNameAC( '' ) );
+    dispatch( packsActions.seCurrentPageAC( 1 ) );
+    dispatch( packsActions.setMinCardsCountAC( 0 ) );
+    dispatch( packsActions.setMaxCardsCountAC( 100 ) );
 
     setMode();
     navigate( `${ RoutesXPaths.LEARNED_CARD }/${ packId }/${ cardId }` );

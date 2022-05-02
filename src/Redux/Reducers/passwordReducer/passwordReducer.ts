@@ -1,86 +1,48 @@
-import {
-    registerAndRecoveryPassActions,
-    RegisterAndRecoveryPassReducer,
-    RegisterAndRecoveryPassReducerActionsTypes
-} from "../../Actions/passwordActions/passwordActions";
-import {Nullable} from "../../../types/Nullable";
+import { PasswordInitialStateType, PasswordReducerActionsType, UserType } from './types';
+import { passwordActionsEnum } from '../../Actions/passwordActions/enums';
 
-const registerAndRecoveryPassReducerState: RegisterAndRecoveryPassReducerType = {
-    register: {
-        addedUser: {} as userType,
-        error: ''
-    },
-    passwordRecovery: {
-        info: '',
-        success: false,
-        answer: false,
-        html: false,
-    },
-    newPassword: {
-        info: '',
-        error: ''
-    },
-    e: null
-}
+const passwordInitialState: PasswordInitialStateType = {
+  register: {
+    addedUserInfo: {} as UserType,
+    error: '',
+  },
+  passwordRecovery: {
+    info: '',
+    success: false,
+    answer: false,
+    html: false,
+  },
+  newPassword: {
+    info: '',
+    error: '',
+  },
+  e: null,
+};
 
-export const passwordReducer = ( state = registerAndRecoveryPassReducerState, action: PasswordActionsType): RegisterAndRecoveryPassReducerType => {
-    switch (action.type) {
-        case RegisterAndRecoveryPassReducer.REGISTER_USER: {
-            return {...state, register: {...state.register, addedUser: action.payload.addedUser}}
-        }
-        case RegisterAndRecoveryPassReducer.SET_ERROR_REGISTER: {
-            return {
-                ...state, register:
-                    {
-                        ...state.register,
-                        error: action.payload.e
-                    }
-            }
-        }
-        case RegisterAndRecoveryPassReducer.SET_INFO_RECOVERY_PASS: {
-            return {...state, passwordRecovery: {...state.passwordRecovery, ...action.payload.data}}
-        }
-        case RegisterAndRecoveryPassReducer.SET_INFO_NEW_PASS: {
-            return {...state, newPassword: action.payload.data}
-        }
-        case RegisterAndRecoveryPassReducer.SET_NEW_ERROR: {
-            return {...state, e: action.payload.e}
-        }
-        default:
-            return state
+export const passwordReducer = ( state = passwordInitialState, action: PasswordReducerActionsType ): PasswordInitialStateType => {
+  switch ( action.type ) {
+    case passwordActionsEnum.REGISTER_NEW_USER: {
+      return { ...state, register: { ...state.register, addedUserInfo: action.payload.addedUserInfo } };
     }
-}
-
-
-//types
-export type PasswordActionsType = ReturnType<RegisterAndRecoveryPassReducerActionsTypes<typeof registerAndRecoveryPassActions>>
-
-export type userType = {
-    error: string,
-    email: string,
-    in: string
-}
-
-export type registerStateType = {
-    addedUser: userType
-    error?: string;
-}
-
-export type passwordRecoveryStateType = {
-    info: string,
-    success: boolean,
-    answer: boolean,
-    html: boolean,
-}
-
-export type newPasswordStateType = {
-    info: string
-    error: string;
-}
-
-export type RegisterAndRecoveryPassReducerType = {
-    register: registerStateType
-    passwordRecovery: passwordRecoveryStateType
-    newPassword: newPasswordStateType
-    e: Nullable<string>
-}
+    case passwordActionsEnum.SET_REGISTER_ERROR: {
+      return {
+        ...state, register:
+          {
+            ...state.register,
+            error: action.payload.error,
+          },
+      };
+    }
+    case passwordActionsEnum.SET_RECOVERY_PASS_INFO: {
+      return { ...state, passwordRecovery: { ...state.passwordRecovery, ...action.payload.passwordRecoveryInfo } };
+    }
+    case passwordActionsEnum.SET_NEW_PASS_INFO: {
+      return { ...state, newPassword: action.payload.newPasswordInfo };
+    }
+    case passwordActionsEnum.SET_NEW_ERROR: {
+      return { ...state, e: action.payload.error };
+    }
+    default:
+      return state;
+  }
+};

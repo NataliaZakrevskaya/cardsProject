@@ -1,0 +1,4 @@
+export enum profileActionsEnums {
+  SET_PROFILE = 'CARDS/PROFILE/SET_PROFILE',
+  SET_ERROR = 'CARDS/PROFILE/SET_ERROR',
+}

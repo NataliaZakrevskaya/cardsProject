@@ -18,10 +18,10 @@ const AddPackComponent = () => {
 
   const onAddPackButtonClick = () => {
     dispatch( addNewPacksTC( pack ) );
-    dispatch( packsActions.packModeAC( null ) );
+    dispatch( packsActions.setPacksModeAC( null ) );
   };
   const onCancelButtonClick = () => {
-    dispatch( packsActions.packModeAC( null ) );
+    dispatch( packsActions.setPacksModeAC( null ) );
   };
   const onCheckboxInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setNewPackPrivate( e.currentTarget.checked );

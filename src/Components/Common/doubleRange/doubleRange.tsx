@@ -55,8 +55,8 @@ const DoubleRange: FC = () => {
 
   const onDoubleRangeChange = ( e: Event, values: number | number[] ) => {
     setValue( values as number[] );
-    dispatch( packsActions.minAC( value[ 0 ] ) );
-    dispatch( packsActions.maxAC( value[ 1 ] ) );
+    dispatch( packsActions.setMinCardsCountAC( value[ 0 ] ) );
+    dispatch( packsActions.setMaxCardsCountAC( value[ 1 ] ) );
   };
 
   return (
