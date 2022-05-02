@@ -57,9 +57,7 @@ export const LearnedCard = () => {
   return (
     <div className={ style.addItemContainer }
          style={ { borderRadius: '10px', backgroundColor: 'white' } }>
-      <h2>
-        learn: { actualPack?.name }
-      </h2>
+      <h2>learn: { actualPack?.name }</h2>
       <div>
         <div className={ style.mainText }>
           question: { actualCard?.question }

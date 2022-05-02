@@ -41,32 +41,19 @@ const TableCardsHeader = ( { user_id }: TableHeaderCardType ) => {
   return (
     <div className={ tableHeader }>
       <div>
-        <span className={ style.tableHeader__item }>
-          Question
-        </span>
+        <span className={ style.tableHeaderItem }>Question</span>
       </div>
       <div>
-        <span className={ style.tableHeader__item }>
-          Answer
-        </span>
+        <span className={ style.tableHeaderItem }>Answer</span>
       </div>
       <div onClick={ lastUpd ? getOldCard : getNewCard } aria-disabled={ isLoad }>
-        <span className={ style.tableHeader__item }>
-          Last Updated
-        </span>
+        <span className={ style.tableHeaderItem }>Last Updated</span>
       </div>
       <div onClick={ gradeUpd ? getGradeUpdLessCard : getGradeUpdMoreCard } aria-disabled={ isLoad }>
-        <span className={ style.tableHeader__item }>
-          Grade
-        </span>
+        <span className={ style.tableHeaderItem }>Grade</span>
       </div>
       {
-        ownId === user_id &&
-          <div>
-              <span className={ style.tableHeader__item }>
-                  Actions
-              </span>
-          </div>
+        ownId === user_id && <span className={ style.tableHeaderItem }>Actions</span>
       }
     </div>
   );

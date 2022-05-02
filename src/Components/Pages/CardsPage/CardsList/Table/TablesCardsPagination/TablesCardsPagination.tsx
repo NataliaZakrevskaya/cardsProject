@@ -5,7 +5,7 @@ import {
   getActualCardsCount,
   getActualCardsPage,
 } from '../../../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, MouseEvent, FC, useState } from 'react';
 import { Nullable } from '../../../../../../types';
 
 const TablesCardsPagination: FC = () => {
@@ -17,10 +17,7 @@ const TablesCardsPagination: FC = () => {
 
   const [ page, setPage ] = useState<number>( actualCardsPage );
 
-  const onPageChange = (
-    event: Nullable<React.MouseEvent<HTMLButtonElement>>,
-    newPage: number,
-  ) => {
+  const onPageChange = ( event: Nullable<MouseEvent<HTMLButtonElement>>, newPage: number ) => {
     if ( newPage === page ) {
       setPage( page + 1 );
       dispatch( cardsActions.setCardsPageAC( newPage + 1 ) );
@@ -29,10 +26,7 @@ const TablesCardsPagination: FC = () => {
       dispatch( cardsActions.setCardsPageAC( newPage + 1 ) );
     }
   };
-
-  const onRowsPerPageChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const onRowsPerPageChange = ( event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, ) => {
     setPage( 0 );
     dispatch( cardsActions.setCardsPageCountAC( parseInt( event.target.value ) ) );
   };

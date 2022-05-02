@@ -25,14 +25,3 @@ const TableCards: FC<TableCardsType> = ( { cards } ) => {
 };
 
 export default TableCards;
-
-/*
-export const ButtonGroup = () => {
-  return (
-    <div className={ style.BtnContainer }>
-      <button onClick={ () => alert( 'edit' ) }>edit</button>
-      <button onClick={ () => alert( 'delete' ) }>delete</button>
-      <button onClick={ () => alert( 'learn' ) }>learn</button>
-    </div>
-  );
-};*/

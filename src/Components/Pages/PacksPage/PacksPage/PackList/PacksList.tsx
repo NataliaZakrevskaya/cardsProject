@@ -71,6 +71,12 @@ const PacksList = () => {
     dispatch( packsActions.setPacksModeAC( null ) );
     dispatch( appActions.setGlobalErrorAC( '' ) );
   };
+  const onMyButtonClick = () => {
+    selectMyOrAll( ownId );
+  };
+  const onAllButtonClick = () => {
+    selectMyOrAll( null );
+  };
 
   return (
     <div className={ style.packsListBlock }>
@@ -82,18 +88,16 @@ const PacksList = () => {
         <button
           disabled={ isLoad }
           className={ selected === MY ? style.selected : style.hoverSelected }
-          onClick={ () => selectMyOrAll( ownId ) }>
+          onClick={ onMyButtonClick }>
           My
         </button>
         <button
           disabled={ isLoad }
           className={ selected === ALL ? style.selected : style.hoverSelected }
-          onClick={ () => selectMyOrAll( null ) }>
+          onClick={ onAllButtonClick }>
           All
         </button>
-        <h4 className={ style.title }>
-          Number of cards
-        </h4>
+        <h4 className={ style.title }>Number of cards</h4>
         <DoubleRange/>
         <div>
           <div className={ style.rangeValueItem }>min : { minCardsCount }</div>
