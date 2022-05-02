@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useEffect } from 'react';
 import style from './CardsList.module.css';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import TableCardsHeader from './Table/TableCardsHeader/TableCardsHeader';
 import Card from './Card/Card';
@@ -8,32 +7,27 @@ import TablesCardsPagination from './Table/TablesCardsPagination/TablesCardsPagi
 import { cardsTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { cardsActions } from '../../../../Redux/Actions/cardsActions/cardsActions';
 import Modal from '../../../Common/modal/modal';
-import AddCardComponent from './modulsComponents/AddCardComponent/AddCardComponent';
+import AddCardComponent from '../../../Common/modal/AddCardComponent/AddCardComponent';
 import GlobalError from '../../../Common/globalError/globalError';
-import { Undetectable } from '../../../../types';
 import { getGlobalError, getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
-import { getCardsState } from '../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
+import { getCards, getCardsState } from '../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
 import { UpdatedType } from '../../../../API/packsAPI/types';
 import { useDebounce } from '@react-hook/debounce';
-import { AppStateType } from '../../../../Redux/Store/types';
 import { appActions } from '../../../../Redux/Actions/appActions/appActions';
+import { CardsListType } from './types';
+import { getUserId } from './cardsListHelpers';
+import { ModeEnum } from '../../../../enums';
 
-type CardsListType = {
-  name: string
-  packId: Undetectable<string>
-}
-
-const CardsList = ( { name }: CardsListType ) => {
+const CardsList = ( { name, packId }: CardsListType ) => {
 
   const dispatch = useDispatch();
 
-  const { packId } = useParams<'packId'>();
-
   const isLoad = useSelector( getIsLoad );
   const globalError = useSelector( getGlobalError );
-  const user_id = useSelector<AppStateType, string>( state => state.cards.cards.filter( f => f.cardsPack_id === packId )[ 0 ]?.user_id );
+  const allCards = useSelector( getCards );
   const cardsState = useSelector( getCardsState );
 
+  const user_id = getUserId( allCards, packId );
   const { cards, cardQuestion, pageCount, page, cardAnswer, sortCards, mode } = { ...cardsState };
 
   const debouncedCardsSearchName = useDebounce<string>( cardQuestion, 1500 );
@@ -42,10 +36,6 @@ const CardsList = ( { name }: CardsListType ) => {
   const debouncedSearchCardQ = useDebounce<string>( cardQuestion, 1000 );
   const debouncedSearchCardA = useDebounce<string>( cardAnswer, 1000 );
   const debouncedSearchLastUpdated = useDebounce<UpdatedType>( sortCards, 0 );
-
-  const searchCard = ( e: ChangeEvent<HTMLInputElement> ) => {
-    dispatch( cardsActions.searchCardAC( e.currentTarget.value ) );
-  };
 
   useEffect( () => {
       if ( packId ) {
@@ -60,8 +50,11 @@ const CardsList = ( { name }: CardsListType ) => {
     ],
   );
 
+  const searchCard = ( e: ChangeEvent<HTMLInputElement> ) => {
+    dispatch( cardsActions.searchCardAC( e.currentTarget.value ) );
+  };
   const onAddButtonClick = () => {
-    dispatch( cardsActions.setCardModeAC( 'add' ) );
+    dispatch( cardsActions.setCardModeAC( ModeEnum.ADD ) );
   };
 
   return (
@@ -95,20 +88,19 @@ const CardsList = ( { name }: CardsListType ) => {
               );
             } )
           }
-
           <Modal
             backgroundOnClick={ () => {
               dispatch( cardsActions.setCardModeAC( null ) );
               dispatch( appActions.setGlobalErrorAC( '' ) );
 
             } }
-            show={ mode === 'add' || globalError !== '' }
+            show={ mode === ModeEnum.ADD || globalError !== '' }
             height={ 0 }
             width={ 0 }
-            backgroundStyle={ mode === 'add' ? { backgroundColor: 'rgba(89,61,215,0.13)' } : { backgroundColor: 'rgba(255,3,3,0.15)' } }
+            backgroundStyle={ mode === ModeEnum.ADD ? { backgroundColor: 'rgba(89,61,215,0.13)' } : { backgroundColor: 'rgba(255,3,3,0.15)' } }
             enableBackground={ true }>
             {
-              mode === 'add' &&
+              mode === ModeEnum.ADD &&
                 <AddCardComponent packId={ packId }/>
             }
             {
@@ -116,7 +108,6 @@ const CardsList = ( { name }: CardsListType ) => {
                 <GlobalError/>
             }
           </Modal>
-
           <TablesCardsPagination/>
         </div>
       </div>

@@ -2,14 +2,16 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import CardsList from './CardsList/CardsList';
 import { useSelector } from 'react-redux';
-import { AppStateType } from '../../../Redux/Store/types';
-import { PackType } from '../../../Redux/Reducers/packsReducer/types';
+import { getActualPack } from './cardsPageHelpers';
+import { getPacks } from '../../../Redux/Selectors/packsSelectors/packsSelectors';
 
 const Cards = () => {
 
   const { packId } = useParams<'packId'>();
 
-  const actualPack = useSelector<AppStateType, PackType[]>( state => state.packs.cardPacks.filter( (pack: PackType) => pack._id === packId ) )[ 0 ];
+  const packs = useSelector( getPacks );
+
+  const actualPack = getActualPack( packs, packId );
 
   return (
     <div>

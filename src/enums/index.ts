@@ -4,3 +4,9 @@ export enum AppRequestStatus {
   SUCCEEDED = 'succeeded',
   FAILED = 'failed',
 }
+
+export enum ModeEnum {
+  ADD = 'add',
+  EDIT = 'edit',
+  DELETE = 'delete',
+}

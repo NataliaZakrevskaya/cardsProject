@@ -1,4 +1,4 @@
-import { ModeTypes, PacksInitialStateType } from '../../Reducers/packsReducer/types';
+import { ModeType, PacksInitialStateType } from '../../Reducers/packsReducer/types';
 import { packsActionsEnum } from './enums';
 import { Nullable } from '../../../types';
 import { UpdatedType } from '../../../API/packsAPI/types';
@@ -52,7 +52,7 @@ export const packsActions = {
       payload: { updated },
     } as const;
   },
-  setPacksModeAC: ( mode: ModeTypes ) => {
+  setPacksModeAC: ( mode: ModeType ) => {
     return {
       type: packsActionsEnum.SET_PACKS_MODE,
       payload: { mode },

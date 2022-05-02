@@ -4,14 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconButton, Rating } from '@mui/material';
 import Modal from '../../../../Common/modal/modal';
-import EditCardComponent from '../modulsComponents/EditCardComponent/EditCardComponent';
 import { cardsActions } from '../../../../../Redux/Actions/cardsActions/cardsActions';
-import DeleteCardComponent from '../modulsComponents/DeleteCardComponent/DeleteCardComponent';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors/profileSelectors';
-import { CardComponentType } from './types';
+import { CardComponentType, ModeType } from './types';
 import { Delete } from '@material-ui/icons';
 import { routesPathsEnum } from '../../../../../Routes/enums';
+import { ModeEnum } from '../../../../../enums';
+import EditCardComponent from '../../../../Common/modal/EditCardComponent/EditCardComponent';
+import DeleteCardComponent from '../../../../Common/modal/DeleteCardComponent/DeleteCardComponent';
 
 const Card = ( { content }: CardComponentType ) => {
 
@@ -20,13 +21,19 @@ const Card = ( { content }: CardComponentType ) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [ mode, setMode ] = useState<'edit' | 'delete' | null>( null );
+  const [ mode, setMode ] = useState<ModeType>( null );
 
   const ownId = useSelector( getOwnId );
   const isLoad = useSelector( getIsLoad );
 
   const onTableDoubleClick = () => {
     navigate( `${ routesPathsEnum.LEARNED_CARD }/${ _id }/${ cardsPack_id }` );
+  };
+  const onModalClick = () => {
+    dispatch( cardsActions.setCardModeAC( null ) );
+  };
+  const setNullModal = () => {
+    setMode( null )
   };
 
   return (
@@ -39,8 +46,8 @@ const Card = ( { content }: CardComponentType ) => {
         { answer }
       </div>
       <div className={ style.updated }>
-        <div>дата: { updated.slice( 0, 10 ) },</div>
-        <div>время: { updated.slice( 12, 19 ) }</div>
+        <div>Date: { updated.slice( 0, 10 ) },</div>
+        <div>Time: { updated.slice( 12, 19 ) }</div>
       </div>
       <div className={ style.window }>
         <Rating
@@ -52,26 +59,23 @@ const Card = ( { content }: CardComponentType ) => {
       {
         ownId === user_id &&
           <div className={ style.btnGroupItemMy }>
-              <button className={ style.button } onClick={ () => setMode( 'edit' ) } disabled={ isLoad }>edit</button>
+              <button className={ style.button } onClick={ () => setMode( ModeEnum.EDIT ) } disabled={ isLoad }>edit
+              </button>
               <button className={ style.button } onClick={ onTableDoubleClick } disabled={ isLoad }>learn</button>
-              <IconButton onClick={ () => setMode( 'delete' ) } aria-label="delete" disabled={ isLoad }>
+              <IconButton onClick={ () => setMode( ModeEnum.DELETE ) } aria-label="delete" disabled={ isLoad }>
                   <Delete/>
               </IconButton>
           </div>
       }
       <Modal
-        backgroundOnClick={ () => dispatch( cardsActions.setCardModeAC( null ) ) }
+        backgroundOnClick={ onModalClick }
         show={ mode !== null }
         height={ 0 }
         width={ 0 }
         backgroundStyle={ { backgroundColor: 'rgba(215,207,61,0.2)' } }
         enableBackground={ true }>
-        { mode === 'edit' && <EditCardComponent card={ content } setMode={ () => {
-          setMode( null );
-        } }/> }
-        { mode === 'delete' && <DeleteCardComponent id={ _id } setMode={ () => {
-          setMode( null );
-        } }/> }
+        { mode === ModeEnum.EDIT && <EditCardComponent card={ content } setMode={ setNullModal }/> }
+        { mode === ModeEnum.DELETE && <DeleteCardComponent id={ _id } setMode={ setNullModal }/> }
       </Modal>
     </div>
   );

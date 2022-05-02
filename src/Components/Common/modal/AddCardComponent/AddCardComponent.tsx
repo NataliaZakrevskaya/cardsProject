@@ -1,18 +1,18 @@
 import React, { ChangeEvent, useState } from 'react';
 import style
-  from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
+  from '../../../Pages/PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewCardTC } from '../../../../../../Redux/Thunk/cardsThunk/cardsThunk';
-import { cardsActions } from '../../../../../../Redux/Actions/cardsActions/cardsActions';
-import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { addNewCardTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
+import { cardsActions } from '../../../../Redux/Actions/cardsActions/cardsActions';
+import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { TestAddCardComponentType } from './types';
-
-
 
 const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
 
   const dispatch = useDispatch();
+
   const isLoad = useSelector( getIsLoad );
+
   const [ question, setQuestion ] = useState<string>( '' );
   const [ answer, setAnswer ] = useState<string>( '' );
 
@@ -22,11 +22,9 @@ const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
       dispatch( cardsActions.setCardModeAC( null ) );
     }
   };
-
   const onCancelButtonClick = () => {
     dispatch( cardsActions.setCardModeAC( null ) );
   };
-
   const onQuestionInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setQuestion( e.currentTarget.value );
   };
@@ -36,13 +34,11 @@ const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
 
   return (
     <div className={ style.addItemContainer }>
-      <h2>
-        Add new card:
-      </h2>
+      <h2>Add new card:</h2>
       <div className={ style.centerInputContainer }>
-                <span>
-                    Question: <span>&nbsp; ✎</span>
-                </span>
+        <span>
+          Question: ✎
+        </span>
         <input disabled={ isLoad }
                type="text"
                value={ question }
@@ -50,9 +46,9 @@ const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
         />
       </div>
       <div className={ style.centerInputContainer }>
-                <span>
-                    Answer: <span>&nbsp; ✎</span>
-                </span>
+        <span>
+          Answer: ✎
+        </span>
         <input disabled={ isLoad }
                type="text"
                value={ answer }

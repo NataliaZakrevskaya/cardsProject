@@ -2,7 +2,7 @@ import { cardsActionsEnum } from './enums';
 import { UpdatedType } from '../../../API/packsAPI/types';
 import { UpdatedGradeType } from '../../../API/cardsAPI/types';
 import { CardsType } from './types';
-import { ModeTypes } from '../../Reducers/packsReducer/types';
+import { ModeType } from '../../Reducers/packsReducer/types';
 
 export const cardsActions = {
     setCardsAC: (state: CardsType) => {
@@ -41,7 +41,7 @@ export const cardsActions = {
             payload: {updatedCard}
         } as const
     },
-    setCardModeAC: ( mode: ModeTypes) => {
+    setCardModeAC: ( mode: ModeType) => {
         return {
             type: cardsActionsEnum.SET_CARD_MODE,
             payload: {mode}

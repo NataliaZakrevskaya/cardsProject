@@ -2,11 +2,11 @@ import React, { ChangeEvent, useState } from 'react';
 import style
   from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { EditCardComponentType } from './types';
-import { updateCardTC } from '../../../../../../Redux/Thunk/cardsThunk/cardsThunk';
+import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
+import { updateCardTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
 
-const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
+export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
 
   const { question, answer, _id } = { ...card };
 
@@ -24,11 +24,13 @@ const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
     comments: '',
   };
 
-  const saveCard = () => {
+  const onCancelButtonClick = () => {
+    setMode();
+  };
+  const onSaveButtonClick = () => {
     dispatch( updateCardTC( updatedCard ) );
     setMode();
   };
-
   const onQuestionInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setNewQuestion( e.currentTarget.value );
   };
@@ -40,17 +42,13 @@ const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
     <div className={ style.addItemContainer }>
       <h2>Edit card:</h2>
       <div className={ style.centerInputContainer }>
-        <span>
-          Enter new card question <span>&nbsp; ✎</span>
-        </span>
+        <span>Enter new card question ✎</span>
         <input disabled={ isLoad }
                type="text"
                value={ newQuestion }
                onChange={ onQuestionInputChange }
         />
-        <span>
-          Enter new card answer <span>&nbsp; ✎</span>
-        </span>
+        <span>Enter new card answer ✎</span>
         <input disabled={ isLoad }
                type="text"
                value={ newAnswer }
@@ -58,8 +56,8 @@ const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
         />
       </div>
       <div>
-        <button onClick={ () => setMode() } disabled={ isLoad }>Cancel</button>
-        <button onClick={ saveCard } disabled={ isLoad }>Save changes</button>
+        <button onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button onClick={ onSaveButtonClick } disabled={ isLoad }>Save changes</button>
       </div>
     </div>
   );

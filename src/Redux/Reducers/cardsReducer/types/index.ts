@@ -1,7 +1,7 @@
 import { UpdatedType } from '../../../../API/packsAPI/types';
 import { cardsActions } from '../../../Actions/cardsActions/cardsActions';
 import { cardsActionsTypes } from '../../../Actions/cardsActions/types';
-import { ModeTypes } from '../../packsReducer/types';
+import { ModeType } from '../../packsReducer/types';
 
 export type CardType = {
   answer: string
@@ -25,6 +25,6 @@ export type CardsInitialStateType = {
   cardAnswer: string
   cardQuestion: string
   sortCards: UpdatedType,
-  mode: ModeTypes
+  mode: ModeType
 }
 export type cardsReducerActionType = ReturnType<cardsActionsTypes<typeof cardsActions>>
