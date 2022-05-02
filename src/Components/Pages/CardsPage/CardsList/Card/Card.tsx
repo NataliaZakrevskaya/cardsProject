@@ -11,8 +11,8 @@ import { CardComponentType, ModeType } from './types';
 import { Delete } from '@material-ui/icons';
 import { routesPathsEnum } from '../../../../../Routes/enums';
 import { ModeEnum } from '../../../../../enums';
-import EditCardComponent from '../../../../Common/modal/EditCardComponent/EditCardComponent';
-import DeleteCardComponent from '../../../../Common/modal/DeleteCardComponent/DeleteCardComponent';
+import EditCardComponent from '../../../../Common/modal/cardsModal/EditCardComponent/EditCardComponent';
+import DeleteCardComponent from '../../../../Common/modal/cardsModal/DeleteCardComponent/DeleteCardComponent';
 
 const Card = ( { content }: CardComponentType ) => {
 

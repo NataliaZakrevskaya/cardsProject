@@ -7,7 +7,6 @@ import TablesCardsPagination from './Table/TablesCardsPagination/TablesCardsPagi
 import { cardsTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { cardsActions } from '../../../../Redux/Actions/cardsActions/cardsActions';
 import Modal from '../../../Common/modal/modal';
-import AddCardComponent from '../../../Common/modal/AddCardComponent/AddCardComponent';
 import GlobalError from '../../../Common/globalError/globalError';
 import { getGlobalError, getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getCards, getCardsState } from '../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
@@ -17,6 +16,7 @@ import { appActions } from '../../../../Redux/Actions/appActions/appActions';
 import { CardsListType } from './types';
 import { getUserId } from './cardsListHelpers';
 import { ModeEnum } from '../../../../enums';
+import AddCardComponent from '../../../Common/modal/cardsModal/AddCardComponent/AddCardComponent';
 
 const CardsList = ( { name, packId }: CardsListType ) => {
 

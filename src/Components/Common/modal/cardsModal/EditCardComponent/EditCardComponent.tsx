@@ -3,8 +3,8 @@ import style
   from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditCardComponentType } from './types';
-import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
-import { updateCardTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
+import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { updateCardTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 
 export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
 

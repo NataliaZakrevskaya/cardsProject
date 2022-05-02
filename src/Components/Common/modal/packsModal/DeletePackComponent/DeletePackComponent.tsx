@@ -1,9 +1,9 @@
 import React from 'react';
 import style from '../AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePacksTC } from '../../../../../../../Redux/Thunk/packsThunk/packsThunk';
 import { DeletePackComponentType } from './types';
-import { getIsLoad } from '../../../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { deletePacksTC } from '../../../../../Redux/Thunk/packsThunk/packsThunk';
 
 const DeletePackComponent = ( { id, setMode }: DeletePackComponentType ) => {
 

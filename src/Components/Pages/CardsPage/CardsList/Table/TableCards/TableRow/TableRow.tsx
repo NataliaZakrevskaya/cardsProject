@@ -12,8 +12,7 @@ export const TableRow = ( { info }: any ) => {
       <TableCell item={ question }/>
       <TableCell item={ answer }/>
       <TableCell item={ updated }/>
-      <TableCell item={ <Rating name={ 'half-rating-read' }
-                                value={ grade } precision={ 0.1 } readOnly/> }/>
+      <TableCell item={ <Rating name={ 'half-rating-read' } value={ grade } precision={ 0.1 } readOnly/> }/>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
 import style from './AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewPacksTC } from '../../../../../../../Redux/Thunk/packsThunk/packsThunk';
-import { packsActions } from '../../../../../../../Redux/Actions/packsActions/packsActions';
-import { getIsLoad } from '../../../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { addNewPacksTC } from '../../../../../Redux/Thunk/packsThunk/packsThunk';
+import { packsActions } from '../../../../../Redux/Actions/packsActions/packsActions';
 
 const AddPackComponent = () => {
 

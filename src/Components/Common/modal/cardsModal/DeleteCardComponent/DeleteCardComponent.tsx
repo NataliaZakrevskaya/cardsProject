@@ -3,8 +3,8 @@ import style
   from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteCardComponentType } from './types';
-import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
-import { deleteCardTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
+import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
+import { deleteCardTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 
 const DeleteCardComponent = ( { id, setMode }: DeleteCardComponentType ) => {
 

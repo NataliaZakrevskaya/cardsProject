@@ -3,6 +3,7 @@ import style from './TableCards.module.css';
 import Preloader from '../../../../../Common/preloader/preloader';
 import { TableCardsType } from './types';
 import { TableRow } from './TableRow/TableRow';
+import { AppRequestStatus } from '../../../../../../enums';
 
 const TableCards: FC<TableCardsType> = ( { cards } ) => {
 
@@ -18,8 +19,7 @@ const TableCards: FC<TableCardsType> = ( { cards } ) => {
         </div>
       ) : (
         <div>
-          <Preloader status={ 'failed' }/>
-
+          <Preloader status={ AppRequestStatus.FAILED }/>
         </div> )
   );
 };

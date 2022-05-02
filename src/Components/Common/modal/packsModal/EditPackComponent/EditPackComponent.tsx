@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import style from '../AddPackComponent/AddPackComponent.module.css';
 import { useDispatch } from 'react-redux';
-import { changePacksTC } from '../../../../../../../Redux/Thunk/packsThunk/packsThunk';
 import { EditPackComponentType } from './types';
+import { changePacksTC } from '../../../../../Redux/Thunk/packsThunk/packsThunk';
 
 const EditPackComponent = ( { item, closeModal }: EditPackComponentType ) => {
 
