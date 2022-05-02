@@ -5,15 +5,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Nullable } from '../../../types';
 import { getIsLoad } from '../../../Redux/Selectors/appSelectors/appSelectors';
 import { getActualPacksCount, getActualPacksPage } from '../../../Redux/Selectors/packsSelectors/packsSelectors';
+import { ChangeEvent, useState } from 'react';
 
 const TablesPagination = () => {
 
   const dispatch = useDispatch();
+
   const isLoad = useSelector( getIsLoad );
   const actualPacksPage = useSelector( getActualPacksPage );
   const actualPacksCount = useSelector( getActualPacksCount );
 
-  const [ page, setPage ] = React.useState<number>( actualPacksPage );
+  const [ page, setPage ] = useState<number>( actualPacksPage );
 
   const handleChangePage = (
     event: Nullable<React.MouseEvent<HTMLButtonElement>>,
@@ -27,10 +29,7 @@ const TablesPagination = () => {
       dispatch( packsActions.seCurrentPageAC( newPage + 1 ) );
     }
   };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChangeRowsPerPage = ( event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
     dispatch( packsActions.setPageCountAC( parseInt( event.target.value ) ) );
   };
 

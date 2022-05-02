@@ -1,21 +1,19 @@
-import React, { CSSProperties, FC } from 'react';
-import { IModal } from './interface';
+import React, { FC } from 'react';
+import { Modal } from './interface';
 
 
 
-const Modal: FC<IModal> = (
+const Modal: FC<Modal> = (
   {
     enableBackground,
     backgroundStyle,
     backgroundOnClick = () => {
     },
-
     width,
     height,
     modalStyle,
     modalOnClick = () => {
     },
-
     show,
     children,
   },

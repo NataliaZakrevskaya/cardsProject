@@ -11,12 +11,12 @@ import Cards from '../Components/Pages/CardsPage/CardsPage';
 import LearnedCardContainer from '../Components/Pages/LearnedCardContainer/LearnedCardContainer';
 import AuthRedirectPage from '../Components/HOC/authRedirect';
 import { routesPathsEnum } from './enums';
+import style from './routes.module.css';
+import NotFoundedPage from '../Components/NotFoundedPage/NotFoundedPage';
 
 const AppRoutes = () => {
-
   return (
-    <div style={ { height: '100vh' } }>
-
+    <div className={ style.routesContainer }>
       <Routes>
         <Route path={ routesPathsEnum.PROFILE } element={
           <AuthRedirectPage>
@@ -55,10 +55,8 @@ const AppRoutes = () => {
           </AuthRedirectPage>
         }/>
         <Route path={ routesPathsEnum.LOGOUT } element={ <LogoutPage/> }/>
-        <Route path={ routesPathsEnum.NOT_FOUND }
-               element={ <h1 style={ { textAlign: 'center' } }>404:PAGE NOT FOUND</h1> }/>
+        <Route path={ routesPathsEnum.NOT_FOUND } element={ <NotFoundedPage/> }/>
         <Route path={ '*' } element={ <Navigate to={ routesPathsEnum.NOT_FOUND }/> }/>
-
       </Routes>
     </div>
   );

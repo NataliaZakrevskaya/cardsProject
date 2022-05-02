@@ -15,17 +15,9 @@ const GlobalError = () => {
 
   return (
     <div className={ style.addItemContainer }>
-      <h2>
-        Incorrect action:
-      </h2>
-      <div className={ style.centerInputContainer }>
-        <span>
-          { errorText } <span>&nbsp; ✎</span>
-        </span>
-      </div>
-      <div>
-        <button onClick={ onResetErrorButtonClick }>Ok</button>
-      </div>
+      <h2>Incorrect action:</h2>
+      <span>{ errorText } ✎</span>
+      <button onClick={ onResetErrorButtonClick }>Ok</button>
     </div>
   );
 };
