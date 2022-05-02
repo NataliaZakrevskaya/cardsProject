@@ -1,8 +1,8 @@
-import {ModeTypes} from "../../Reducers/packsReducer/packsReducer";
 import { cardsActionsEnum } from './enums';
 import { UpdatedType } from '../../../API/packsAPI/types';
 import { UpdatedGradeType } from '../../../API/cardsAPI/types';
 import { CardsType } from './types';
+import { ModeTypes } from '../../Reducers/packsReducer/types';
 
 export const cardsActions = {
     setCardsAC: (state: CardsType) => {

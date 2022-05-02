@@ -2,9 +2,9 @@ import React from 'react';
 import style from './LogoutPage.module.css';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUserTC } from '../../../Redux/Reducers/loginFormReducer/loginReducer';
-import { RoutesXPaths } from '../../../Routes/routes';
 import { getIsLoggedIn } from '../../../Redux/Selectors/loginSelectors/loginSelectors';
+import { logoutUserTC } from '../../../Redux/Thunk/loginThunk/loginThunk';
+import { routesPathsEnum } from '../../../Routes/enums';
 
 const LogoutPage = () => {
 
@@ -17,7 +17,7 @@ const LogoutPage = () => {
   };
 
   if ( !isLoggedIn ) {
-    return <Navigate to={ RoutesXPaths.LOGIN }/>;
+    return <Navigate to={ routesPathsEnum.LOGIN }/>;
   }
 
   return (

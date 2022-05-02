@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import registerFormStyle from './RegisterForm.module.css';
 import { useFormik } from 'formik';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { RoutesXPaths } from '../../../../Routes/routes';
 import { registerUserTC } from '../../../../Redux/Thunk/passwordThunk/passwordThunk';
 import { passwordActions } from '../../../../Redux/Actions/passwordActions/passwordActions';
 import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getError } from '../../../../Redux/Selectors/pesswordRegisterSelectors/pesswordRegisterSelectors';
 import { FormikErrorType } from './types';
+import { routesPathsEnum } from '../../../../Routes/enums';
 
 const RegisterForm = () => {
 
@@ -56,11 +56,11 @@ const RegisterForm = () => {
     formik.setTouched( {} );
     formik.setErrors( { email: undefined, password: undefined, confirm: undefined } );
     dispatch( passwordActions.setRegisterErrorAC( '' ) );
-    navigate( RoutesXPaths.LOGIN );
+    navigate( routesPathsEnum.LOGIN );
   };
 
   if ( error === 'email already exists /ᐠ｡ꞈ｡ᐟ\\' ) {
-    return <Navigate to={ RoutesXPaths.LOGIN }/>;
+    return <Navigate to={ routesPathsEnum.LOGIN }/>;
   }
 
   return (

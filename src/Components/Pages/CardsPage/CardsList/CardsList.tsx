@@ -10,13 +10,13 @@ import { cardsActions } from '../../../../Redux/Actions/cardsActions/cardsAction
 import Modal from '../../../Common/modal/modal';
 import AddCardComponent from './modulsComponents/AddCardComponent/AddCardComponent';
 import GlobalError from '../../../Common/globalError/globalError';
-import { setGlobalErrorAC } from '../../../../Redux/Reducers/appReducer/appReducer';
 import { Undetectable } from '../../../../types';
 import { getGlobalError, getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getCardsState } from '../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
-import { AppStateType } from '../../../../Redux/Store/store';
 import { UpdatedType } from '../../../../API/packsAPI/types';
 import { useDebounce } from '@react-hook/debounce';
+import { AppStateType } from '../../../../Redux/Store/types';
+import { appActions } from '../../../../Redux/Actions/appActions/appActions';
 
 type CardsListType = {
   name: string
@@ -99,7 +99,7 @@ const CardsList = ( { name }: CardsListType ) => {
           <Modal
             backgroundOnClick={ () => {
               dispatch( cardsActions.setCardModeAC( null ) );
-              dispatch( setGlobalErrorAC( '' ) );
+              dispatch( appActions.setGlobalErrorAC( '' ) );
 
             } }
             show={ mode === 'add' || globalError !== '' }

@@ -1,5 +1,5 @@
-import { AppStateType } from '../../Store/store';
 import { Undetectable } from '../../../types';
+import { AppStateType } from '../../Store/types';
 
 export const getIsLoggedIn = ( state: AppStateType ): boolean => {
   return state.login.isLoggedIn;

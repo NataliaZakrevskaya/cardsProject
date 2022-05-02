@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { RoutesXPaths } from '../../../../Routes/routes';
 import style from './Links.module.css';
+import { routesPathsEnum } from '../../../../Routes/enums';
 
 const Links = () => {
 
@@ -9,7 +9,7 @@ const Links = () => {
     <div className={ style.main }>
       <>
         <NavLink
-          to={ RoutesXPaths.PROFILE }
+          to={ routesPathsEnum.PROFILE }
           className={ ( { isActive } ) => ( isActive ? style.active : style.ordinaryLink ) }
           style={ { textDecoration: 'none' } }>
           Profile
@@ -17,7 +17,7 @@ const Links = () => {
       </>
       <>
         <NavLink
-          to={ RoutesXPaths.PACKS }
+          to={ routesPathsEnum.PACKS }
           className={ ( { isActive } ) => ( isActive ? style.active : style.ordinaryLink ) }
           style={ { textDecoration: 'none' } }>
           Packs
@@ -25,7 +25,7 @@ const Links = () => {
       </>
       <>
         <NavLink
-          to={ RoutesXPaths.CARDS }
+          to={ routesPathsEnum.CARDS }
           className={ ( { isActive } ) => ( isActive ? style.active : style.ordinaryLink ) }
           style={ { textDecoration: 'none' } }>
           Cards
@@ -35,7 +35,7 @@ const Links = () => {
       </>
       <>
         <NavLink
-          to={ RoutesXPaths.LOGOUT }
+          to={ routesPathsEnum.LOGOUT }
           className={ ( { isActive } ) => ( isActive ? style.active : style.ordinaryLink ) }
           style={ { textDecoration: 'none' } }>
           Logout

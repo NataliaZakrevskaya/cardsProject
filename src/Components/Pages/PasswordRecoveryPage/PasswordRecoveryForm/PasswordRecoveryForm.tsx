@@ -1,12 +1,11 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import registerFormStyle from '../../RegisterPage/RegisterForm/RegisterForm.module.css';
-import { RoutesXPaths } from '../../../../Routes/routes';
 import { useNavigate } from 'react-router-dom';
 import { passwordRecoveryTC } from '../../../../Redux/Thunk/passwordThunk/passwordThunk';
-import { Nullable } from '../../../../types';
 import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getError } from '../../../../Redux/Selectors/pesswordRegisterSelectors/pesswordRegisterSelectors';
+import { routesPathsEnum } from '../../../../Routes/enums';
 
 const PasswordRecoveryForm = () => {
 
@@ -22,7 +21,7 @@ const PasswordRecoveryForm = () => {
     dispatch( passwordRecoveryTC( email ) );
   };
   const onCancelButtonClick = () => {
-    navigate( RoutesXPaths.LOGIN );
+    navigate( routesPathsEnum.LOGIN );
   };
   const onEmailInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setEmail( e.currentTarget.value );

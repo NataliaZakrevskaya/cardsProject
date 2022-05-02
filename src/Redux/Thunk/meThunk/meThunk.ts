@@ -1,18 +1,18 @@
 import { Dispatch } from 'redux';
 import { meAPI } from '../../../API/meAPI/meAPI';
-import { ProfileActions } from '../../Reducers/profileReducer/ProfileReducer';
 import { LoginFormActions } from '../../Actions/loginFormActions/loginFormActions';
 import { meActions } from '../../Actions/meActions/meActions';
 import { appActions } from '../../Actions/appActions/appActions';
 import { AppRequestStatus } from '../../../enums';
 import { SOME_ERROR } from '../../../constants';
+import { profileActions } from '../../Actions/profileActions/profileActions';
 
 export const meTC = () => async ( dispatch: Dispatch ) => {
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   dispatch( appActions.setIsLoadAC( true ) );
   try {
     let res = await meAPI.me();
-    dispatch( ProfileActions.setProfileAC( res.passwordRecoveryInfo ) );
+    dispatch( profileActions.setProfileAC( res.data ) );
     dispatch( LoginFormActions.setIsLoggedInAC( true ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
   } catch ( error: any ) {

@@ -2,9 +2,9 @@ import React, { FC, useState } from 'react';
 import './doubleRange.module.css';
 import Slider from '@mui/material/Slider';
 import { packsActions } from '../../../Redux/Actions/packsActions/packsActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from '@mui/material';
-import { useAppSelector } from '../../../Redux/Store/store';
+import { getIsLoad } from '../../../Redux/Selectors/appSelectors/appSelectors';
 
 const DoubleRangeElement = styled( Slider )( {
   maxWidth: '400px',
@@ -50,7 +50,7 @@ const DoubleRangeElement = styled( Slider )( {
 const DoubleRange: FC = () => {
 
   const dispatch = useDispatch();
-  const isLoad = useAppSelector<boolean>( state => state.app.isLoad );
+  const isLoad = useSelector( getIsLoad );
   const [ value, setValue ] = useState( [ 0, 100 ] );
 
   const onDoubleRangeChange = ( e: Event, values: number | number[] ) => {

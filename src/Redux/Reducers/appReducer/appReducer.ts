@@ -1,5 +1,5 @@
 import { AppRequestStatus } from '../../../enums';
-import { AppReducerActionType, InitialAppStateType, RequestStatusType } from './types';
+import { AppReducerActionType, AppInitialStateType, RequestStatusType } from './types';
 import { AppFormReducer } from './enums';
 
 export const appInitialState = {
@@ -9,7 +9,7 @@ export const appInitialState = {
   isLoad: false,
 };
 
-export const appReducer = ( state: InitialAppStateType = appInitialState, action: AppReducerActionType ): InitialAppStateType => {
+export const appReducer = ( state: AppInitialStateType = appInitialState, action: AppReducerActionType ): AppInitialStateType => {
   switch ( action.type ) {
     case AppFormReducer.SET_STATUS:
       return { ...state, status: action.payload.status };

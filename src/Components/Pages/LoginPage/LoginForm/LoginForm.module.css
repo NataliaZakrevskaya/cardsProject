@@ -130,17 +130,13 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/*позволил себе чуть подэтого логин*/
-
-
-.Link {
+.LinkItem link {
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     color: #4f74cb;
-
 }
 
-.Link:hover {
+.LinkItem link:hover {
     text-decoration: underline;
     color: #092c7e;
 }

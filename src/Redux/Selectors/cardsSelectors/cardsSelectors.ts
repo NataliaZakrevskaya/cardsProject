@@ -1,5 +1,5 @@
-import { AppStateType } from '../../Store/store';
-import { CardsInitialStateType, CardType } from '../../Reducers/cardsReducer/cardsReducer';
+import { AppStateType } from '../../Store/types';
+import { CardsInitialStateType, CardType } from '../../Reducers/cardsReducer/types';
 
 export const getCardsState = ( state: AppStateType ): CardsInitialStateType => {
   return state.cards;

@@ -3,12 +3,12 @@ import style from './LoginForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { Navigate, NavLink } from 'react-router-dom';
-import { loginUserTC } from '../../../../Redux/Reducers/loginFormReducer/loginReducer';
-import { RoutesXPaths } from '../../../../Routes/routes';
 import PasswordView from '../../../Common/passwordView/passwordView';
 import { getIsLoad, getIsVisible } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getError, getIsLoggedIn } from '../../../../Redux/Selectors/loginSelectors/loginSelectors';
 import { FormikErrorType } from './types';
+import { loginUserTC } from '../../../../Redux/Thunk/loginThunk/loginThunk';
+import { routesPathsEnum } from '../../../../Routes/enums';
 
 const LoginForm = () => {
 
@@ -46,7 +46,7 @@ const LoginForm = () => {
   } );
 
   if ( isLoggedIn ) {
-    return <Navigate to={ RoutesXPaths.PROFILE }/>;
+    return <Navigate to={ routesPathsEnum.PROFILE }/>;
   }
 
   return (
@@ -87,7 +87,6 @@ const LoginForm = () => {
             <PasswordView isVisible={ isVisible }/>
 
           </div>
-
           {
             formik.touched.password &&
             formik.errors.password &&
@@ -103,23 +102,17 @@ const LoginForm = () => {
               { ...formik.getFieldProps( 'rememberMe' ) }
             />
           </div>
-          <div className={ style.buttons }>
             <button type="submit" disabled={ isLoad }>Login</button>
-          </div>
         </form>
 
         <div className={ style.footer }>
           <div className={ style.LinkItem }>
             <span>Not registered?</span>
-            <div className={ style.links }>
-              <NavLink className={ style.Link } to={ RoutesXPaths.REGISTER }>Create an Account</NavLink>
-            </div>
+             <NavLink className={ style.Link } to={ routesPathsEnum.REGISTER }>Create an Account</NavLink>
           </div>
           <div className={ style.LinkItem }>
             <span>Forgot password? </span>
-            <div>
-              <NavLink className={ style.Link } to={ RoutesXPaths.RECOVERY }>Click here to recover</NavLink>
-            </div>
+            <NavLink className={ style.Link } to={ routesPathsEnum.RECOVERY }>Click here to recover</NavLink>
           </div>
         </div>
       </div>

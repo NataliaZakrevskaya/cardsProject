@@ -1,26 +1,27 @@
-import {meReducer, meInitialStateType} from "../../Redux/Reducers/meReducer/meReducer";
-import {initializeMeAC, setErrorMeAC} from "../../Redux/Actions/meActions/meActions";
+import { meReducer } from '../../Redux/Reducers/meReducer/meReducer';
+import { MeInitialStateType } from '../../Redux/Reducers/meReducer/types';
+import { meActions } from '../../Redux/Actions/meActions/meActions';
 
-let startState: meInitialStateType
+let startState: MeInitialStateType;
 
-beforeEach(() => {
-        startState = {
-            isInitialized: false,
-            error: ''
-        }
-    }
-)
+beforeEach( () => {
+    startState = {
+      isInitialized: false,
+      error: '',
+    };
+  },
+);
 
-test('correct initialize value should be set', () => {
-    const endState = meReducer(startState, initializeMeAC(true))
+test( 'correct initialize value should be set', () => {
+  const endState = meReducer( startState, meActions.initializeMeAC( true ) );
 
-    expect(endState.error).toBe('')
-    expect(endState.isInitialized).toBe(true)
-})
+  expect( endState.error ).toBe( '' );
+  expect( endState.isInitialized ).toBe( true );
+} );
 
-test('correct error should be set', () => {
-    const endState = meReducer(startState, setErrorMeAC('some friday error'))
+test( 'correct error should be set', () => {
+  const endState = meReducer( startState, meActions.setErrorMeAC( 'some friday error' ) );
 
-    expect(endState.error).toBe('some friday error')
-    expect(endState.isInitialized).toBe(false)
-})
+  expect( endState.error ).toBe( 'some friday error' );
+  expect( endState.isInitialized ).toBe( false );
+} );

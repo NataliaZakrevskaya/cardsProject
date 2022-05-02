@@ -3,7 +3,6 @@ import style from '../../../PacksPage/PacksPage/PackList/Pack/Pack.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconButton, Rating } from '@mui/material';
-import { RoutesXPaths } from '../../../../../Routes/routes';
 import Modal from '../../../../Common/modal/modal';
 import EditCardComponent from '../modulsComponents/EditCardComponent/EditCardComponent';
 import { cardsActions } from '../../../../../Redux/Actions/cardsActions/cardsActions';
@@ -12,6 +11,7 @@ import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelect
 import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { CardComponentType } from './types';
 import { Delete } from '@material-ui/icons';
+import { routesPathsEnum } from '../../../../../Routes/enums';
 
 const Card = ( { content }: CardComponentType ) => {
 
@@ -26,7 +26,7 @@ const Card = ( { content }: CardComponentType ) => {
   const isLoad = useSelector( getIsLoad );
 
   const onTableDoubleClick = () => {
-    navigate( `${ RoutesXPaths.LEARNED_CARD }/${ _id }/${ cardsPack_id }` );
+    navigate( `${ routesPathsEnum.LEARNED_CARD }/${ _id }/${ cardsPack_id }` );
   };
 
   return (

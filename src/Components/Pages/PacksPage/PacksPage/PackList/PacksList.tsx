@@ -5,15 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import DoubleRange from '../../../../Common/doubleRange/doubleRange';
 import TablesPagination from '../../../../Common/tablePaginator/tablePaginator';
 import { packsActions } from '../../../../../Redux/Actions/packsActions/packsActions';
-import { InitialCardPacksType, ModeTypes, PackType } from '../../../../../Redux/Reducers/packsReducer/packsReducer';
 import { packsTC } from '../../../../../Redux/Thunk/packsThunk/packsThunk';
-import { RoutesXPaths } from '../../../../../Routes/routes';
 import TableHeader from '../../../CardsPage/CardsList/Table/TableHeader/TableHeader';
 import Pack from './Pack/Pack';
 import GlobalError from '../../../../Common/globalError/globalError';
 import Modal from '../../../../Common/modal/modal';
 import AddPackComponent from './modulsComponents/AddPackComponent/AddPackComponent';
-import { setGlobalErrorAC } from '../../../../../Redux/Reducers/appReducer/appReducer';
 import { getPacksState } from '../../../../../Redux/Selectors/packsSelectors/packsSelectors';
 import { getGlobalError, getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors/profileSelectors';
@@ -21,6 +18,8 @@ import { useDebounce } from '@react-hook/debounce';
 import { Nullable } from '../../../../../types';
 import { SelectType } from '../../../../../Redux/Selectors/packsSelectors/types';
 import { ALL, MY } from '../../../../../Redux/Selectors/packsSelectors/constants';
+import { appActions } from '../../../../../Redux/Actions/appActions/appActions';
+import { routesPathsEnum } from '../../../../../Routes/enums';
 
 const PacksList = () => {
 
@@ -66,11 +65,11 @@ const PacksList = () => {
     dispatch( packsActions.setMinCardsCountAC( 0 ) );
     dispatch( packsActions.setMaxCardsCountAC( 100 ) );
 
-    navigate( `${ RoutesXPaths.CARDS }/${ packId }` );
+    navigate( `${ routesPathsEnum.CARDS }/${ packId }` );
   };
   const onModalClick = () => {
     dispatch( packsActions.setPacksModeAC( null ) );
-    dispatch( setGlobalErrorAC( '' ) );
+    dispatch( appActions.setGlobalErrorAC( '' ) );
   };
 
   return (

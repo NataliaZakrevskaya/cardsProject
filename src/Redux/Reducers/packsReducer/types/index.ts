@@ -1,6 +1,7 @@
 import { UpdatedType } from '../../../../API/packsAPI/types';
 import { Nullable } from '../../../../types';
-import { packsActions, PacksActionsTypes } from '../../../Actions/packsActions/packsActions';
+import { packsActions } from '../../../Actions/packsActions/packsActions';
+import { PacksActionsTypes } from '../../../Actions/packsActions/types';
 
 export type PackType = {
   _id: string

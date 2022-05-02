@@ -2,9 +2,9 @@ import React, { ChangeEvent, useState } from 'react';
 import style
   from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCardTC } from '../../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { EditCardComponentType } from './types';
+import { updateCardTC } from '../../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 
 const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
 

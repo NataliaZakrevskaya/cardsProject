@@ -1,3 +1,5 @@
+import { Nullable } from '../../../types';
+
 export type UpdatedType =
   '0updated'
   | '1updated'
@@ -19,4 +21,13 @@ export type newPackType = {
 export type UpdatedPackType = {
   _id: string
   name: string
+}
+export type PacksInfoType = {
+  packName: string
+  minCardsCount: number
+  maxCardsCount: number
+  updated: UpdatedType
+  page: number
+  pageCount: number
+  user_id: Nullable<string>
 }

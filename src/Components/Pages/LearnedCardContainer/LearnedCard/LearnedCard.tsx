@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import s from './LearnedCard.module.css';
+import style from './LearnedCard.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { RoutesXPaths } from '../../../../Routes/routes';
-import { CardType } from '../../../../Redux/Reducers/cardsReducer/cardsReducer';
-import { PackType } from '../../../../Redux/Reducers/packsReducer/packsReducer';
 import { gradeCardTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { Undetectable } from '../../../../types';
-import { AppStateType } from '../../../../Redux/Store/store';
 import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
+import { AppStateType } from '../../../../Redux/Store/types';
+import { CardType } from '../../../../Redux/Reducers/cardsReducer/types';
+import { PackType } from '../../../../Redux/Reducers/packsReducer/types';
+import { routesPathsEnum } from '../../../../Routes/enums';
 
 export const LearnedCard = () => {
   const navigate = useNavigate();
@@ -47,48 +47,48 @@ export const LearnedCard = () => {
   };
 
   const onShowAnswerButtonClick = () => {
-    setShowAnswer( !showAnswer )
-  }
+    setShowAnswer( !showAnswer );
+  };
 
   const goBack = () => {
-    navigate( `${ RoutesXPaths.CARDS }/${ packId }` );
+    navigate( `${ routesPathsEnum.CARDS }/${ packId }` );
   };
 
   return (
-    <div className={ s.addItemContainer }
+    <div className={ style.addItemContainer }
          style={ { borderRadius: '10px', backgroundColor: 'white' } }>
       <h2>
         learn: { actualPack?.name }
       </h2>
       <div>
-        <div className={ s.mainText }>
+        <div className={ style.mainText }>
           question: { actualCard?.question }
         </div>
         {
           showAnswer &&
             <div>
-                <div className={ s.mainText }>
+                <div className={ style.mainText }>
                     answer: { actualCard?.answer }
                 </div>
                 <div>
-                    <span className={ s.mainText }>rate yourself:</span>
-                    <label className={ s.inputForm } style={ { display: 'flex' } }>
+                    <span className={ style.mainText }>rate yourself:</span>
+                    <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 5 ) } value={ cardRate }
                                name="rate"/>знал
                     </label>
-                    <label className={ s.inputForm } style={ { display: 'flex' } }>
+                    <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 4 ) } value={ cardRate }
                                name="rate"/>перепутал
                     </label>
-                    <label className={ s.inputForm } style={ { display: 'flex' } }>
+                    <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 3 ) } value={ cardRate }
                                name="rate"/>долго думал
                     </label>
-                    <label className={ s.inputForm } style={ { display: 'flex' } }>
+                    <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 2 ) } value={ cardRate }
                                name="rate"/>забыл
                     </label>
-                    <label className={ s.inputForm } style={ { display: 'flex' } }>
+                    <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 1 ) } value={ cardRate }
                                name="rate"/>не знал
                     </label>

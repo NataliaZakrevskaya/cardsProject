@@ -1,5 +1,5 @@
-import { AppStateType } from '../../Store/store';
-import { RequestStatusType } from '../../Reducers/appReducer/appReducer';
+import { AppStateType } from '../../Store/types';
+import { RequestStatusType } from '../../Reducers/appReducer/types';
 
 export const getIsLoad = ( state: AppStateType ): boolean => {
   return state.app.isLoad;

@@ -1,11 +1,11 @@
 import React, { KeyboardEvent, useState } from 'react';
 import style from './ProfilePage.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUserNameTC } from '../../../Redux/Reducers/profileReducer/ProfileReducer';
 import { ChangeNameInput } from './changeNameInput/changeNameInput';
 import { ProfileNameSpan } from './profileNameSpan/profileNameSpan';
 import { BASE_IMG_URL } from './constants';
 import { getErrorMessage, getProfileInfo } from '../../../Redux/Selectors/profileSelectors/profileSelectors';
+import { updateUserNameTC } from '../../../Redux/Thunk/profileThunk/profileThunk';
 
 const ProfilePage = () => {
 

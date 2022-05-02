@@ -1,12 +1,12 @@
-import { meInitialStateType, MeReducerActionsType } from './types';
+import { MeInitialStateType, MeReducerActionsType } from './types';
 import { meActionsEnum } from '../../Actions/meActions/enums';
 
-export const meInitialState: meInitialStateType = {
+export const meInitialState: MeInitialStateType = {
   isInitialized: false,
   error: '',
 };
 
-export const meReducer = ( state = meInitialState, action: MeReducerActionsType ): meInitialStateType => {
+export const meReducer = ( state = meInitialState, action: MeReducerActionsType ): MeInitialStateType => {
   switch ( action.type ) {
     case meActionsEnum.INITIALIZE_ME: {
       return { ...state, isInitialized: action.payload.initialization };

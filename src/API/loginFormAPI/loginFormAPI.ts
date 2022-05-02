@@ -5,8 +5,8 @@ import { LOGIN_URL, ME_URL } from './constants';
 import { LoginType } from './types';
 
 export const loginFormAPI = {
-  async loginMe( body: LoginType ) {
-    return await instance.post<UserDataType, AxiosResponse<UserDataType>>( LOGIN_URL, body );
+  async loginMe( loginInfo: LoginType ) {
+    return await instance.post<UserDataType, AxiosResponse<UserDataType>>( LOGIN_URL, loginInfo );
   },
   async logoutMe() {
     return await instance.delete( ME_URL, {} );

@@ -1,6 +1,6 @@
-import { AppStateType } from '../../Store/store';
 import { UserDataType } from '../../Actions/loginFormActions/loginFormActions';
 import { meRespType } from '../../../API/meAPI/types';
+import { AppStateType } from '../../Store/types';
 
 export const getOwnId = ( state: AppStateType ): string => {
   return state.profile.profile._id;

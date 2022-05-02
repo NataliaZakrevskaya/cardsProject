@@ -3,19 +3,19 @@ import { passwordActions } from '../../Actions/passwordActions/passwordActions';
 import { appActions } from '../../Actions/appActions/appActions';
 import { passwordAPI } from '../../../API/passwordAPI/passwordAPI';
 import { AppRequestStatus } from '../../../enums';
-import { SOME_ERROR } from '../../../constants';
+import { CONSOLE_DETAILS, SOME_ERROR } from '../../../constants';
 import { newPassBodyType } from '../../../API/passwordAPI/types';
 
-export const registerUserTC = ( body: { email: string, password: string } ) => async ( dispatch: Dispatch ) => {
+export const registerUserTC = ( userInfo: { email: string, password: string } ) => async ( dispatch: Dispatch ) => {
 
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   dispatch( appActions.setIsLoadAC( true ) );
   try {
-    let res = await passwordAPI.registerMe( body );
+    let res = await passwordAPI.registerMe( userInfo );
     dispatch( passwordActions.registerNewUserAC( res.data ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
   } catch ( e: any ) {
-    const error = e.response ? e.response.data.error : ( e.message + ', more details in the console' );
+    const error = e.response ? e.response.data.error : ( e.message + CONSOLE_DETAILS );
     dispatch( passwordActions.setRegisterErrorAC( error ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.FAILED ) );
   } finally {
@@ -40,11 +40,11 @@ export const passwordRecoveryTC = ( email: string ) => async ( dispatch: Dispatc
   }
 };
 
-export const newPasswordTC = ( body: newPassBodyType ) => async ( dispatch: Dispatch ) => {
+export const newPasswordTC = ( newPassword: newPassBodyType ) => async ( dispatch: Dispatch ) => {
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   dispatch( appActions.setIsLoadAC( true ) );
   try {
-    let res = await passwordAPI.createNewPass( body );
+    let res = await passwordAPI.createNewPass( newPassword );
     dispatch( passwordActions.setInfoNewPassAC( res.data ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
   } catch ( error: any ) {

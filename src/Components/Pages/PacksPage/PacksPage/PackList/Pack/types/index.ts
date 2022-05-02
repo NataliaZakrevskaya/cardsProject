@@ -1,4 +1,4 @@
-import { PackType } from '../../../../../../../Redux/Reducers/packsReducer/packsReducer';
+import { PackType } from '../../../../../../../Redux/Reducers/packsReducer/types';
 
 export type OnlyOnePackComponentType = {
   item: PackType

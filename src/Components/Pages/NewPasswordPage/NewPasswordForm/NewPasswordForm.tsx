@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import regS from '../../RegisterPage/RegisterForm/RegisterForm.module.css';
+import style from '../../RegisterPage/RegisterForm/RegisterForm.module.css';
 import { newPasswordTC } from '../../../../Redux/Thunk/passwordThunk/passwordThunk';
 import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 
@@ -27,17 +27,17 @@ const NewPasswordForm = () => {
   };
 
   return (
-    <div className={ regS.registerPage }>
-      <div className={ regS.title }>
+    <div className={ style.registerPage }>
+      <div className={ style.title }>
         <h1>Cards</h1>
         <h4> Write new pass!</h4>
       </div>
       <>
-        <div className={ regS.second }>
+        <div className={ style.second }>
           <input type="text" disabled={ isLoad }
                  value={ newPass }
                  onChange={ onNewPasswordInputChange }/>
-          <div className={ regS.buttonsDiv }>
+          <div className={ style.buttonsDiv }>
             <button onClick={ onCreateButtonClick } disabled={ isLoad }>Create</button>
           </div>
         </div>

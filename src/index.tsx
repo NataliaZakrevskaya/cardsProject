@@ -6,8 +6,8 @@ import {Provider} from "react-redux";
 import {store} from "./Redux/Store/store";
 import App from "./app";
 import {ThemeProvider} from "@material-ui/core";
-import {createTheme} from "@mui/material";
 import {HashRouter} from "react-router-dom";
+import { createTheme } from '@mui/material';
 
 const theme = createTheme({
     palette: {

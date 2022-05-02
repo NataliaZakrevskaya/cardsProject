@@ -10,11 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { packsActions } from '../../../../../../Redux/Actions/packsActions/packsActions';
 import { cardsTC } from '../../../../../../Redux/Thunk/cardsThunk/cardsThunk';
-import { RoutesXPaths } from '../../../../../../Routes/routes';
 import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { modeType, OnlyOnePackComponentType, SrazyIliType } from './types';
-import { AppStateType } from '../../../../../../Redux/Store/store';
+import { AppStateType } from '../../../../../../Redux/Store/types';
+import { routesPathsEnum } from '../../../../../../Routes/enums';
 
 const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
 
@@ -114,7 +114,7 @@ const SrazyIli = ( { runToCards, packId, setMode }: SrazyIliType ) => {
     dispatch( packsActions.setMaxCardsCountAC( 100 ) );
 
     setMode();
-    navigate( `${ RoutesXPaths.LEARNED_CARD }/${ packId }/${ cardId }` );
+    navigate( `${ routesPathsEnum.LEARNED_CARD }/${ packId }/${ cardId }` );
 
   };
   const onCancelButtonClick = () => {

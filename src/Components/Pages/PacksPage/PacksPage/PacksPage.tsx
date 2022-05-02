@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import PacksList from './PackList/PacksList';
 import { cardsActions } from '../../../../Redux/Actions/cardsActions/cardsActions';
 import { useDispatch } from 'react-redux';
-import { setGlobalErrorAC } from '../../../../Redux/Reducers/appReducer/appReducer';
+import { appActions } from '../../../../Redux/Actions/appActions/appActions';
 
 const PacksPage = () => {
   const dispatch = useDispatch();
 
   useEffect( () => {
     dispatch( cardsActions.setCardModeAC( null ) );
-    dispatch( setGlobalErrorAC( '' ) );
+    dispatch( appActions.setGlobalErrorAC( '' ) );
   }, [] );
 
   return (

@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { deletePacksTC } from '../../../../../../Redux/Thunk/packsThunk/packsThunk';
-import { RoutesXPaths } from '../../../../../../Routes/routes';
 import style from './Table.module.css';
 import { Button, IconButton } from '@mui/material';
 import { Delete } from '@material-ui/icons';
 import React from 'react';
+import { routesPathsEnum } from '../../../../../../Routes/enums';
 
 export const ButtonGroup = ( { _id, user_id, edit, setEdit, saveChanges }: any ) => {
 
@@ -21,7 +21,7 @@ export const ButtonGroup = ( { _id, user_id, edit, setEdit, saveChanges }: any )
   };
 
   const onLearnButtonClick = () => {
-    navigate( `${ RoutesXPaths.CARDS }/${ _id }` );
+    navigate( `${ routesPathsEnum.CARDS }/${ _id }` );
   };
   const onEditButtonClick = () => {
     setEdit( true );

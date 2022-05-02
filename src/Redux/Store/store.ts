@@ -1,18 +1,14 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import thunk, { ThunkAction } from 'redux-thunk';
-import { meReducer, MeReducerActionsType } from '../Reducers/meReducer/meReducer';
-import { profileReducer, ProfileReducerActionsType } from '../Reducers/profileReducer/ProfileReducer';
-import { LoginFormActionsType, loginReducer } from '../Reducers/loginFormReducer/loginReducer';
-import {
-  passwordReducer,
-  PasswordReducerActionsType,
-} from '../Reducers/passwordReducer/passwordReducer';
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { AppActionsType, appReducer } from '../Reducers/appReducer/appReducer';
-import { packsReducer, PacksReducerActionsType } from '../Reducers/packsReducer/packsReducer';
+import thunk from 'redux-thunk';
+import { meReducer } from '../Reducers/meReducer/meReducer';
+import { profileReducer } from '../Reducers/profileReducer/ProfileReducer';
+import { loginReducer } from '../Reducers/loginFormReducer/loginReducer';
+import { passwordReducer } from '../Reducers/passwordReducer/passwordReducer';
+import { appReducer } from '../Reducers/appReducer/appReducer';
+import { packsReducer } from '../Reducers/packsReducer/packsReducer';
 import { cardsReducer } from '../Reducers/cardsReducer/cardsReducer';
 
-const rootReducer = combineReducers( {
+export const rootReducer = combineReducers( {
   me: meReducer,
   profile: profileReducer,
   login: loginReducer,
@@ -22,21 +18,7 @@ const rootReducer = combineReducers( {
   cards: cardsReducer,
 } );
 
-export type AppStateType = ReturnType<typeof rootReducer>
-
 export const store = createStore( rootReducer, applyMiddleware( thunk ) );
-type AppStateActionsType =
-  PacksReducerActionsType
-  | AppActionsType
-  | PasswordReducerActionsType
-  | ProfileReducerActionsType
-  | MeReducerActionsType
-  | LoginFormActionsType
-
-export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType,
-  AppStateType,
-  unknown,
-  AppStateActionsType>
 
 //@ts-ignore
 window.store = store;

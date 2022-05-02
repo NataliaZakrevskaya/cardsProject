@@ -1,19 +1,20 @@
 import { packsAPI } from '../../../API/packsAPI/packsAPI';
-import { AppStateType, AppThunkType } from '../../Store/store';
 import { Dispatch } from 'redux';
 import { packsActions } from '../../Actions/packsActions/packsActions';
 import { appActions } from '../../Actions/appActions/appActions';
 import { AppRequestStatus } from '../../../enums';
 import { newPackType } from '../../../API/packsAPI/types';
 import { SOME_ERROR } from '../../../constants';
+import { AppStateType, AppThunkType } from '../../Store/types';
 
 export const packsTC = () => async ( dispatch: Dispatch, getState: () => AppStateType ) => {
   const { packName, minCardsCount, maxCardsCount, updated, page, pageCount, user_id } = getState().packs;
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   dispatch( appActions.setIsLoadAC( true ) );
   try {
-    let res = await packsAPI.setPacks( packName, minCardsCount, maxCardsCount, updated, page, pageCount, user_id );
-    dispatch( packsActions.setPacksAC( res.passwordRecoveryInfo ) );
+    const packsInfo = { packName, minCardsCount, maxCardsCount, updated, page, pageCount, user_id };
+    let res = await packsAPI.setPacks( packsInfo );
+    dispatch( packsActions.setPacksAC( res.data ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
   } catch ( error: any ) {
     dispatch( appActions.setGlobalErrorAC( error.response ? error.response.data.error : SOME_ERROR ) );

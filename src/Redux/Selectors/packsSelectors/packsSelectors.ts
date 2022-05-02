@@ -1,7 +1,7 @@
-import { AppStateType } from '../../Store/store';
-import { InitialCardPacksType, PackType } from '../../Reducers/packsReducer/packsReducer';
+import { AppStateType } from '../../Store/types';
+import { PacksInitialStateType, PackType } from '../../Reducers/packsReducer/types';
 
-export const getPacksState = ( state: AppStateType ): InitialCardPacksType => {
+export const getPacksState = ( state: AppStateType ): PacksInitialStateType => {
   return state.packs;
 };
 export const getActualPacksPage = ( state: AppStateType ): number => {
