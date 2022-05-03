@@ -84,7 +84,7 @@ const LoginForm = () => {
                    placeholder={ 'Enter your password' }
                    { ...formik.getFieldProps( 'password' ) }
             />
-            <PasswordView isVisible={ isVisible }/>
+            {/*<PasswordView isVisible={ isVisible }/>*/}
 
           </div>
           {

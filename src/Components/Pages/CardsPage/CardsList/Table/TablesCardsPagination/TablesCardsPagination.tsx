@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import TablePagination from '@mui/material/TablePagination';
 import { cardsActions } from '../../../../../../Redux/Actions/cardsActions/cardsActions';
 import {
   getActualCardsCount,
@@ -7,6 +6,7 @@ import {
 } from '../../../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
 import { ChangeEvent, MouseEvent, FC, useState } from 'react';
 import { Nullable } from '../../../../../../types';
+import { TablePagination } from '@material-ui/core';
 
 const TablesCardsPagination: FC = () => {
 

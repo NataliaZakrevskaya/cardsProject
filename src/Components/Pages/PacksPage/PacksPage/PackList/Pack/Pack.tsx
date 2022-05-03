@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import style from './Pack.module.css';
 import commonStyle from '../modulsComponents/AddPackComponent/AddPackComponent.module.css';
-import { IconButton } from '@mui/material';
 import { Delete } from '@material-ui/icons';
-import Modal from '../../../../../Common/modal/modal';
-import EditPackComponent from '../modulsComponents/EditPackComponent/EditPackComponent';
-import DeletePackComponent from '../modulsComponents/DeletePackComponent/DeletePackComponent';
+import ModalComponent from '../../../../../Common/modal/modalComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { packsActions } from '../../../../../../Redux/Actions/packsActions/packsActions';
@@ -15,6 +12,9 @@ import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSel
 import { modeType, OnlyOnePackComponentType, SrazyIliType } from './types';
 import { AppStateType } from '../../../../../../Redux/Store/types';
 import { routesPathsEnum } from '../../../../../../Routes/enums';
+import DeletePackComponent from '../../../../../Common/modal/packsModal/DeletePackComponent/DeletePackComponent';
+import EditPackComponent from '../../../../../Common/modal/packsModal/EditPackComponent/EditPackComponent';
+import IconButton from '@material-ui/core/IconButton';
 
 const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
 
@@ -76,7 +76,7 @@ const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
         }
       </div>
 
-      <Modal
+      <ModalComponent
         backgroundOnClick={ onModalClick }
         show={ mode !== null }
         height={ 0 }
@@ -86,7 +86,7 @@ const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
         { mode === 'delete' && <DeletePackComponent id={ item._id } setMode={ onModalClick }/> }
         { mode === 'edit' && <EditPackComponent item={ item } closeModal={ onModalClick }/> }
         { mode === 'v' && <SrazyIli packId={ item._id } runToCards={ runToCards } setMode={ onModalClick }/> }
-      </Modal>
+      </ModalComponent>
 
     </div>
   );

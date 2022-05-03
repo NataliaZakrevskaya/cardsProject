@@ -9,8 +9,7 @@ import { packsTC } from '../../../../../Redux/Thunk/packsThunk/packsThunk';
 import TableHeader from '../../../CardsPage/CardsList/Table/TableHeader/TableHeader';
 import Pack from './Pack/Pack';
 import GlobalError from '../../../../Common/globalError/globalError';
-import Modal from '../../../../Common/modal/modal';
-import AddPackComponent from './modulsComponents/AddPackComponent/AddPackComponent';
+import ModalComponent from '../../../../Common/modal/modalComponent';
 import { getPacksState } from '../../../../../Redux/Selectors/packsSelectors/packsSelectors';
 import { getGlobalError, getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors/profileSelectors';
@@ -20,6 +19,7 @@ import { SelectType } from '../../../../../Redux/Selectors/packsSelectors/types'
 import { ALL, MY } from '../../../../../Redux/Selectors/packsSelectors/constants';
 import { appActions } from '../../../../../Redux/Actions/appActions/appActions';
 import { routesPathsEnum } from '../../../../../Routes/enums';
+import AddPackComponent from '../../../../Common/modal/packsModal/AddPackComponent/AddPackComponent';
 
 const PacksList = () => {
 
@@ -134,7 +134,7 @@ const PacksList = () => {
               );
             } )
           }
-          <Modal
+          <ModalComponent
             backgroundOnClick={ onModalClick }
             show={ globalError !== '' || mode === 'add' || mode === 'edit' }
             height={ 0 }
@@ -147,7 +147,7 @@ const PacksList = () => {
             enableBackground={ true }>
             { globalError !== '' && <GlobalError/> }
             { mode === 'add' && <AddPackComponent/> }
-          </Modal>
+          </ModalComponent>
           <TablesPagination/>
         </div>
       </div>

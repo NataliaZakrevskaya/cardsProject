@@ -1,11 +1,11 @@
 import * as React from 'react';
-import TablePagination from '@mui/material/TablePagination';
 import { packsActions } from '../../../Redux/Actions/packsActions/packsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Nullable } from '../../../types';
 import { getIsLoad } from '../../../Redux/Selectors/appSelectors/appSelectors';
 import { getActualPacksCount, getActualPacksPage } from '../../../Redux/Selectors/packsSelectors/packsSelectors';
 import { ChangeEvent, useState } from 'react';
+import { TablePagination } from '@material-ui/core';
 
 const TablesPagination = () => {
 

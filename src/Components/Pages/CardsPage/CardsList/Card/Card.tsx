@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import style from '../../../PacksPage/PacksPage/PackList/Pack/Pack.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { IconButton, Rating } from '@mui/material';
-import Modal from '../../../../Common/modal/modal';
+import ModalComponent from '../../../../Common/modal/modalComponent';
 import { cardsActions } from '../../../../../Redux/Actions/cardsActions/cardsActions';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors/profileSelectors';
@@ -11,8 +10,10 @@ import { CardComponentType, ModeType } from './types';
 import { Delete } from '@material-ui/icons';
 import { routesPathsEnum } from '../../../../../Routes/enums';
 import { ModeEnum } from '../../../../../enums';
+import Rating from '@material-ui/lab/Rating';
 import EditCardComponent from '../../../../Common/modal/cardsModal/EditCardComponent/EditCardComponent';
 import DeleteCardComponent from '../../../../Common/modal/cardsModal/DeleteCardComponent/DeleteCardComponent';
+import IconButton from '@material-ui/core/IconButton';
 
 const Card = ( { content }: CardComponentType ) => {
 
@@ -67,7 +68,7 @@ const Card = ( { content }: CardComponentType ) => {
               </IconButton>
           </div>
       }
-      <Modal
+      <ModalComponent
         backgroundOnClick={ onModalClick }
         show={ mode !== null }
         height={ 0 }
@@ -76,7 +77,7 @@ const Card = ( { content }: CardComponentType ) => {
         enableBackground={ true }>
         { mode === ModeEnum.EDIT && <EditCardComponent card={ content } setMode={ setNullModal }/> }
         { mode === ModeEnum.DELETE && <DeleteCardComponent id={ _id } setMode={ setNullModal }/> }
-      </Modal>
+      </ModalComponent>
     </div>
   );
 };

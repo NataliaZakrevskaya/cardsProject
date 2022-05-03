@@ -3,7 +3,7 @@ import { Modal } from './interface';
 
 
 
-const Modal: FC<Modal> = (
+const ModalComponent: FC<Modal> = (
   {
     enableBackground,
     backgroundStyle,
@@ -68,4 +68,4 @@ const Modal: FC<Modal> = (
   );
 };
 
-export default Modal;
+export default ModalComponent;

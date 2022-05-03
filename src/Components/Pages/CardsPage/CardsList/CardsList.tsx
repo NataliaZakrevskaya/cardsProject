@@ -6,7 +6,7 @@ import Card from './Card/Card';
 import TablesCardsPagination from './Table/TablesCardsPagination/TablesCardsPagination';
 import { cardsTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { cardsActions } from '../../../../Redux/Actions/cardsActions/cardsActions';
-import Modal from '../../../Common/modal/modal';
+import ModalComponent from '../../../Common/modal/modalComponent';
 import GlobalError from '../../../Common/globalError/globalError';
 import { getGlobalError, getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getCards, getCardsState } from '../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
@@ -88,7 +88,7 @@ const CardsList = ( { name, packId }: CardsListType ) => {
               );
             } )
           }
-          <Modal
+          <ModalComponent
             backgroundOnClick={ () => {
               dispatch( cardsActions.setCardModeAC( null ) );
               dispatch( appActions.setGlobalErrorAC( '' ) );
@@ -107,7 +107,7 @@ const CardsList = ( { name, packId }: CardsListType ) => {
               globalError !== '' &&
                 <GlobalError/>
             }
-          </Modal>
+          </ModalComponent>
           <TablesCardsPagination/>
         </div>
       </div>

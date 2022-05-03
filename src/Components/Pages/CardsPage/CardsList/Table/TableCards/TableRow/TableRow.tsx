@@ -1,6 +1,6 @@
 import style from '../TableCards.module.css';
 import { TableCell } from '../TableCell/TableCell';
-import Rating from '@mui/material/Rating/Rating';
+import Rating from '@material-ui/lab/Rating';
 import React from 'react';
 
 export const TableRow = ( { info }: any ) => {
