@@ -1,6 +1,4 @@
 import React from 'react';
-import style
-  from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteCardComponentType } from './types';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
@@ -21,9 +19,9 @@ const DeleteCardComponent = ( { id, setMode }: DeleteCardComponentType ) => {
   };
 
   return (
-    <div className={ style.addItemContainer }>
+    <div>
       <h2>Do you want to delete card ?</h2>
-      <div className={ style.centerInputContainer }>
+      <div>
         <span>Really ? ✎</span>
         <div>
           <button onClick={ onNoButtonClick } disabled={ isLoad }>NO</button>

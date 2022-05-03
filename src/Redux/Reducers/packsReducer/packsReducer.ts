@@ -34,7 +34,8 @@ export const packsReducer = ( state = PacksInitialState, action: PacksReducerAct
       return { ...state, cardPacks: action.payload.state.cardPacks };
     }
     case packsActionsEnum.SET_ALL_USER_ID_CARDS: {
-      return { ...state, user_id: action.payload.user_id };
+      debugger
+      return { ...state, user_id: action.payload.cardsFilter };
     }
     case packsActionsEnum.SET_MIN_CARDS_COUNT: {
       return { ...state, minCardsCount: action.payload.minCardsCount };

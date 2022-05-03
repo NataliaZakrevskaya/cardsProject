@@ -6,14 +6,14 @@ import style from 'preloader.module.css';
 const Preloader = ( { status }: PreloaderType ) => {
   return (
     <>
-      {
+   {/*   {
         status === 'loading' &&
           <img
               src={ preloader }
               className={ style.preloader }
               alt="preloader"
           />
-      }
+      }*/}
     </>
   );
 };

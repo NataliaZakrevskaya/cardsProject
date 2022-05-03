@@ -1,11 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
-import style
-  from '../../../Pages/PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { TestAddCardComponentType } from './types';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { addNewCardTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { cardsActions } from '../../../../../Redux/Actions/cardsActions/cardsActions';
+import { TestAddCardComponentType } from './types';
+import style from './AddCardComponent.module.css';
 
 const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
 

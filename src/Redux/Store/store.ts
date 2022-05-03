@@ -17,8 +17,9 @@ export const rootReducer = combineReducers( {
   packs: packsReducer,
   cards: cardsReducer,
 } );
-
-export const store = createStore( rootReducer, applyMiddleware( thunk ) );
+//@ts-ignore
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const store = createStore( rootReducer, composeEnhancers( applyMiddleware( thunk ) ) );
 
 //@ts-ignore
 window.store = store;

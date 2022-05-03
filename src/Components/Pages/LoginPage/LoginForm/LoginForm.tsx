@@ -3,8 +3,7 @@ import style from './LoginForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { Navigate, NavLink } from 'react-router-dom';
-import PasswordView from '../../../Common/passwordView/passwordView';
-import { getIsLoad, getIsVisible } from '../../../../Redux/Selectors/appSelectors/appSelectors';
+import { getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getError, getIsLoggedIn } from '../../../../Redux/Selectors/loginSelectors/loginSelectors';
 import { FormikErrorType } from './types';
 import { loginUserTC } from '../../../../Redux/Thunk/loginThunk/loginThunk';
@@ -14,7 +13,6 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
 
-  const isVisible = useSelector( getIsVisible );
   const error = useSelector( getError );
   const isLoggedIn = useSelector( getIsLoggedIn );
   const isLoad = useSelector( getIsLoad );
@@ -80,11 +78,10 @@ const LoginForm = () => {
           <div className={ style.second }>
             <span>Password:</span>
             <input disabled={ isLoad }
-                   type={ isVisible ? 'text' : 'password' }
+                   type={ 'password' }
                    placeholder={ 'Enter your password' }
                    { ...formik.getFieldProps( 'password' ) }
             />
-            {/*<PasswordView isVisible={ isVisible }/>*/}
 
           </div>
           {
@@ -102,13 +99,13 @@ const LoginForm = () => {
               { ...formik.getFieldProps( 'rememberMe' ) }
             />
           </div>
-            <button type="submit" disabled={ isLoad }>Login</button>
+          <button type="submit" disabled={ isLoad }>Login</button>
         </form>
 
         <div className={ style.footer }>
           <div className={ style.LinkItem }>
             <span>Not registered?</span>
-             <NavLink className={ style.Link } to={ routesPathsEnum.REGISTER }>Create an Account</NavLink>
+            <NavLink className={ style.Link } to={ routesPathsEnum.REGISTER }>Create an Account</NavLink>
           </div>
           <div className={ style.LinkItem }>
             <span>Forgot password? </span>

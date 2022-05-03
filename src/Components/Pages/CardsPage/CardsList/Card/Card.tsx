@@ -28,7 +28,7 @@ const Card = ( { content }: CardComponentType ) => {
   const isLoad = useSelector( getIsLoad );
 
   const onTableDoubleClick = () => {
-    navigate( `${ routesPathsEnum.LEARNED_CARD }/${ _id }/${ cardsPack_id }` );
+    navigate( `${ routesPathsEnum.LEARNED_CARD }/${ cardsPack_id }/${ _id }` );
   };
   const onModalClick = () => {
     dispatch( cardsActions.setCardModeAC( null ) );

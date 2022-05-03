@@ -31,7 +31,7 @@ const PacksList = () => {
   const ownId = useSelector( getOwnId );
   const packsState = useSelector( getPacksState );
 
-  const { cardPacks, mode, packName, minCardsCount, maxCardsCount } = { ...packsState };
+  const { cardPacks, mode, packName, minCardsCount, maxCardsCount, user_id, pageCount, page, updated } = { ...packsState };
 
   const debouncedSearch = useDebounce<string>( packName, 1000 );
   const debouncedMIN = useDebounce<number>( minCardsCount, 1000 );
@@ -41,10 +41,10 @@ const PacksList = () => {
 
   useEffect( () => {
     dispatch( packsTC() );
-  }, [ debouncedSearch[ 0 ], packsState.user_id, debouncedMIN[ 0 ], debouncedMAX[ 0 ], packsState.pageCount,
-    packsState.page, packsState.updated ] );
+  }, [ debouncedSearch[ 0 ], user_id, debouncedMIN[ 0 ], debouncedMAX[ 0 ], pageCount, page, updated ] );
 
   const selectMyOrAll = ( value: Nullable<string> ) => {
+    debugger
     dispatch( packsActions.setAllUserIdCardsAC( value ) );
     value
       ? setSelected( MY )
@@ -73,6 +73,7 @@ const PacksList = () => {
   };
   const onMyButtonClick = () => {
     selectMyOrAll( ownId );
+    console.log(ownId);
   };
   const onAllButtonClick = () => {
     selectMyOrAll( null );
@@ -129,7 +130,7 @@ const PacksList = () => {
             cardPacks.map( ( tableRow, index ) => {
               return (
                 <div key={ index } onDoubleClick={ () => runToCards( tableRow._id ) }>
-                  <Pack item={ tableRow } runToCards={ runToCards }/>
+                <Pack item={ tableRow } runToCards={ runToCards }/>
                 </div>
               );
             } )

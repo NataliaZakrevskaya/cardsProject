@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import './doubleRange.module.css';
 import { packsActions } from '../../../Redux/Actions/packsActions/packsActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,26 +52,25 @@ const DoubleRange: FC = () => {
   const isLoad = useSelector( getIsLoad );
   const [ value, setValue ] = useState( [ 0, 100 ] );
 
-  const onDoubleRangeChange = ( e: Event, values: number | number[] ) => {
-    setValue( values as number[] );
-    dispatch( packsActions.setMinCardsCountAC( value[ 0 ] ) );
-    dispatch( packsActions.setMaxCardsCountAC( value[ 1 ] ) );
+  const onDoubleRangeChange = ( e: ChangeEvent<any>, value: number | number[] ) => {
+    if ( Array.isArray( value ) ) {
+      setValue( value );
+      dispatch( packsActions.setMinCardsCountAC( value[ 0 ] ) );
+      dispatch( packsActions.setMaxCardsCountAC( value[ 1 ] ) );
+    }
   };
-
 
   return (
     <div>
-      Double Range
-      {/*<DoubleRangeElement
+      <Slider
         value={ value }
         onChange={ onDoubleRangeChange }
         valueLabelDisplay="auto"
         step={ 1 }
         min={ 0 }
         max={ 100 }
-        disableSwap
         disabled={ isLoad }
-      />*/}
+      />
     </div>
   );
 };

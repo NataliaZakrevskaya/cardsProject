@@ -72,23 +72,24 @@ export const LearnedCard = () => {
                     <span className={ style.mainText }>rate yourself:</span>
                     <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 5 ) } value={ cardRate }
-                               name="rate"/>знал
+                               name="rate"/> Deep knowledge
                     </label>
                     <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 4 ) } value={ cardRate }
-                               name="rate"/>перепутал
+                               name="rate"/> I knew, but I thought for a long time
                     </label>
                     <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 3 ) } value={ cardRate }
-                               name="rate"/>долго думал
+                               name="rate"/> Сonfused
                     </label>
                     <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 2 ) } value={ cardRate }
-                               name="rate"/>забыл
+                               name="rate"/> Forgot
+
                     </label>
                     <label className={ style.inputForm } style={ { display: 'flex' } }>
                         <input type="radio" onChange={ () => setCardRate( 1 ) } value={ cardRate }
-                               name="rate"/>не знал
+                               name="rate"/> I didn't know
                     </label>
                 </div>
             </div>

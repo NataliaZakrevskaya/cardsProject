@@ -7,18 +7,18 @@ import { UpdatedCardType } from './types';
 import { SOME_ERROR } from '../../../constants';
 import { AppStateType, AppThunkType } from '../../Store/types';
 
-export const cardsTC = ( id: string ) => {
+export const cardsTC = ( cardsPack_id: string ) => {
   return async ( dispatch: Dispatch, getState: () => AppStateType ) => {
     const { cardAnswer, cardQuestion, minGrade, maxGrade, sortCards, page, pageCount } = getState().cards;
+    const cardsInfo = {cardAnswer, cardQuestion, cardsPack_id, minGrade, maxGrade, sortCards, page, pageCount}
     dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
     dispatch( appActions.setIsLoadAC( true ) );
     try {
-      const cardsInfo = {cardAnswer, cardQuestion, id, minGrade, maxGrade, sortCards, page, pageCount}
       let res = await cardsAPI.setCards( cardsInfo );
       dispatch( cardsActions.setCardsAC( res.data ) );
       dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
-    } catch ( e: any ) {
-      dispatch( appActions.setGlobalErrorAC( e.response ? e.response.data.error : SOME_ERROR ) );
+    } catch ( error: any ) {
+      dispatch( appActions.setGlobalErrorAC( error.response ? error.response.data.error : SOME_ERROR ) );
       dispatch( appActions.setAppStatusAC( AppRequestStatus.FAILED ) );
     } finally {
       dispatch( appActions.setAppStatusAC( AppRequestStatus.IDLE ) );
@@ -26,7 +26,6 @@ export const cardsTC = ( id: string ) => {
     }
   };
 };
-
 export const addNewCardTC = ( question: string, answer: string, packId: string ): AppThunkType => async ( dispatch: any ) => {
   const newCard = {
     cardsPack_id: packId,
@@ -39,7 +38,6 @@ export const addNewCardTC = ( question: string, answer: string, packId: string )
     questionVideo: '',
     answerVideo: '',
   };
-
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   dispatch( appActions.setIsLoadAC( true ) );
   try {
@@ -54,7 +52,6 @@ export const addNewCardTC = ( question: string, answer: string, packId: string )
     dispatch( appActions.setIsLoadAC( false ) );
   }
 };
-
 export const deleteCardTC = ( cardId: string ): AppThunkType => async ( dispatch: any ) => {
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   try {

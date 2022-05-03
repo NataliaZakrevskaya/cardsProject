@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import style
-  from '../../../../PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { EditCardComponentType } from './types';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
@@ -28,6 +27,7 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
     setMode();
   };
   const onSaveButtonClick = () => {
+    console.log(updatedCard);
     dispatch( updateCardTC( updatedCard ) );
     setMode();
   };
@@ -39,9 +39,9 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
   };
 
   return (
-    <div className={ style.addItemContainer }>
+    <div >
       <h2>Edit card:</h2>
-      <div className={ style.centerInputContainer }>
+      <div>
         <span>Enter new card question ✎</span>
         <input disabled={ isLoad }
                type="text"

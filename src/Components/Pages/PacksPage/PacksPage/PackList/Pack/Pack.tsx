@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import style from './Pack.module.css';
-import commonStyle from '../modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { Delete } from '@material-ui/icons';
 import ModalComponent from '../../../../../Common/modal/modalComponent';
 import { useDispatch, useSelector } from 'react-redux';
@@ -125,11 +124,11 @@ const SrazyIli = ( { runToCards, packId, setMode }: SrazyIliType ) => {
   };
 
   return (
-    <div className={ commonStyle.addItemContainer }>
+    <div>
       <h2>
         Do you go to cardsList or to learn ?
       </h2>
-      <div className={ commonStyle.centerInputContainer }>
+      <div>
         <span>
           Are you sure? <span>&nbsp; ✎</span>
         </span>

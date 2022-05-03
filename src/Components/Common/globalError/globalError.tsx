@@ -1,7 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import style
-  from '../../Pages/PacksPage/PacksPage/PackList/modulsComponents/AddPackComponent/AddPackComponent.module.css';
 import { getGlobalError } from '../../../Redux/Selectors/appSelectors/appSelectors';
 import { appActions } from '../../../Redux/Actions/appActions/appActions';
 
@@ -14,7 +12,7 @@ const GlobalError = () => {
   };
 
   return (
-    <div className={ style.addItemContainer }>
+    <div>
       <h2>Incorrect action:</h2>
       <span>{ errorText } ✎</span>
       <button onClick={ onResetErrorButtonClick }>Ok</button>

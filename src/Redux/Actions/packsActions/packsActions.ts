@@ -10,10 +10,10 @@ export const packsActions = {
       payload: { state },
     } as const;
   },
-  setAllUserIdCardsAC: ( user_id: Nullable<string> ) => {
+  setAllUserIdCardsAC: ( cardsFilter: Nullable<string> ) => {
     return {
       type: packsActionsEnum.SET_ALL_USER_ID_CARDS,
-      payload: { user_id },
+      payload: { cardsFilter },
     } as const;
   },
   setMinCardsCountAC: ( minCardsCount: number ) => {
