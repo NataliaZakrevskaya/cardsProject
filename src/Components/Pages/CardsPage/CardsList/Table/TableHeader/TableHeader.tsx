@@ -35,20 +35,20 @@ const TableHeader = () => {
 
   return (
     <div className={ style.tableHeader }>
-      <div>
-        <span className={ style.tableHeaderItem }>Name</span>
+      <div className={ style.tableHeaderItem }>
+        <span>Name</span>
       </div>
-      <div onClick={ isCardsCountUpdated ? getMore : getFew } aria-disabled={ isLoad }>
-        <span className={ style.tableHeaderItem }>Cards</span>
+      <div className={ `${style.tableHeaderItem} ${style.changedItem} `} onClick={ isCardsCountUpdated ? getMore : getFew } aria-disabled={ isLoad }>
+        <span>Cards</span>
       </div>
-      <div onClick={ isLastUpdate ? getOld : getNew } aria-disabled={ isLoad }>
-        <span className={ style.tableHeaderItem }>Last Updated</span>
+      <div className={ `${style.tableHeaderItem} ${style.changedItem} `} onClick={ isLastUpdate ? getOld : getNew } aria-disabled={ isLoad }>
+        <span>Last Updated</span>
       </div>
-      <div>
-        <span className={ style.tableHeaderItem }>Created by</span>
+      <div className={ style.tableHeaderItem }>
+        <span>Created by</span>
       </div>
-      <div>
-        <span className={ style.tableHeaderItem }>Actions</span>
+      <div className={ style.tableHeaderItem }>
+        <span>Actions</span>
       </div>
     </div>
   );

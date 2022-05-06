@@ -26,7 +26,7 @@ export type PacksInfoType = {
   packName: string
   min: number
   max: number
-  updated: UpdatedType
+  sortPacks: UpdatedType
   page: number
   pageCount: number
   user_id: Nullable<string>

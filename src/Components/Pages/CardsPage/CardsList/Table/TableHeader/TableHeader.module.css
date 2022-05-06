@@ -5,40 +5,29 @@
     display: grid;
     grid-template-columns: 22% 9% 22% 25% 22%;
     grid-template-rows: 1fr;
-    gap: 0em 0;
+    gap: 0;
     grid-template-areas:
     ". . . . .";
     text-align: center;
     font-family: 'Montserrat', sans-serif;;
     background-color: #d6dcea;
-}
-
-.tableHeaderWithId {
-    display: flex;
-    justify-content: space-around;
-    background-color: #d6dcea;
-}
-
-.tableHeader button {
-    background: #a5add7;
-    border: none;
-    margin-left: 1px;
-    border-radius: 2px;
-    font-family: 'Montserrat', sans-serif;
-    cursor: pointer;
+    z-index: 1;
+    height: 50px;
+    align-items: center;
 }
 
 .tableHeaderItem {
-    cursor: pointer;
-    font-family: 'Akaya Telivigala', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-size: 22px;
 }
 
-.tableHeaderItem:hover {
-    color: #092c7e;
+.changedItem {
+    cursor: pointer;
+}
+
+.changedItem:hover {
+    color: white;
     font-weight: 700;
-    transition: color .3s linear;
-    text-decoration: underline;
 }
 
 @media (max-width: 1200px) {
