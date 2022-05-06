@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './app.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Preloader from './Components/Common/preloader/preloader';
-import Main from './Components/Header/Main/Main';
+import Header from './Components/Header/Main/Header';
 import AppRoutes from './Routes/routes';
 import { meTC } from './Redux/Thunk/meThunk/meThunk';
 import { getStatus } from './Redux/Selectors/appSelectors/appSelectors';
@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Main/>
+      <Header/>
       <AppRoutes/>
     </div>
   );

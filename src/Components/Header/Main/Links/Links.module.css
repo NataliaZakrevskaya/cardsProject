@@ -1,15 +1,16 @@
 .main{
-    min-height: 20px;
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 50px;
+
 }
 
 .ordinaryLink {
     font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
     font-size: large;
     text-decoration: none;
     color: #fff;

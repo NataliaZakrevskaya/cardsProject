@@ -1,11 +1,11 @@
 import React, { ChangeEvent, FC, useState } from 'react';
-import './doubleRange.module.css';
 import { packsActions } from '../../../Redux/Actions/packsActions/packsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsLoad } from '../../../Redux/Selectors/appSelectors/appSelectors';
-import { Slider, styled } from '@material-ui/core';
+import { Slider } from '@material-ui/core';
+import style from './doubleRange.module.css';
 
-const DoubleRangeElement = styled( Slider )( {
+/*const DoubleRangeElement = styled( Slider )( {
   maxWidth: '400px',
   margin: '5px 5px',
   color: '#2386a4',
@@ -44,34 +44,33 @@ const DoubleRangeElement = styled( Slider )( {
       transform: 'rotate(45deg)',
     },
   },
-} );
+} );*/
 
 const DoubleRange: FC = () => {
 
   const dispatch = useDispatch();
   const isLoad = useSelector( getIsLoad );
-  const [ value, setValue ] = useState( [0, 100] );
+  const [ value, setValue ] = useState( [ 0, 100 ] );
 
   const onDoubleRangeChange = ( e: ChangeEvent<any>, values: number | number[] ) => {
-    setValue( values as number[]);
+    setValue( values as number[] );
     if ( Array.isArray( values ) ) {
-      dispatch( packsActions.setMinCardsCountAC( value[0] ) );
-      dispatch( packsActions.setMaxCardsCountAC( value[1] ) );
+      dispatch( packsActions.setMinCardsCountAC( value[ 0 ] ) );
+      dispatch( packsActions.setMaxCardsCountAC( value[ 1 ] ) );
     }
   };
 
   return (
-    <div>
-      <Slider
-        value={ value }
-        onChange={ onDoubleRangeChange }
-        valueLabelDisplay="auto"
-        step={ 1 }
-        min={ 0 }
-        max={ 100 }
-        disabled={ isLoad }
-      />
-    </div>
+    <Slider
+      value={ value }
+      onChange={ onDoubleRangeChange }
+      valueLabelDisplay={ 'on' }
+      step={ 1 }
+      min={ 0 }
+      max={ 100 }
+      disabled={ isLoad }
+      className={ style.slider }
+    />
   );
 };
 

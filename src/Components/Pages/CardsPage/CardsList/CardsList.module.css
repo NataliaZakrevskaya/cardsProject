@@ -1,64 +1,60 @@
-.cardsListBlock {
+.cardsList {
     width: 80%;
     height: 80vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     margin: auto;
-}
-
-.cardsList {
-    width: 100%;
-    height: 100%;
-    padding: 0 25px;
+    background: white;
+    -webkit-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+    padding: 10px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     flex-wrap: wrap;
-    margin: auto;
-    background: #f3f0f0;
 }
 
-.searchContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.searchContainer h2 {
-    font-family: 'Kaushan Script', cursive;
-    font-size: 24px;
-    padding-bottom: 10px;
+.cardsList h2 {
     color: #333
 }
 
+.searchContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .searchContainer input {
-    width: 58%;
-    height: 30px;
-    border-radius: 5px;
-    margin: auto;
+    width: 70%;
+    height: 38px;
+    border-radius: 2px;
+    border: 1px solid #635D80;
+    background-color: #ECECF9;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 10px;
 }
 
 .searchContainer button {
-    margin-left: 10px;
+    margin-left: 30px;
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-color: transparent;
-    border: 2px solid #4f74cb;
-    border-radius: 0.6em;
-    color: #4f74cb;
+    border: 2px solid #21268F;
+    border-radius: 0.8em;
+    color: #21268F;
     cursor: pointer;
     line-height: 1;
     font-size: large;
-    padding: .3em 1.5em;
+    padding: .5em 1.5em;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
@@ -67,18 +63,20 @@
 .searchContainer button:hover {
     color: #fff;
     outline: 0;
-    box-shadow: 0 0 40px 40px #4f74cb inset;
+    box-shadow: 0 0 40px 40px #21268F inset;
 }
 
 .cardsBlock {
     width: 100%;
-    height: 70%;
-    margin: auto;
-    border-radius: 10px;
+    height: 68%;
+    margin: 20px auto 0;
     background: white;
-    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    -webkit-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
     overflow: auto;
 }
 

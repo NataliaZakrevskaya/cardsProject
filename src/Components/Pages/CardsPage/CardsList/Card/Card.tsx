@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from '../../../PacksPage/PacksPage/PackList/Pack/Pack.module.css';
+import style from './Card.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalComponent from '../../../../Common/modal/modalComponent';
@@ -38,19 +38,14 @@ const Card = ( { content }: CardComponentType ) => {
   };
 
   return (
-
-    <div className={ style.tableContainer } onDoubleClick={ onTableDoubleClick }>
-      <div className={ style.window }>
-        <span>{ question }</span>
-      </div>
-      <div className={ style.window }>
-        { answer }
-      </div>
-      <div className={ style.updated }>
+    <div className={ style.tableItemContainer } onDoubleClick={ onTableDoubleClick }>
+      <span className={ style.question }>{ question }</span>
+      <span className={ style.answer }>{ answer }</span>
+      <div className={ style.tableItemData }>
         <div>Date: { updated.slice( 0, 10 ) },</div>
         <div>Time: { updated.slice( 12, 19 ) }</div>
       </div>
-      <div className={ style.window }>
+      <div className={ style.rating }>
         <Rating
           name="read-only"
           value={ grade }

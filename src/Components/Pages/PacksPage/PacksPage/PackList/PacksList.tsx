@@ -90,79 +90,77 @@ const PacksList = () => {
   };
 
   return (
-    <div className={ style.packsListBlock }>
+    <div>
+      <div className={ style.packsListBlock }>
 
-      <div className={ style.showPacks }>
-        <h4 className={ style.title }>
-          Show packs cards
-        </h4>
-        <button
-          disabled={ isLoad }
-          className={ selected === MY ? style.selected : style.hoverSelected }
-          onClick={ onMyButtonClick }>
-          My
-        </button>
-        <button
-          disabled={ isLoad }
-          className={ selected === ALL ? style.selected : style.hoverSelected }
-          onClick={ onAllButtonClick }>
-          All
-        </button>
-        <h4 className={ style.title }>Number of cards</h4>
-        <DoubleRange/>
-        <div>
-          <div className={ style.rangeValueItem }>min : { minCardsCount }</div>
-          <div className={ style.rangeValueItem }>max : { maxCardsCount }</div>
+        <div className={ style.showPacks }>
+          <h4 className={ style.title }>
+            Show packs cards
+          </h4>
+          <button
+            disabled={ isLoad }
+            className={ selected === MY ? style.selected : style.hoverSelected }
+            onClick={ onMyButtonClick }>
+            My
+          </button>
+          <button
+            disabled={ isLoad }
+            className={ selected === ALL ? style.selected : style.hoverSelected }
+            onClick={ onAllButtonClick }>
+            All
+          </button>
+          <h4 className={ style.title }>Number of cards</h4>
+          <DoubleRange/>
         </div>
-      </div>
 
-      <div className={ style.packsList }>
-        <div>
-          <h2 className={ style.title }>Pack list</h2>
-          <div className={ style.searchContainer }>
-            <input
-              placeholder={ 'Search...' }
-              value={ packName }
-              onChange={ onPackNameInputChange }
-              disabled={ isLoad }/>
-            <button
-              disabled={ isLoad }
-              className={ style.buttonSearch }
-              onClick={ onAddButtonClick }
-            >
-              Add New
-            </button>
+        <div className={ style.packsList }>
+          <div>
+            <h4 className={ style.packListTitle }>Pack list</h4>
+            <div className={ style.searchContainer }>
+              <input
+                placeholder={ 'Search...' }
+                value={ packName }
+                onChange={ onPackNameInputChange }
+                disabled={ isLoad }/>
+              <button
+                disabled={ isLoad }
+                className={ style.buttonSearch }
+                onClick={ onAddButtonClick }
+              >
+                Add New
+              </button>
+            </div>
           </div>
-        </div>
-        <div className={ style.cardsBlock }>
-          <TableHeader/>
-          {
-            cardPacks.map( ( tableRow, index ) => {
-              return (
-                <div key={ index } onDoubleClick={ () => runToCards( tableRow._id ) }>
-                  <Pack item={ tableRow } runToCards={ runToCards }/>
-                </div>
-              );
-            } )
-          }
-          <ModalComponent
-            backgroundOnClick={ onModalClick }
-            show={ globalError !== '' || mode === 'add' || mode === 'edit' }
-            height={ 0 }
-            width={ 0 }
-            backgroundStyle={
-              globalError !== ''
-                ? { backgroundColor: 'rgba(255,3,3,0.15)' }
-                : { backgroundColor: 'rgba(255,145,3,0.13)' }
+          <div className={ style.cardsBlock }>
+            <TableHeader/>
+            {
+              cardPacks.map( ( tableRow, index ) => {
+                return (
+                  <div key={ index } onDoubleClick={ () => runToCards( tableRow._id ) }>
+                    <Pack item={ tableRow } runToCards={ runToCards }/>
+                  </div>
+                );
+              } )
             }
-            enableBackground={ true }>
-            { globalError !== '' && <GlobalError/> }
-            { mode === 'add' && <AddPackComponent/> }
-          </ModalComponent>
+            <ModalComponent
+              backgroundOnClick={ onModalClick }
+              show={ globalError !== '' || mode === 'add' || mode === 'edit' }
+              height={ 0 }
+              width={ 0 }
+              backgroundStyle={
+                globalError !== ''
+                  ? { backgroundColor: 'rgba(255,3,3,0.15)' }
+                  : { backgroundColor: 'rgba(255,145,3,0.13)' }
+              }
+              enableBackground={ true }>
+              { globalError !== '' && <GlobalError/> }
+              { mode === 'add' && <AddPackComponent/> }
+            </ModalComponent>
+          </div>
           <TablesPagination/>
         </div>
-      </div>
 
+      </div>
     </div>
   );
 };

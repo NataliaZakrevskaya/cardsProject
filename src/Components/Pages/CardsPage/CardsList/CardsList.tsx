@@ -58,23 +58,20 @@ const CardsList = ( { name, packId }: CardsListType ) => {
   };
 
   return (
-    <div className={ style.cardsListBlock }>
       <div className={ style.cardsList }>
+        <h2> Pack Name: { name }</h2>
         <div className={ style.searchContainer }>
-          <h2> Pack Name: { name }</h2>
           <input
             disabled={ isLoad }
             placeholder={ 'Search...' }
             value={ cardQuestion }
             onChange={ searchCard }
           />
-
           <button
             disabled={ isLoad }
             onClick={ onAddButtonClick }>
             Add New Card
           </button>
-
         </div>
         <div className={ style.cardsBlock }>
           <TableCardsHeader user_id={ user_id }/>
@@ -108,10 +105,9 @@ const CardsList = ( { name, packId }: CardsListType ) => {
                 <GlobalError/>
             }
           </ModalComponent>
-          <TablesCardsPagination/>
         </div>
+        <TablesCardsPagination/>
       </div>
-    </div>
   );
 };
 

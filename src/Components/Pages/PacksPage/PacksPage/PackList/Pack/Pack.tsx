@@ -41,7 +41,7 @@ const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
   };
 
   return (
-    <div className={ style.tableContainer }>
+    <div className={ style.tableItemContainer }>
       <div className={ style.tableItemName }>
         { name }
       </div>
