@@ -7,8 +7,9 @@ import { getPackUrl } from './heplers';
 
 export const packsAPI = {
   async setPacks( packsInfo: PacksInfoType ) {
+
     return await instance.get<PacksInitialStateType,
-      AxiosResponse<PacksInitialStateType>>( PACK_URL, { params: { packsInfo } } );
+      AxiosResponse<PacksInitialStateType>>( PACK_URL, { params: { ...packsInfo } } );
   },
   async addNewPack( newPack: newPackType ) {
     return await instance.post<PackType,

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import style from './tablePaginator.module.css';
 import { packsActions } from '../../../Redux/Actions/packsActions/packsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Nullable } from '../../../types';
@@ -6,6 +7,7 @@ import { getIsLoad } from '../../../Redux/Selectors/appSelectors/appSelectors';
 import { getActualPacksCount, getActualPacksPage } from '../../../Redux/Selectors/packsSelectors/packsSelectors';
 import { ChangeEvent, useState } from 'react';
 import { TablePagination } from '@material-ui/core';
+
 
 const TablesPagination = () => {
 
@@ -34,7 +36,7 @@ const TablesPagination = () => {
   };
 
   return (
-    <>
+    <div className={ style.paginatorBlock }>
       <TablePagination
         component="div"
         count={ 100 }
@@ -44,7 +46,7 @@ const TablesPagination = () => {
         onRowsPerPageChange={ handleChangeRowsPerPage }
         aria-disabled={ isLoad }
       />
-    </>
+    </div>
   );
 };
 

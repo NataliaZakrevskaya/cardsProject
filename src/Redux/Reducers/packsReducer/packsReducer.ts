@@ -16,7 +16,7 @@ export const PacksInitialState: PacksInitialStateType = {
     },
   ],
   cardPacksTotalCount: 0,
-  maxCardsCount: 0,
+  maxCardsCount: 100,
   minCardsCount: 0,
   page: 1,
   pageCount: 10,
@@ -34,7 +34,6 @@ export const packsReducer = ( state = PacksInitialState, action: PacksReducerAct
       return { ...state, cardPacks: action.payload.state.cardPacks };
     }
     case packsActionsEnum.SET_ALL_USER_ID_CARDS: {
-      debugger
       return { ...state, user_id: action.payload.cardsFilter };
     }
     case packsActionsEnum.SET_MIN_CARDS_COUNT: {

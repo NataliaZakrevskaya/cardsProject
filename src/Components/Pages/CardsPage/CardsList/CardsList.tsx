@@ -11,7 +11,7 @@ import GlobalError from '../../../Common/globalError/globalError';
 import { getGlobalError, getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getCards, getCardsState } from '../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
 import { UpdatedType } from '../../../../API/packsAPI/types';
-import { useDebounce } from '@react-hook/debounce';
+import {useDebounce} from "use-debounce";
 import { appActions } from '../../../../Redux/Actions/appActions/appActions';
 import { CardsListType } from './types';
 import { getUserId } from './cardsListHelpers';

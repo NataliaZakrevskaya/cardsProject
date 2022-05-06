@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import style from './PacksList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useDebounce } from 'use-debounce';
 import { useNavigate } from 'react-router-dom';
 import DoubleRange from '../../../../Common/doubleRange/doubleRange';
 import TablesPagination from '../../../../Common/tablePaginator/tablePaginator';
@@ -13,7 +14,6 @@ import ModalComponent from '../../../../Common/modal/modalComponent';
 import { getPacksState } from '../../../../../Redux/Selectors/packsSelectors/packsSelectors';
 import { getGlobalError, getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getOwnId } from '../../../../../Redux/Selectors/profileSelectors/profileSelectors';
-import { useDebounce } from '@react-hook/debounce';
 import { Nullable } from '../../../../../types';
 import { SelectType } from '../../../../../Redux/Selectors/packsSelectors/types';
 import { ALL, MY } from '../../../../../Redux/Selectors/packsSelectors/constants';
@@ -31,7 +31,17 @@ const PacksList = () => {
   const ownId = useSelector( getOwnId );
   const packsState = useSelector( getPacksState );
 
-  const { cardPacks, mode, packName, minCardsCount, maxCardsCount, user_id, pageCount, page, updated } = { ...packsState };
+  const {
+    cardPacks,
+    mode,
+    packName,
+    pageCount,
+    minCardsCount,
+    maxCardsCount,
+    user_id,
+    page,
+    updated,
+  } = { ...packsState };
 
   const debouncedSearch = useDebounce<string>( packName, 1000 );
   const debouncedMIN = useDebounce<number>( minCardsCount, 1000 );
@@ -40,11 +50,11 @@ const PacksList = () => {
   const [ selected, setSelected ] = useState<SelectType>( ALL );
 
   useEffect( () => {
+    debugger
     dispatch( packsTC() );
   }, [ debouncedSearch[ 0 ], user_id, debouncedMIN[ 0 ], debouncedMAX[ 0 ], pageCount, page, updated ] );
 
   const selectMyOrAll = ( value: Nullable<string> ) => {
-    debugger
     dispatch( packsActions.setAllUserIdCardsAC( value ) );
     value
       ? setSelected( MY )
@@ -73,7 +83,7 @@ const PacksList = () => {
   };
   const onMyButtonClick = () => {
     selectMyOrAll( ownId );
-    console.log(ownId);
+    console.log( ownId );
   };
   const onAllButtonClick = () => {
     selectMyOrAll( null );
@@ -130,7 +140,7 @@ const PacksList = () => {
             cardPacks.map( ( tableRow, index ) => {
               return (
                 <div key={ index } onDoubleClick={ () => runToCards( tableRow._id ) }>
-                <Pack item={ tableRow } runToCards={ runToCards }/>
+                  <Pack item={ tableRow } runToCards={ runToCards }/>
                 </div>
               );
             } )

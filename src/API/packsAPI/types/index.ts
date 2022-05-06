@@ -24,8 +24,8 @@ export type UpdatedPackType = {
 }
 export type PacksInfoType = {
   packName: string
-  minCardsCount: number
-  maxCardsCount: number
+  min: number
+  max: number
   updated: UpdatedType
   page: number
   pageCount: number

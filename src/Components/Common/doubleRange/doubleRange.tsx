@@ -50,13 +50,13 @@ const DoubleRange: FC = () => {
 
   const dispatch = useDispatch();
   const isLoad = useSelector( getIsLoad );
-  const [ value, setValue ] = useState( [ 0, 100 ] );
+  const [ value, setValue ] = useState( [0, 100] );
 
-  const onDoubleRangeChange = ( e: ChangeEvent<any>, value: number | number[] ) => {
-    if ( Array.isArray( value ) ) {
-      setValue( value );
-      dispatch( packsActions.setMinCardsCountAC( value[ 0 ] ) );
-      dispatch( packsActions.setMaxCardsCountAC( value[ 1 ] ) );
+  const onDoubleRangeChange = ( e: ChangeEvent<any>, values: number | number[] ) => {
+    setValue( values as number[]);
+    if ( Array.isArray( values ) ) {
+      dispatch( packsActions.setMinCardsCountAC( value[0] ) );
+      dispatch( packsActions.setMaxCardsCountAC( value[1] ) );
     }
   };
 

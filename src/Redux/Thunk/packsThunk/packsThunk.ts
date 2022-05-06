@@ -8,11 +8,12 @@ import { SOME_ERROR } from '../../../constants';
 import { AppStateType, AppThunkType } from '../../Store/types';
 
 export const packsTC = () => async ( dispatch: Dispatch, getState: () => AppStateType ) => {
-  const { packName, minCardsCount, maxCardsCount, updated, page, pageCount, user_id } = getState().packs;
+  const { packName, minCardsCount: min, maxCardsCount: max, updated, page, pageCount, user_id } = getState().packs;
   dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
   dispatch( appActions.setIsLoadAC( true ) );
   try {
-    const packsInfo = { packName, minCardsCount, maxCardsCount, updated, page, pageCount, user_id };
+    const packsInfo = { packName, min, max, updated, page, pageCount, user_id };
+    debugger
     let res = await packsAPI.setPacks( packsInfo );
     dispatch( packsActions.setPacksAC( res.data ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );
