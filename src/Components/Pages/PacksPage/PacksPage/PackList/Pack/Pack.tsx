@@ -10,7 +10,7 @@ import { modeType, OnlyOnePackComponentType, SrazyIliType } from './types';
 import DeletePackComponent from '../../../../../Common/modal/packsModal/DeletePackComponent/DeletePackComponent';
 import EditPackComponent from '../../../../../Common/modal/packsModal/EditPackComponent/EditPackComponent';
 import IconButton from '@material-ui/core/IconButton';
-import { ChangeRoadModal } from '../../../../../Common/modal/packsModal/ChangeRoadModal/ChangeRoadModal';
+import { ChooseRoadModal } from '../../../../../Common/modal/packsModal/ChooseRoadModal/ChooseRoadModal';
 
 const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
 
@@ -81,7 +81,7 @@ const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
         enableBackground={ true }>
         { mode === 'delete' && <DeletePackComponent id={ item._id } setMode={ onModalClick }/> }
         { mode === 'edit' && <EditPackComponent item={ item } closeModal={ onModalClick }/> }
-        { mode === 'v' && <ChangeRoadModal packId={ item._id } runToCards={ runToCards } setMode={ onModalClick }/> }
+        { mode === 'v' && <ChooseRoadModal packId={ item._id } runToCards={ runToCards } setMode={ onModalClick }/> }
       </ModalComponent>
     </div>
   );

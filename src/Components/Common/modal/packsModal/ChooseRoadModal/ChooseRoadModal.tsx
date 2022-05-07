@@ -6,8 +6,9 @@ import React, { useEffect } from 'react';
 import { cardsTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { packsActions } from '../../../../../Redux/Actions/packsActions/packsActions';
 import { routesPathsEnum } from '../../../../../Routes/enums';
+import style from './ChooseRoadModal.module.css';
 
-export const ChangeRoadModal = ( { runToCards, packId, setMode }: SrazyIliType ) => {
+export const ChooseRoadModal = ( { runToCards, packId, setMode }: SrazyIliType ) => {
 
   const dispatch = useDispatch();
 
@@ -38,20 +39,15 @@ export const ChangeRoadModal = ( { runToCards, packId, setMode }: SrazyIliType )
   };
 
   return (
-    <div>
+    <div className={ style.modalContainer }>
       <h2>
-        Do you go to cardsList or to learn ?
+        Are you going to check cards list or learn cards?
       </h2>
-      <div>
-        <span>
-          Are you sure? <span>&nbsp; ✎</span>
-        </span>
-        <div>
-          <button onClick={ onCancelButtonClick }>Cancel</button>
-          <button onClick={ onCardListButtonClick }>To cardsList</button>
-          <button onClick={ onLearnButtonClick }>To learn</button>
-        </div>
+      <div className={style.btnGroup}>
+        <button className={style.learnBtn} onClick={ onLearnButtonClick }>Learn</button>
+        <button className={style.checkBtn} onClick={ onCardListButtonClick }>Check cards list</button>
       </div>
+      <button className={style.cancelBtn} onClick={ onCancelButtonClick }>Cancel</button>
     </div>
   );
 };

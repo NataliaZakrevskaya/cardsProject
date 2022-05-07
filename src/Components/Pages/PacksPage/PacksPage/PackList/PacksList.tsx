@@ -147,11 +147,6 @@ const PacksList = () => {
               show={ globalError !== '' || mode === 'add' || mode === 'edit' }
               height={ 0 }
               width={ 0 }
-              backgroundStyle={
-                globalError !== ''
-                  ? { backgroundColor: 'rgba(255,3,3,0.15)' }
-                  : { backgroundColor: 'rgba(255,145,3,0.13)' }
-              }
               enableBackground={ true }>
               { globalError !== '' && <GlobalError/> }
               { mode === 'add' && <AddPackComponent/> }

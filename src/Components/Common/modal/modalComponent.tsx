@@ -38,8 +38,7 @@ const ModalComponent: FC<Modal> = (
                 background: 'black',
                 opacity: 0.65,
                 zIndex: 20,
-
-                ...backgroundStyle,
+                backgroundColor: `rgba(0, 0, 0, 0.8)`
               } }
               onClick={ backgroundOnClick }
           />

@@ -1,0 +1,72 @@
+.modalContainer {
+    width: 300px;
+    background-color: #F9F9FE;
+    padding: 30px;
+}
+
+.modalContainer h2{
+    font-size: 22px;
+    margin-bottom: 50px;
+}
+.btnGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.learnBtn{
+    background-color: #F1453D;
+    color: #ECECF9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #F1453D;
+    border-radius: 20px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 16px;
+    padding: 8px 28px;
+    text-decoration: none;
+    text-align: center;
+    -webkit-box-shadow: 0px 4px 18px rgba(241, 69, 61, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);;
+    -moz-box-shadow: 0px 4px 18px rgba(241, 69, 61, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);;
+    box-shadow: 0px 4px 18px rgba(241, 69, 61, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);;
+}
+
+.checkBtn{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #21268F;
+    border: 2px solid #21268F;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 16px;
+    padding: 8px 28px;
+    text-decoration: none;
+    text-align: center;
+    -webkit-box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 4px 18px rgba(33, 38, 143, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+
+}
+
+.cancelBtn{
+    background-color:  #D7D8EF;
+    color: #21268F;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #D7D8EF;
+    border-radius: 20px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 16px;
+    padding: 8px 28px;
+    text-decoration: none;
+    text-align: center;
+}
