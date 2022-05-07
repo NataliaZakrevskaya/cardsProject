@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EditCardComponentType } from './types';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { updateCardTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
+import style from './EditCardComponent.module.css';
 
 export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
 
@@ -39,25 +40,25 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
   };
 
   return (
-    <div >
-      <h2>Edit card:</h2>
-      <div>
-        <span>Enter new card question ✎</span>
+    <div className={style.editCardModalContainer}>
+      <h2>Card info:</h2>
+      <div className={style.editBlock}>
+        <span>Question</span>
         <input disabled={ isLoad }
                type="text"
                value={ newQuestion }
                onChange={ onQuestionInputChange }
         />
-        <span>Enter new card answer ✎</span>
+        <span>Answer</span>
         <input disabled={ isLoad }
                type="text"
                value={ newAnswer }
                onChange={ onAnswerInputChange }
         />
       </div>
-      <div>
-        <button onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
-        <button onClick={ onSaveButtonClick } disabled={ isLoad }>Save changes</button>
+      <div className={style.btnGroup}>
+        <button className={style.canselBtn} onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={style.saveBtn} onClick={ onSaveButtonClick } disabled={ isLoad }>Save</button>
       </div>
     </div>
   );

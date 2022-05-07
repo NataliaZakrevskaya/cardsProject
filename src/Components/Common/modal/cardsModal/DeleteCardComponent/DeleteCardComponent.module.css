@@ -1,0 +1,64 @@
+.deleteCardContainer {
+    padding: 15px 24px;
+    width: 345px;
+    background-color: #F9F9FE;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.deleteCardContainer h2{
+    text-align: left;
+    font-size: 22px;
+    color: #2D2E46;
+}
+
+.deleteCardContainer hr {
+    background-color: #ECECF9;
+    height: 1px;
+}
+
+.deleteCardContainer p {
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.btnGroup {
+    margin: 40px 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cancelBtn {
+    background-color:  #D7D8EF;
+    color: #21268F;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #D7D8EF;
+    border-radius: 20px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 16px;
+    padding: 8px 28px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.deleteBtn {
+    background-color: #F1453D;
+    color: #ECECF9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #F1453D;
+    border-radius: 20px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 16px;
+    padding: 8px 28px;
+    text-decoration: none;
+    text-align: center;
+    -webkit-box-shadow: 0px 4px 18px rgba(241, 69, 61, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);;
+    -moz-box-shadow: 0px 4px 18px rgba(241, 69, 61, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);;
+    box-shadow: 0px 4px 18px rgba(241, 69, 61, 0.35), inset 0px 1px 0px rgba(255, 255, 255, 0.3);;
+}

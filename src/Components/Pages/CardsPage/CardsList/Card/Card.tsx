@@ -75,7 +75,7 @@ const Card = ( { content }: CardComponentType ) => {
         show={ mode !== null }
         height={ 0 }
         width={ 0 }
-        backgroundStyle={ { backgroundColor: 'rgba(215,207,61,0.2)' } }
+        backgroundStyle={ { backgroundColor: `rgba(0, 0, 0, 0.8)` } }
         enableBackground={ true }>
         { mode === ModeEnum.EDIT && <EditCardComponent card={ content } setMode={ setNullModal }/> }
         { mode === ModeEnum.DELETE && <DeleteCardComponent id={ _id } setMode={ setNullModal }/> }

@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './DeleteCardComponent.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteCardComponentType } from './types';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
@@ -19,14 +20,13 @@ const DeleteCardComponent = ( { id, setMode }: DeleteCardComponentType ) => {
   };
 
   return (
-    <div>
-      <h2>Do you want to delete card ?</h2>
-      <div>
-        <span>Really ? ✎</span>
-        <div>
-          <button onClick={ onNoButtonClick } disabled={ isLoad }>NO</button>
-          <button onClick={ onYesButtonClick } disabled={ isLoad }>YES</button>
-        </div>
+    <div className={ style.deleteCardContainer }>
+      <h2>Delete Card</h2>
+      <hr/>
+      <p>Do you really want to remove the card?</p>
+      <div className={style.btnGroup}>
+        <button className={style.cancelBtn} onClick={ onNoButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={style.deleteBtn} onClick={ onYesButtonClick } disabled={ isLoad }>Delete</button>
       </div>
     </div>
   );

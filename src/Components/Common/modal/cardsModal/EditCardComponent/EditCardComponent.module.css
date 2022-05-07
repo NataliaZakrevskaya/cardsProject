@@ -1,0 +1,86 @@
+.editCardModalContainer {
+    width: 303px;
+    background-color: #F9F9FE;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 30px;
+}
+
+.editCardModalContainer h2{
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.editBlock {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.editBlock span {
+    font-size: 11px;
+    font-weight: lighter;
+    color: #858585;
+    margin-bottom: 5px;
+}
+
+.editBlock input {
+    width: 100%;
+    height: 20px;
+    border: none;
+    border-bottom: 2px solid #b4b4b4;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    background-color: #F9F9FE;
+}
+
+.btnGroup {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 0 30px;
+}
+
+.saveBtn{
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #21268F;
+    border: 2px solid #21268F;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 13px;
+    padding: 8px 28px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+ .cancelBtn {
+     background-color:  #D7D8EF;
+     color: #21268F;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     border: 2px solid #D7D8EF;
+     border-radius: 20px;
+     cursor: pointer;
+     line-height: 1;
+     font-size: 13px;
+     padding: 8px 28px;
+     text-decoration: none;
+     text-align: center;
+     text-transform: uppercase;
+ }

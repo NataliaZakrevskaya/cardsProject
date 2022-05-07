@@ -94,7 +94,6 @@ const CardsList = ( { name, packId }: CardsListType ) => {
             show={ mode === ModeEnum.ADD || globalError !== '' }
             height={ 0 }
             width={ 0 }
-            backgroundStyle={ mode === ModeEnum.ADD ? { backgroundColor: 'rgba(89,61,215,0.13)' } : { backgroundColor: 'rgba(255,3,3,0.15)' } }
             enableBackground={ true }>
             {
               mode === ModeEnum.ADD &&
