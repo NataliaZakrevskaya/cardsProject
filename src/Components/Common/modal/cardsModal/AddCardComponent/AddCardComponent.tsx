@@ -5,6 +5,7 @@ import { addNewCardTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { cardsActions } from '../../../../../Redux/Actions/cardsActions/cardsActions';
 import { TestAddCardComponentType } from './types';
 import style from './AddCardComponent.module.css';
+import commonStyle from '../../commonModalStyles.module.css';
 
 const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
 
@@ -34,29 +35,23 @@ const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
   return (
     <div className={ style.addItemContainer }>
       <h2>Add new card:</h2>
-      <div className={ style.centerInputContainer }>
-        <span>
-          Question: ✎
-        </span>
+      <div className={ style.infoContainer }>
+        <span>Question</span>
         <input disabled={ isLoad }
                type="text"
                value={ question }
                onChange={ onQuestionInputChange }
         />
-      </div>
-      <div className={ style.centerInputContainer }>
-        <span>
-          Answer: ✎
-        </span>
+        <span>Answer</span>
         <input disabled={ isLoad }
                type="text"
                value={ answer }
                onChange={ onAnswerInputChange }
         />
       </div>
-      <div className={ style.buttonsContainer }>
-        <button onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
-        <button onClick={ onAddCardButtonClick } disabled={ isLoad }>Add</button>
+      <div className={ commonStyle.btnGroup }>
+        <button className={commonStyle.cancelBtn} onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={commonStyle.actionBtn} onClick={ onAddCardButtonClick } disabled={ isLoad }>Add</button>
       </div>
     </div>
   );
