@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from './LearnedCard.module.css';
+import commonStyle from '../../../Common/modal/commonModalStyles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { gradeCardTC } from '../../../../Redux/Thunk/cardsThunk/cardsThunk';
@@ -94,13 +95,13 @@ export const LearnedCard = () => {
               </div>
           </div>
       }
-      <div className={ style.btnGroup }>
-        <button className={ style.cancelBtn } onClick={ goBack } disabled={ isLoad }>Cancel</button>
+      <div className={ commonStyle.btnGroup }>
+        <button className={ commonStyle.cancelBtn } onClick={ goBack } disabled={ isLoad }>Cancel</button>
         {
           !showAnswer
-            ? <button className={ style.actionBtn } onClick={ onShowAnswerButtonClick } disabled={ isLoad }>Show
+            ? <button className={ commonStyle.actionBtn } onClick={ onShowAnswerButtonClick } disabled={ isLoad }>Show
               answer</button>
-            : <button className={ style.actionBtn } onClick={ onNextCardButtonClick } disabled={ isLoad }>Next
+            : <button className={ commonStyle.actionBtn } onClick={ onNextCardButtonClick } disabled={ isLoad }>Next
               card</button>
         }
       </div>

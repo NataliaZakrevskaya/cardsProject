@@ -1,89 +1,47 @@
 .addItemContainer {
-    background-color: white;
-    width: 400px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    -webkit-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    background-color: #F9F9FE;;
+    width: 345px;
+    padding: 15px 24px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
 .addItemContainer h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 22px;
+    color: #2D2E46;
     text-align: center;
     margin-bottom: 20px;
 }
 
-
-.centerInputContainer span {
-    font-family: 'Montserrat', sans-serif;
-    color: #726d6f;
+.infoContainer{
+    width: 95%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.centerInputContainer input {
-    width: 80%;
-    min-height: 30px;
+.infoContainer span {
+    font-family: 'Montserrat', sans-serif;
+    color: #726d6f;
+    font-size: 11px;
+}
+
+.textInput {
+    width: 100%;
+    height: 20px;
     border: none;
-    border-bottom: 1px solid #5f7271;
+    border-bottom: 2px solid #b4b4b4;
     outline: none;
     font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
+    font-size: 14px;
+    background-color: #F9F9FE;
     margin-bottom: 10px;
 }
 
-
-.makePrivateContainer {
-    width: 80%;
+.privateContainer{
+    margin-top: 20px;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.makePrivateContainer span {
-    font-family: 'Montserrat', sans-serif;
-    color: #726d6f;
-}
-
-.addItemContainer button {
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid #4f74cb;
-    border-radius: 0.6em;
-    color: #4f74cb;
-    cursor: pointer;
-    line-height: 1;
-    font-size: large;
-    padding: .5em 1.5em;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    margin: 5px
-
-}
-
-.addItemContainer button:hover {
-    color: #fff;
-    outline: 0;
-    box-shadow: 0 0 40px 40px #4f74cb inset;
-}
-
-.inputForm {
-    width: 80%;
 }

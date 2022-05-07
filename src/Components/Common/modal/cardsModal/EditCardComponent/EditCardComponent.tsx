@@ -5,6 +5,7 @@ import { EditCardComponentType } from './types';
 import { getIsLoad } from '../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { updateCardTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import style from './EditCardComponent.module.css';
+import commonStyle from '../../commonModalStyles.module.css';
 
 export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) => {
 
@@ -56,9 +57,9 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
                onChange={ onAnswerInputChange }
         />
       </div>
-      <div className={style.btnGroup}>
-        <button className={style.canselBtn} onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
-        <button className={style.saveBtn} onClick={ onSaveButtonClick } disabled={ isLoad }>Save</button>
+      <div className={commonStyle.btnGroup}>
+        <button className={commonStyle.cancelBtn} onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={commonStyle.actionBtn} onClick={ onSaveButtonClick } disabled={ isLoad }>Save</button>
       </div>
     </div>
   );

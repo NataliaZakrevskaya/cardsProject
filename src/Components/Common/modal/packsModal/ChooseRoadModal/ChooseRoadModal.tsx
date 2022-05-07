@@ -7,6 +7,7 @@ import { cardsTC } from '../../../../../Redux/Thunk/cardsThunk/cardsThunk';
 import { packsActions } from '../../../../../Redux/Actions/packsActions/packsActions';
 import { routesPathsEnum } from '../../../../../Routes/enums';
 import style from './ChooseRoadModal.module.css';
+import commonStyle from '../../commonModalStyles.module.css';
 
 export const ChooseRoadModal = ( { runToCards, packId, setMode }: SrazyIliType ) => {
 
@@ -43,11 +44,11 @@ export const ChooseRoadModal = ( { runToCards, packId, setMode }: SrazyIliType )
       <h2>
         Are you going to check cards list or learn cards?
       </h2>
-      <div className={style.btnGroup}>
-        <button className={style.learnBtn} onClick={ onLearnButtonClick }>Learn</button>
-        <button className={style.checkBtn} onClick={ onCardListButtonClick }>Check cards list</button>
+      <div className={commonStyle.btnGroup}>
+        <button className={commonStyle.extraActionBtn} onClick={ onLearnButtonClick }>Learn</button>
+        <button className={commonStyle.actionBtn} onClick={ onCardListButtonClick }>Check cards list</button>
       </div>
-      <button className={style.cancelBtn} onClick={ onCancelButtonClick }>Cancel</button>
+      <button className={commonStyle.cancelBtn} onClick={ onCancelButtonClick }>Cancel</button>
     </div>
   );
 };
