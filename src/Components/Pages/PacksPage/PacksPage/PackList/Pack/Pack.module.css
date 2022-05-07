@@ -1,72 +1,25 @@
-.tableItemContainer {
-    font-size: 11px;
-    font-weight: bolder;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    width: 98%;
-    margin-top: 5px;
-    margin-left: 1%;
-    min-height: 28px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #F8F7FD;
-}
 
-
-.tableItemName {
+.name {
     word-wrap: break-word;
     width: 22%;
 }
 
-.tableItemCardsCount {
+.cardsCount {
     width: 9%;
 }
 
-.tableItemData {
+.data {
     width: 22%;
 }
 
-.tableItemUserName {
+.userName {
     width: 25%;
     word-wrap: break-word;
 }
 
-.tableItemBtnGroup {
+.btnGroup {
     width: 21%;
 }
-
-.btnGroupItemMy {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: end;
-}
-
-.button {
-    text-transform: uppercase;
-    background-color: #D7D8EF;
-    color: #21268F;
-    padding: 5px 7px;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: 9px;
-    font-weight: bolder;
-    min-width: 35px;
-    text-align: center;
-    margin-right: 2px;
-}
-
-.button:hover {
-    background-color: #ecf1f5;
-    border: 2px solid #21268F;
-    color: #21268F;
-    transition: background-color .2s linear, color .2s linear;
-}
-
 
 .window {
     width: 25%;

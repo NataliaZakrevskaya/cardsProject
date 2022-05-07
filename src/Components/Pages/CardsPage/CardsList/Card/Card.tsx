@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from './Card.module.css';
+import commonStyle from '../Table/commonTableStyles.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalComponent from '../../../../Common/modal/modalComponent';
@@ -27,6 +28,12 @@ const Card = ( { content }: CardComponentType ) => {
   const ownId = useSelector( getOwnId );
   const isLoad = useSelector( getIsLoad );
 
+  const isOwnCards = ownId === user_id;
+  const questionStyle = isOwnCards ? style.ownQuestion : style.question
+  const answerStyle = isOwnCards ? style.ownAnswer : style.answer
+  const dataStyle = isOwnCards ? style.ownData : style.data
+  const ratingStyle = isOwnCards ? style.ownRating : style.rating
+
   const onTableDoubleClick = () => {
     navigate( `${ routesPathsEnum.LEARNED_CARD }/${ cardsPack_id }/${ _id }` );
   };
@@ -38,14 +45,14 @@ const Card = ( { content }: CardComponentType ) => {
   };
 
   return (
-    <div className={ style.tableItemContainer } onDoubleClick={ onTableDoubleClick }>
-      <span className={ style.question }>{ question }</span>
-      <span className={ style.answer }>{ answer }</span>
-      <div className={ style.tableItemData }>
+    <div className={ commonStyle.tableItemContainer } onDoubleClick={ onTableDoubleClick }>
+      <span className={ questionStyle }>{ question }</span>
+      <span className={ answerStyle }>{ answer }</span>
+      <div className={ dataStyle }>
         <div>Date: { updated.slice( 0, 10 ) },</div>
         <div>Time: { updated.slice( 12, 19 ) }</div>
       </div>
-      <div className={ style.rating }>
+      <div className={ ratingStyle }>
         <Rating
           name="read-only"
           value={ grade }
@@ -53,11 +60,11 @@ const Card = ( { content }: CardComponentType ) => {
         />
       </div>
       {
-        ownId === user_id &&
-          <div className={ style.btnGroupItemMy }>
-              <button className={ style.button } onClick={ () => setMode( ModeEnum.EDIT ) } disabled={ isLoad }>edit
+        isOwnCards &&
+          <div className={ style.btnGroup }>
+              <button className={ commonStyle.button } onClick={ () => setMode( ModeEnum.EDIT ) } disabled={ isLoad }>edit
               </button>
-              <button className={ style.button } onClick={ onTableDoubleClick } disabled={ isLoad }>learn</button>
+              <button className={ commonStyle.button } onClick={ onTableDoubleClick } disabled={ isLoad }>learn</button>
               <IconButton onClick={ () => setMode( ModeEnum.DELETE ) } aria-label="delete" disabled={ isLoad }>
                   <Delete/>
               </IconButton>

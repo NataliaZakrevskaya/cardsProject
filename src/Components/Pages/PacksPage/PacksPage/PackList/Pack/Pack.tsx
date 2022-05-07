@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import style from './Pack.module.css';
+import commonStyle from '../../../../CardsPage/CardsList/Table/commonTableStyles.module.css';
 import { Delete } from '@material-ui/icons';
 import ModalComponent from '../../../../../Common/modal/modalComponent';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { packsActions } from '../../../../../../Redux/Actions/packsActions/packsActions';
-import { cardsTC } from '../../../../../../Redux/Thunk/cardsThunk/cardsThunk';
+import { useSelector } from 'react-redux';
 import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
 import { modeType, OnlyOnePackComponentType, SrazyIliType } from './types';
-import { AppStateType } from '../../../../../../Redux/Store/types';
-import { routesPathsEnum } from '../../../../../../Routes/enums';
 import DeletePackComponent from '../../../../../Common/modal/packsModal/DeletePackComponent/DeletePackComponent';
 import EditPackComponent from '../../../../../Common/modal/packsModal/EditPackComponent/EditPackComponent';
 import IconButton from '@material-ui/core/IconButton';
+import { ChangeRoadModal } from '../../../../../Common/modal/packsModal/ChangeRoadModal/ChangeRoadModal';
 
 const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
 
@@ -41,35 +38,35 @@ const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
   };
 
   return (
-    <div className={ style.tableItemContainer }>
-      <div className={ style.tableItemName }>
+    <div className={ commonStyle.tableItemContainer }>
+      <div className={ style.name }>
         { name }
       </div>
-      <div className={ style.tableItemCardsCount }>
+      <div className={ style.cardsCount }>
         { cardsCount }
       </div>
-      <div className={ style.tableItemData }>
+      <div className={ style.data }>
         <div>Date: { updated.slice( 0, 10 ) },</div>
         <div>Time: { updated.slice( 12, 19 ) }</div>
       </div>
-      <div className={ style.tableItemUserName }>
+      <div className={ style.userName }>
         { user_name }
       </div>
-      <div className={ style.tableItemBtnGroup }>
+      <div className={ style.btnGroup }>
         {
           ownId === user_id
-            ? <div className={ style.btnGroupItemMy }>
-              <button className={ style.button } onClick={ onEditButtonClick }
+            ? <div className={ commonStyle.btnGroup }>
+              <button className={ commonStyle.button } onClick={ onEditButtonClick }
                       disabled={ isLoad }>edit
               </button>
-              <button className={ style.button } onClick={ onLearnButtonClick } disabled={ isLoad }>learn
+              <button className={ commonStyle.button } onClick={ onLearnButtonClick } disabled={ isLoad }>learn
               </button>
               <IconButton onClick={ onDeleteButtonClick } aria-label="delete" disabled={ isLoad }>
                 <Delete/>
               </IconButton>
             </div>
-            : <div className={ style.btnGroupItemMy }>
-              <button className={ style.button } onClick={ onForeignCardLearnButtonClick } disabled={ isLoad }>learn
+            : <div className={ commonStyle.btnGroup }>
+              <button className={ commonStyle.button } onClick={ onForeignCardLearnButtonClick } disabled={ isLoad }>learn
               </button>
             </div>
         }
@@ -84,60 +81,10 @@ const Pack = ( { item, runToCards }: OnlyOnePackComponentType ) => {
         enableBackground={ true }>
         { mode === 'delete' && <DeletePackComponent id={ item._id } setMode={ onModalClick }/> }
         { mode === 'edit' && <EditPackComponent item={ item } closeModal={ onModalClick }/> }
-        { mode === 'v' && <SrazyIli packId={ item._id } runToCards={ runToCards } setMode={ onModalClick }/> }
+        { mode === 'v' && <ChangeRoadModal packId={ item._id } runToCards={ runToCards } setMode={ onModalClick }/> }
       </ModalComponent>
-
     </div>
   );
 };
 
 export default Pack;
-
-const SrazyIli = ( { runToCards, packId, setMode }: SrazyIliType ) => {
-
-  const dispatch = useDispatch();
-
-  const navigate = useNavigate();
-
-  const cardId = useSelector<AppStateType, string>( state => state.cards.cards.filter( card => card.cardsPack_id === packId )[ 0 ]?._id );
-
-  useEffect( () => {
-    dispatch( cardsTC( packId ) );
-  }, [] );
-
-  const onLearnButtonClick = () => {
-    dispatch( packsActions.setAllUserIdCardsAC( '' ) );
-    dispatch( packsActions.searchByPackNameAC( '' ) );
-    dispatch( packsActions.seCurrentPageAC( 1 ) );
-    dispatch( packsActions.setMinCardsCountAC( 0 ) );
-    dispatch( packsActions.setMaxCardsCountAC( 100 ) );
-
-    setMode();
-    navigate( `${ routesPathsEnum.LEARNED_CARD }/${ packId }/${ cardId }` );
-
-  };
-  const onCancelButtonClick = () => {
-    setMode();
-  };
-  const onCardListButtonClick = () => {
-    runToCards( packId );
-  };
-
-  return (
-    <div>
-      <h2>
-        Do you go to cardsList or to learn ?
-      </h2>
-      <div>
-        <span>
-          Are you sure? <span>&nbsp; ✎</span>
-        </span>
-        <div>
-          <button onClick={ onCancelButtonClick }>Cancel</button>
-          <button onClick={ onCardListButtonClick }>To cardsList</button>
-          <button onClick={ onLearnButtonClick }>To learn</button>
-        </div>
-      </div>
-    </div>
-  );
-};
