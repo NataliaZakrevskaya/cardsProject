@@ -55,52 +55,53 @@ export const LearnedCard = () => {
   };
 
   return (
-    <div className={ style.addItemContainer }
-         style={ { borderRadius: '10px', backgroundColor: 'white' } }>
-      <h2>learn: { actualPack?.name }</h2>
-      <div>
-        <div className={ style.mainText }>
-          question: { actualCard?.question }
-        </div>
-        {
-          showAnswer &&
-            <div>
-                <div className={ style.mainText }>
-                    answer: { actualCard?.answer }
-                </div>
-                <div>
-                    <span className={ style.mainText }>rate yourself:</span>
-                    <label className={ style.inputForm } style={ { display: 'flex' } }>
-                        <input type="radio" onChange={ () => setCardRate( 5 ) } value={ cardRate }
-                               name="rate"/> Deep knowledge
-                    </label>
-                    <label className={ style.inputForm } style={ { display: 'flex' } }>
-                        <input type="radio" onChange={ () => setCardRate( 4 ) } value={ cardRate }
-                               name="rate"/> I knew, but I thought for a long time
-                    </label>
-                    <label className={ style.inputForm } style={ { display: 'flex' } }>
-                        <input type="radio" onChange={ () => setCardRate( 3 ) } value={ cardRate }
-                               name="rate"/> Сonfused
-                    </label>
-                    <label className={ style.inputForm } style={ { display: 'flex' } }>
-                        <input type="radio" onChange={ () => setCardRate( 2 ) } value={ cardRate }
-                               name="rate"/> Forgot
-
-                    </label>
-                    <label className={ style.inputForm } style={ { display: 'flex' } }>
-                        <input type="radio" onChange={ () => setCardRate( 1 ) } value={ cardRate }
-                               name="rate"/> I didn't know
-                    </label>
-                </div>
-            </div>
-        }
+    <div className={ style.addItemContainer }>
+      <h2>Learn "{ actualPack?.name }"</h2>
+      <div className={ style.mainText }>
+        <b> Question: </b>"{ actualCard?.question }"
       </div>
-      <div>
-        <button onClick={ goBack } disabled={ isLoad }>Cancel</button>
+      {
+        showAnswer &&
+          <div>
+              <div className={ style.answer }>
+                  <b>Answer:</b> "{ actualCard?.answer }"
+              </div>
+              <div className={style.variantsContainer}>
+                  <div className={ style.mainText }>
+                      <b>Rate yourself:</b>
+                  </div>
+                  <label className={ style.inputForm }>
+                      <input type="radio" onChange={ () => setCardRate( 5 ) } value={ cardRate }
+                             name="rate"/> Deep knowledge
+                  </label>
+                  <label className={ style.inputForm }>
+                      <input type="radio" onChange={ () => setCardRate( 4 ) } value={ cardRate }
+                             name="rate"/> I knew, but I thought for a long time
+                  </label>
+                  <label className={ style.inputForm }>
+                      <input type="radio" onChange={ () => setCardRate( 3 ) } value={ cardRate }
+                             name="rate"/> Confused
+                  </label>
+                  <label className={ style.inputForm }>
+                      <input type="radio" onChange={ () => setCardRate( 2 ) } value={ cardRate }
+                             name="rate"/> Forgot
+
+                  </label>
+                  <label className={ style.inputForm }>
+                      <input type="radio" onChange={ () => setCardRate( 1 ) } value={ cardRate }
+                             name="rate"/> I didn't know
+                  </label>
+              </div>
+          </div>
+      }
+      <div className={ style.btnGroup }>
+        <button className={ style.cancelBtn } onClick={ goBack } disabled={ isLoad }>Cancel</button>
         {
           !showAnswer
-            ? <button onClick={ onShowAnswerButtonClick } disabled={ isLoad }>Show answer</button>
-            : <button onClick={ onNextCardButtonClick } disabled={ isLoad }>Next card</button>
+            ? <button className={ style.actionBtn } onClick={ onShowAnswerButtonClick } disabled={ isLoad }>Show
+              answer</button>
+            : <button className={ style.actionBtn } onClick={ onNextCardButtonClick } disabled={ isLoad }>Next
+              card</button>
         }
       </div>
     </div>
