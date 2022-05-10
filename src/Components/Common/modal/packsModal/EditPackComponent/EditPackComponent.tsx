@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
-import style from '../AddPackComponent/AddPackComponent.module.css';
+import style from './EditPackComponent.module.css';
+import commonStyle from '../../commonModalStyles.module.css';
 import { useDispatch } from 'react-redux';
 import { EditPackComponentType } from './types';
 import { changePacksTC } from '../../../../../Redux/Thunk/packsThunk/packsThunk';
@@ -24,22 +25,19 @@ const EditPackComponent = ( { item, closeModal }: EditPackComponentType ) => {
   };
 
   return (
-    <div className={ style.addItemContainer }>
-      <h2>Edit pack:</h2>
-      <div className={ style.centerInputContainer }>
-        <span>
-          Enter new pack name <span>&nbsp; ✎</span>
-        </span>
+    <div className={ style.editPackContainer }>
+      <h2>Pack info:</h2>
+      <div className={ style.editBlock }>
+        <span>Pack name</span>
         <input
           type="text"
           value={ newPackName }
           onChange={ onNewPackInputChange }
         />
       </div>
-
-      <div>
-        <button onClick={ onCanselButtonClick }>Cancel</button>
-        <button onClick={ onSaveChangesButtonClick }>Save changes</button>
+      <div className={ commonStyle.btnGroup }>
+        <button className={ commonStyle.cancelBtn } onClick={ onCanselButtonClick }>Cancel</button>
+        <button className={ commonStyle.actionBtn } onClick={ onSaveChangesButtonClick }>Save</button>
       </div>
 
     </div>
