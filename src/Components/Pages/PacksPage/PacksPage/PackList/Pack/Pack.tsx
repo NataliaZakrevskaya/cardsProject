@@ -6,7 +6,7 @@ import ModalComponent from '../../../../../Common/modal/modalComponent';
 import { useSelector } from 'react-redux';
 import { getOwnId } from '../../../../../../Redux/Selectors/profileSelectors/profileSelectors';
 import { getIsLoad } from '../../../../../../Redux/Selectors/appSelectors/appSelectors';
-import { modeType, OnlyOnePackComponentType, SrazyIliType } from './types';
+import { modeType, OnlyOnePackComponentType } from './types';
 import DeletePackComponent from '../../../../../Common/modal/packsModal/DeletePackComponent/DeletePackComponent';
 import EditPackComponent from '../../../../../Common/modal/packsModal/EditPackComponent/EditPackComponent';
 import IconButton from '@material-ui/core/IconButton';

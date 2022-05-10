@@ -1,4 +1,4 @@
 export type DeletePackComponentType = {
   id: string
-  setMode:()=>void
+  setMode: () => void
 }

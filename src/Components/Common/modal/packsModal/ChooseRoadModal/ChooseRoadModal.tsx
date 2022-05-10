@@ -44,11 +44,11 @@ export const ChooseRoadModal = ( { runToCards, packId, setMode }: SrazyIliType )
       <h2>
         Are you going to check cards list or learn cards?
       </h2>
-      <div className={commonStyle.btnGroup}>
-        <button className={commonStyle.extraActionBtn} onClick={ onLearnButtonClick }>Learn</button>
-        <button className={commonStyle.actionBtn} onClick={ onCardListButtonClick }>Check cards list</button>
+      <div className={ commonStyle.btnGroup }>
+        <button className={ commonStyle.extraActionBtn } onClick={ onLearnButtonClick }>Learn</button>
+        <button className={ commonStyle.actionBtn } onClick={ onCardListButtonClick }>Check cards list</button>
       </div>
-      <button className={commonStyle.cancelBtn} onClick={ onCancelButtonClick }>Cancel</button>
+      <button className={ commonStyle.cancelBtn } onClick={ onCancelButtonClick }>Cancel</button>
     </div>
   );
 };

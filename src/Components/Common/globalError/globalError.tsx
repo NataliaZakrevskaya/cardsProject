@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGlobalError } from '../../../Redux/Selectors/appSelectors/appSelectors';
 import { appActions } from '../../../Redux/Actions/appActions/appActions';
+import style from './globalError.module.css';
+import commonStyle from '../modal/commonModalStyles.module.css';
 
 const GlobalError = () => {
   const dispatch = useDispatch();
@@ -12,10 +14,11 @@ const GlobalError = () => {
   };
 
   return (
-    <div>
+    <div className={ style.globalErrorContainer }>
       <h2>Incorrect action:</h2>
-      <span>{ errorText } ✎</span>
-      <button onClick={ onResetErrorButtonClick }>Ok</button>
+      <hr/>
+      <p>{ errorText }</p>
+      <button className={ commonStyle.actionBtn } onClick={ onResetErrorButtonClick }>Ok</button>
     </div>
   );
 };

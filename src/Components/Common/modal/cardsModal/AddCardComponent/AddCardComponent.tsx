@@ -50,8 +50,8 @@ const AddCardComponent = ( { packId }: TestAddCardComponentType ) => {
         />
       </div>
       <div className={ commonStyle.btnGroup }>
-        <button className={commonStyle.cancelBtn} onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
-        <button className={commonStyle.actionBtn} onClick={ onAddCardButtonClick } disabled={ isLoad }>Add</button>
+        <button className={ commonStyle.cancelBtn } onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={ commonStyle.actionBtn } onClick={ onAddCardButtonClick } disabled={ isLoad }>Add</button>
       </div>
     </div>
   );

@@ -1,12 +1,9 @@
 import React, { FC } from 'react';
 import { Modal } from './interface';
 
-
-
 const ModalComponent: FC<Modal> = (
   {
     enableBackground,
-    backgroundStyle,
     backgroundOnClick = () => {
     },
     width,
@@ -38,7 +35,7 @@ const ModalComponent: FC<Modal> = (
                 background: 'black',
                 opacity: 0.65,
                 zIndex: 20,
-                backgroundColor: `rgba(0, 0, 0, 0.8)`
+                backgroundColor: `rgba(0, 0, 0, 0.8)`,
               } }
               onClick={ backgroundOnClick }
           />

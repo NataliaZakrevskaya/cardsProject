@@ -23,4 +23,4 @@ export const appActions = {
       type: AppFormReducer.SET_IS_LOAD, payload: { isLoad },
     } as const;
   },
-}
+};

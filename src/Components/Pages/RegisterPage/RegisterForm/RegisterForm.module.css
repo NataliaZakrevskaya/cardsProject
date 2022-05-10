@@ -12,9 +12,9 @@
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -webkit-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
     border: outset 4px;
 }
 
@@ -31,6 +31,7 @@
     font-size: 60px;
     margin-bottom: 0;
 }
+
 .titles h4 {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -55,7 +56,7 @@
     min-height: 30px;
     border: none;
     border-bottom: 1px solid #5f7271;
-    outline:none;
+    outline: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 20px;

@@ -1,1 +1,1 @@
-export type appActionsTypes<T> = T extends { [key: string]: infer A } ? A : never
+export type appActionsTypes<T> = T extends { [ key: string ]: infer A } ? A : never

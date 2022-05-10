@@ -26,7 +26,7 @@ const TablesCardsPagination: FC = () => {
       dispatch( cardsActions.setCardsPageAC( newPage + 1 ) );
     }
   };
-  const onRowsPerPageChange = ( event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, ) => {
+  const onRowsPerPageChange = ( event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
     setPage( 0 );
     dispatch( cardsActions.setCardsPageCountAC( parseInt( event.target.value ) ) );
   };

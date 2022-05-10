@@ -1,9 +1,8 @@
 import {
   LoginFormInitialState,
   LoginFormReducer,
-  LoginInitialStateType,
 } from '../../Actions/loginFormActions/loginFormActions';
-import { LoginFormActionsType } from '../../Actions/loginFormActions/types';
+import { LoginFormActionsType, LoginInitialStateType } from '../../Actions/loginFormActions/types';
 
 export const loginReducer = ( state: LoginInitialStateType = LoginFormInitialState, action: LoginFormActionsType ): LoginInitialStateType => {
   switch ( action.type ) {

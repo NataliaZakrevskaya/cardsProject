@@ -5,46 +5,46 @@ import { CardsType } from './types';
 import { ModeType } from '../../Reducers/packsReducer/types';
 
 export const cardsActions = {
-    setCardsAC: (state: CardsType) => {
-        return {
-            type: cardsActionsEnum.SET_CARDS,
-            payload: {state}
-        } as const
-    },
-    setCardsPageAC: ( page: number) => {
-        return {
-            type: cardsActionsEnum.SET_PAGE,
-            payload: {page}
-        } as const
-    },
-    setCardsPageCountAC: ( pageCount: number) => {
-        return {
-            type: cardsActionsEnum.SET_PAGE_COUNT,
-            payload: {pageCount}
-        } as const
-    },
-    searchCardAC: (e: string) => {
-        return {
-            type: cardsActionsEnum.SEARCH_CARDS,
-            payload: {e}
-        } as const
-    },
-    updateFilterCardAC: (updated: UpdatedType) => {
-        return {
-            type: cardsActionsEnum.UPDATE_CARDS,
-            payload: {updated}
-        } as const
-    },
-    gradeCardAC: (updatedCard: UpdatedGradeType) => {
-        return {
-            type: cardsActionsEnum.GRADE_CARD,
-            payload: {updatedCard}
-        } as const
-    },
-    setCardModeAC: ( mode: ModeType) => {
-        return {
-            type: cardsActionsEnum.SET_CARD_MODE,
-            payload: {mode}
-        } as const
-    },
-}
+  setCardsAC: ( state: CardsType ) => {
+    return {
+      type: cardsActionsEnum.SET_CARDS,
+      payload: { state },
+    } as const;
+  },
+  setCardsPageAC: ( page: number ) => {
+    return {
+      type: cardsActionsEnum.SET_PAGE,
+      payload: { page },
+    } as const;
+  },
+  setCardsPageCountAC: ( pageCount: number ) => {
+    return {
+      type: cardsActionsEnum.SET_PAGE_COUNT,
+      payload: { pageCount },
+    } as const;
+  },
+  searchCardAC: ( e: string ) => {
+    return {
+      type: cardsActionsEnum.SEARCH_CARDS,
+      payload: { e },
+    } as const;
+  },
+  updateFilterCardAC: ( updated: UpdatedType ) => {
+    return {
+      type: cardsActionsEnum.UPDATE_CARDS,
+      payload: { updated },
+    } as const;
+  },
+  gradeCardAC: ( updatedCard: UpdatedGradeType ) => {
+    return {
+      type: cardsActionsEnum.GRADE_CARD,
+      payload: { updatedCard },
+    } as const;
+  },
+  setCardModeAC: ( mode: ModeType ) => {
+    return {
+      type: cardsActionsEnum.SET_CARD_MODE,
+      payload: { mode },
+    } as const;
+  },
+};

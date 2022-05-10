@@ -29,7 +29,7 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
     setMode();
   };
   const onSaveButtonClick = () => {
-    console.log(updatedCard);
+    console.log( updatedCard );
     dispatch( updateCardTC( updatedCard ) );
     setMode();
   };
@@ -41,9 +41,9 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
   };
 
   return (
-    <div className={style.editCardModalContainer}>
+    <div className={ style.editCardModalContainer }>
       <h2>Card info:</h2>
-      <div className={style.editBlock}>
+      <div className={ style.editBlock }>
         <span>Question</span>
         <input disabled={ isLoad }
                type="text"
@@ -57,9 +57,9 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
                onChange={ onAnswerInputChange }
         />
       </div>
-      <div className={commonStyle.btnGroup}>
-        <button className={commonStyle.cancelBtn} onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
-        <button className={commonStyle.actionBtn} onClick={ onSaveButtonClick } disabled={ isLoad }>Save</button>
+      <div className={ commonStyle.btnGroup }>
+        <button className={ commonStyle.cancelBtn } onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={ commonStyle.actionBtn } onClick={ onSaveButtonClick } disabled={ isLoad }>Save</button>
       </div>
     </div>
   );

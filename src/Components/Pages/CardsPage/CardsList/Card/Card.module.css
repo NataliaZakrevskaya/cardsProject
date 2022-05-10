@@ -3,7 +3,7 @@
     width: 22%;
 }
 
-.ownQuestion{
+.ownQuestion {
     word-wrap: break-word;
     width: 17%;
 }
@@ -12,6 +12,7 @@
     width: 36%;
     word-wrap: break-word;
 }
+
 .ownAnswer {
     width: 30%;
     word-wrap: break-word;
@@ -20,6 +21,7 @@
 .data {
     width: 26%;
 }
+
 .ownData {
     width: 18%;
 }
@@ -27,6 +29,7 @@
 .rating {
     width: 16%;
 }
+
 .ownRating {
     width: 20%;
 }

@@ -11,7 +11,7 @@ import GlobalError from '../../../Common/globalError/globalError';
 import { getGlobalError, getIsLoad } from '../../../../Redux/Selectors/appSelectors/appSelectors';
 import { getCards, getCardsState } from '../../../../Redux/Selectors/cardsSelectors/cardsSelectors';
 import { UpdatedType } from '../../../../API/packsAPI/types';
-import {useDebounce} from "use-debounce";
+import { useDebounce } from 'use-debounce';
 import { appActions } from '../../../../Redux/Actions/appActions/appActions';
 import { CardsListType } from './types';
 import { getUserId } from './cardsListHelpers';
@@ -58,55 +58,55 @@ const CardsList = ( { name, packId }: CardsListType ) => {
   };
 
   return (
-      <div className={ style.cardsList }>
-        <h2> Pack Name: { name }</h2>
-        <div className={ style.searchContainer }>
-          <input
-            disabled={ isLoad }
-            placeholder={ 'Search...' }
-            value={ cardQuestion }
-            onChange={ searchCard }
-          />
-          <button
-            disabled={ isLoad }
-            onClick={ onAddButtonClick }>
-            Add New Card
-          </button>
-        </div>
-        <div className={ style.cardsBlock }>
-          <TableCardsHeader user_id={ user_id }/>
-          {
-            cards?.map( ( tableRow, index ) => {
-              return (
-                <Card
-                  key={ index }
-                  content={ tableRow }
-                />
-              );
-            } )
-          }
-          <ModalComponent
-            backgroundOnClick={ () => {
-              dispatch( cardsActions.setCardModeAC( null ) );
-              dispatch( appActions.setGlobalErrorAC( '' ) );
-
-            } }
-            show={ mode === ModeEnum.ADD || globalError !== '' }
-            height={ 0 }
-            width={ 0 }
-            enableBackground={ true }>
-            {
-              mode === ModeEnum.ADD &&
-                <AddCardComponent packId={ packId }/>
-            }
-            {
-              globalError !== '' &&
-                <GlobalError/>
-            }
-          </ModalComponent>
-        </div>
-        <TablesCardsPagination/>
+    <div className={ style.cardsList }>
+      <h2> Pack Name: { name }</h2>
+      <div className={ style.searchContainer }>
+        <input
+          disabled={ isLoad }
+          placeholder={ 'Search...' }
+          value={ cardQuestion }
+          onChange={ searchCard }
+        />
+        <button
+          disabled={ isLoad }
+          onClick={ onAddButtonClick }>
+          Add New Card
+        </button>
       </div>
+      <div className={ style.cardsBlock }>
+        <TableCardsHeader user_id={ user_id }/>
+        {
+          cards?.map( ( tableRow, index ) => {
+            return (
+              <Card
+                key={ index }
+                content={ tableRow }
+              />
+            );
+          } )
+        }
+        <ModalComponent
+          backgroundOnClick={ () => {
+            dispatch( cardsActions.setCardModeAC( null ) );
+            dispatch( appActions.setGlobalErrorAC( '' ) );
+
+          } }
+          show={ mode === ModeEnum.ADD || globalError !== '' }
+          height={ 0 }
+          width={ 0 }
+          enableBackground={ true }>
+          {
+            mode === ModeEnum.ADD &&
+              <AddCardComponent packId={ packId }/>
+          }
+          {
+            globalError !== '' &&
+              <GlobalError/>
+          }
+        </ModalComponent>
+      </div>
+      <TablesCardsPagination/>
+    </div>
   );
 };
 

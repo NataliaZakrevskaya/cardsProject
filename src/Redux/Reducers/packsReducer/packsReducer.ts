@@ -26,8 +26,6 @@ export const PacksInitialState: PacksInitialStateType = {
   mode: null,
 };
 
-
-
 export const packsReducer = ( state = PacksInitialState, action: PacksReducerActionsType ): PacksInitialStateType => {
   switch ( action.type ) {
     case packsActionsEnum.SET_PACKS: {

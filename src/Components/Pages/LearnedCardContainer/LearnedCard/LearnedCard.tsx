@@ -67,7 +67,7 @@ export const LearnedCard = () => {
               <div className={ style.answer }>
                   <b>Answer:</b> "{ actualCard?.answer }"
               </div>
-              <div className={style.variantsContainer}>
+              <div className={ style.variantsContainer }>
                   <div className={ style.mainText }>
                       <b>Rate yourself:</b>
                   </div>

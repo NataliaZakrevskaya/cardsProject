@@ -25,9 +25,10 @@ const DeleteCardComponent = ( { id, setMode }: DeleteCardComponentType ) => {
       <h2>Delete Card</h2>
       <hr/>
       <p>Do you really want to remove the card?</p>
-      <div className={commonStyle.btnGroup}>
-        <button className={commonStyle.cancelBtn} onClick={ onNoButtonClick } disabled={ isLoad }>Cancel</button>
-        <button className={commonStyle.extraActionBtn} onClick={ onYesButtonClick } disabled={ isLoad }>Delete</button>
+      <div className={ commonStyle.btnGroup }>
+        <button className={ commonStyle.cancelBtn } onClick={ onNoButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={ commonStyle.extraActionBtn } onClick={ onYesButtonClick } disabled={ isLoad }>Delete
+        </button>
       </div>
     </div>
   );

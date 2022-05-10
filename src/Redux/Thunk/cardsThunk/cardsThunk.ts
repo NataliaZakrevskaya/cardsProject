@@ -10,7 +10,7 @@ import { AppStateType, AppThunkType } from '../../Store/types';
 export const cardsTC = ( cardsPack_id: string ) => {
   return async ( dispatch: Dispatch, getState: () => AppStateType ) => {
     const { cardAnswer, cardQuestion, minGrade, maxGrade, sortCards, page, pageCount } = getState().cards;
-    const cardsInfo = {cardAnswer, cardQuestion, cardsPack_id, minGrade, maxGrade, sortCards, page, pageCount}
+    const cardsInfo = { cardAnswer, cardQuestion, cardsPack_id, minGrade, maxGrade, sortCards, page, pageCount };
     dispatch( appActions.setAppStatusAC( AppRequestStatus.LOADING ) );
     dispatch( appActions.setIsLoadAC( true ) );
     try {

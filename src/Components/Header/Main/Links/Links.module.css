@@ -1,4 +1,4 @@
-.main{
+.main {
     height: 100%;
     width: 80%;
     margin: 0 auto;
@@ -6,7 +6,6 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
 }
 
 .ordinaryLink {
@@ -15,13 +14,14 @@
     text-decoration: none;
     color: #fff;
 }
+
 .ordinaryLink:hover {
     font-size: x-large;
     cursor: pointer;
     transition: 0.7s;
 }
 
-.active{
+.active {
     font-family: 'Montserrat', sans-serif;
     font-size: x-large;
     font-weight: bold;

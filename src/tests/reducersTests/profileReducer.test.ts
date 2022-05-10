@@ -1,8 +1,8 @@
-import { UserDataType } from '../../Redux/Actions/loginFormActions/loginFormActions';
 import { meRespType } from '../../API/meAPI/types';
 import { ProfileInitialStateType } from '../../Redux/Reducers/profileReducer/types';
 import { profileReducer } from '../../Redux/Reducers/profileReducer/ProfileReducer';
 import { profileActions } from '../../Redux/Actions/profileActions/profileActions';
+import { UserDataType } from '../../Redux/Actions/loginFormActions/types';
 
 const loginResponse: UserDataType = {
   avatar: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg',

@@ -42,7 +42,7 @@ const AddPackComponent = () => {
                onChange={ onNewPackInputChange }
                className={ style.textInput }
         />
-        <div className={style.privateContainer}>
+        <div className={ style.privateContainer }>
         <span>
           Make private:
         </span>
@@ -53,9 +53,9 @@ const AddPackComponent = () => {
         </div>
       </div>
 
-      <div className={commonStyle.btnGroup}>
-        <button className={commonStyle.cancelBtn} onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
-        <button className={commonStyle.actionBtn} onClick={ onAddPackButtonClick } disabled={ isLoad }>Add</button>
+      <div className={ commonStyle.btnGroup }>
+        <button className={ commonStyle.cancelBtn } onClick={ onCancelButtonClick } disabled={ isLoad }>Cancel</button>
+        <button className={ commonStyle.actionBtn } onClick={ onAddPackButtonClick } disabled={ isLoad }>Add</button>
       </div>
 
     </div>

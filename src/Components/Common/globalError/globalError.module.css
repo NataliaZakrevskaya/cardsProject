@@ -1,22 +1,22 @@
-.deletePackContainer {
+.globalErrorContainer {
     padding: 15px 24px;
     width: 345px;
     background-color: #F9F9FE;
     font-family: 'Montserrat', sans-serif;
 }
 
-.deletePackContainer h2 {
+.globalErrorContainer h2 {
     text-align: left;
     font-size: 22px;
     color: #2D2E46;
 }
 
-.deletePackContainer hr {
+.globalErrorContainer hr {
     background-color: #ECECF9;
     height: 1px;
 }
 
-.deletePackContainer p {
+.globalErrorContainer p {
     font-size: 16px;
     font-weight: lighter;
 }

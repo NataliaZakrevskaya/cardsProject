@@ -29,10 +29,10 @@ const Card = ( { content }: CardComponentType ) => {
   const isLoad = useSelector( getIsLoad );
 
   const isOwnCards = ownId === user_id;
-  const questionStyle = isOwnCards ? style.ownQuestion : style.question
-  const answerStyle = isOwnCards ? style.ownAnswer : style.answer
-  const dataStyle = isOwnCards ? style.ownData : style.data
-  const ratingStyle = isOwnCards ? style.ownRating : style.rating
+  const questionStyle = isOwnCards ? style.ownQuestion : style.question;
+  const answerStyle = isOwnCards ? style.ownAnswer : style.answer;
+  const dataStyle = isOwnCards ? style.ownData : style.data;
+  const ratingStyle = isOwnCards ? style.ownRating : style.rating;
 
   const onTableDoubleClick = () => {
     navigate( `${ routesPathsEnum.LEARNED_CARD }/${ cardsPack_id }/${ _id }` );
@@ -41,7 +41,7 @@ const Card = ( { content }: CardComponentType ) => {
     dispatch( cardsActions.setCardModeAC( null ) );
   };
   const setNullModal = () => {
-    setMode( null )
+    setMode( null );
   };
 
   return (
@@ -62,7 +62,8 @@ const Card = ( { content }: CardComponentType ) => {
       {
         isOwnCards &&
           <div className={ style.btnGroup }>
-              <button className={ commonStyle.button } onClick={ () => setMode( ModeEnum.EDIT ) } disabled={ isLoad }>edit
+              <button className={ commonStyle.button } onClick={ () => setMode( ModeEnum.EDIT ) }
+                      disabled={ isLoad }>edit
               </button>
               <button className={ commonStyle.button } onClick={ onTableDoubleClick } disabled={ isLoad }>learn</button>
               <IconButton onClick={ () => setMode( ModeEnum.DELETE ) } aria-label="delete" disabled={ isLoad }>

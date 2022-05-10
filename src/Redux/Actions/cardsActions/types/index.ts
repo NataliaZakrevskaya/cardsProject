@@ -1,5 +1,4 @@
 import { CardType } from '../../../Reducers/cardsReducer/types';
-import { UpdatedType } from '../../../../API/packsAPI/types';
 
 export type cardsActionsTypes<T> = T extends { [ key: string ]: infer A } ? A : never
 
@@ -23,13 +22,3 @@ export type SortCardsType =
   | '1grade'
   | '1created'
   | '0created'
-export type SetCardsInfoType = {
-  cardQuestion: string
-  pageCount: number
-  sortCards: SortCardsType
-  minGrade: number
-  cardAnswer: string
-  id: string
-  page: number
-  maxGrade: number
-}
