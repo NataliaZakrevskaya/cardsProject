@@ -11,8 +11,8 @@ import Cards from '../Components/Pages/CardsPage/CardsPage';
 import LearnedCardContainer from '../Components/Pages/LearnedCardContainer/LearnedCardContainer';
 import AuthRedirectPage from '../Components/HOC/authRedirect';
 import { routesPathsEnum } from './enums';
-import style from './routes.module.css';
 import NotFoundedPage from '../Components/NotFoundedPage/NotFoundedPage';
+import style from './routes.module.css';
 
 const AppRoutes = () => {
   return (

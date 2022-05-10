@@ -5,7 +5,7 @@ export type OnlyOnePackComponentType = {
   runToCards: ( packId: string ) => void
 }
 export type modeType = 'edit' | 'delete' | null | 'v';
-export type SrazyIliType = {
+export type ChooseRoadModalType = {
   runToCards: ( packId: string ) => void
   packId: string
   setMode: () => void

@@ -1,4 +1,4 @@
-import { UserDataType } from '../../../Redux/Actions/loginFormActions/loginFormActions';
+import { UserDataType } from '../../../Redux/Actions/loginFormActions/types';
 
 export type UpdateUser = {
   name: string,

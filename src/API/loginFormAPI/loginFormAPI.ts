@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
-import { UserDataType } from '../../Redux/Actions/loginFormActions/loginFormActions';
 import { instance } from '../configAPI/configAPI';
 import { LOGIN_URL, ME_URL } from './constants';
 import { LoginType } from './types';
+import { UserDataType } from '../../Redux/Actions/loginFormActions/types';
 
 export const loginFormAPI = {
   async loginMe( loginInfo: LoginType ) {

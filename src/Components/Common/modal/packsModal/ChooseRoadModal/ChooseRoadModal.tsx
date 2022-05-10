@@ -1,4 +1,3 @@
-import { SrazyIliType } from '../../../../Pages/PacksPage/PacksPage/PackList/Pack/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppStateType } from '../../../../../Redux/Store/types';
@@ -8,8 +7,9 @@ import { packsActions } from '../../../../../Redux/Actions/packsActions/packsAct
 import { routesPathsEnum } from '../../../../../Routes/enums';
 import style from './ChooseRoadModal.module.css';
 import commonStyle from '../../commonModalStyles.module.css';
+import { ChooseRoadModalType } from '../../../../Pages/PacksPage/PacksPage/PackList/Pack/types';
 
-export const ChooseRoadModal = ( { runToCards, packId, setMode }: SrazyIliType ) => {
+export const ChooseRoadModal = ( { runToCards, packId, setMode }: ChooseRoadModalType ) => {
 
   const dispatch = useDispatch();
 

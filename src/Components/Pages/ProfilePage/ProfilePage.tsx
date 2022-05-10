@@ -47,7 +47,7 @@ const ProfilePage = () => {
     <div className={ style.profilePage }>
       <div className={ style.profileContainer }>
         <h2 className={ style.title }>Personal information</h2>
-        <img src={ avatar ? avatar : BASE_IMG_URL } alt={ 'user\'s image' } title={ 'your avatar' }/>
+        <img src={ avatar ? avatar : BASE_IMG_URL } alt={ 'user\'s avatar' } title={ 'your avatar' }/>
         <span>{ `Cards: ${ publicCardPacksCount }` }</span>
         <div className={ style.nameContainer }>
           {
