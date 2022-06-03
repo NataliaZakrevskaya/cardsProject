@@ -83,7 +83,6 @@ const PacksList = () => {
   };
   const onMyButtonClick = () => {
     selectMyOrAll( ownId );
-    console.log( ownId );
   };
   const onAllButtonClick = () => {
     selectMyOrAll( null );

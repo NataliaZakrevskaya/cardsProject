@@ -29,7 +29,6 @@ export const EditCardComponent = ( { card, setMode }: EditCardComponentType ) =>
     setMode();
   };
   const onSaveButtonClick = () => {
-    console.log( updatedCard );
     dispatch( updateCardTC( updatedCard ) );
     setMode();
   };
