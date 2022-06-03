@@ -21,7 +21,6 @@ export const packsTC = () => async ( dispatch: Dispatch, getState: () => AppStat
   dispatch( appActions.setIsLoadAC( true ) );
   try {
     const packsInfo = { packName, min, max, sortPacks, page, pageCount, user_id };
-    debugger
     let res = await packsAPI.setPacks( packsInfo );
     dispatch( packsActions.setPacksAC( res.data ) );
     dispatch( appActions.setAppStatusAC( AppRequestStatus.SUCCEEDED ) );

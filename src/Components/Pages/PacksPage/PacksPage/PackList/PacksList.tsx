@@ -50,7 +50,6 @@ const PacksList = () => {
   const [ selected, setSelected ] = useState<SelectType>( ALL );
 
   useEffect( () => {
-    debugger
     dispatch( packsTC() );
   }, [ debouncedSearch[ 0 ], user_id, debouncedMIN[ 0 ], debouncedMAX[ 0 ], pageCount, page, updated ] );
 
